@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// CarPool 
+Route::get('/carpool',function(){
+    return view('carpool.create');
+});
 // CarPool List
 Route::get('/carpool/list',function(){
     return view('carpool.list');
