@@ -4,6 +4,6 @@
 <x-layout>
     <h2>Available carpool</h2>
     <ul>
-        <li><x-share_road_detail/></li> 
+        <li><x-shareroad_card/></li> 
     </ul>
 </x-layout>

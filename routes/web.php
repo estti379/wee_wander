@@ -22,6 +22,9 @@ Route::get('/carpool',function(){
     return view('carpool.create');
 });
 // CarPool List
-Route::get('/carpool/list',function(){
-    return view('carpool.list');
+//Route::get('/carpool/list',function(){
+//   return view('carpool.list');
+//});
+Route::get('carpool/list',function(){
+      return view('carpool.list');
 });
