@@ -17,8 +17,10 @@ class EventsController extends Controller
         ]);
     }
 
+    
     public function eventDetails($id = 1){
 
         return view('events.event-details');
     }
+    
 }

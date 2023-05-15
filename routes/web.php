@@ -20,3 +20,7 @@ Route::get('/', function () {
 
 // Route for list all events
 Route::get('/events', [EventsController::class, 'eventsCard']);
+
+// route for specific event
+Route::get('/events/{id}', [EventsController::class, 'eventDetails']);
+
