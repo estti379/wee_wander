@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// CarPool List
+Route::get('/carpool/list',function(){
+    return view('carpool.list');
+});
