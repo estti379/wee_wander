@@ -6,5 +6,8 @@
         @foreach ($trailDetails as $item)
             <p>{{$item}}</p>
         @endforeach
-        
+        {{-- weather API card - this is a component --}}
+        <div class="weatherapi">
+            <x-weather-api/>
+        </div>
     </div>

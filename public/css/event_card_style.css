@@ -7,3 +7,8 @@
     background-color: mediumaquamarine;
     outline: 1px solid black;
 }
+
+.weather-component {
+    background-color: cornflowerblue;
+    outline: 3px solid black;
+}

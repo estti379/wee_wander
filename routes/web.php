@@ -24,3 +24,6 @@ Route::get('/events', [EventsController::class, 'eventsCard']);
 // route for specific event
 Route::get('/events/{id}', [EventsController::class, 'eventDetails']);
 
+//Route for Create Event
+Route::get('/create-event', [EventsController::class, 'create']);
+    
