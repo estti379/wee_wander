@@ -17,22 +17,39 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $car_owned = "";
+        $random = rand(0, 2);
+        if($random == 0){
+            $car_owned = "yes";
+        } else if($random == 1){
+            $car_owned = "no";
+        } else if($random == 2){
+            $car_owned = "hidden";
+        }
+
+        $driver_license = "";
+        $random = rand(0, 2);
+        if($random == 0){
+            $driver_license = "yes";
+        } else if($random == 1){
+            $driver_license = "no";
+        } else if($random == 2){
+            $driver_license = "hidden";
+        }
+
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'username' => fake()->userName(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'email' => fake()->unique()->safeEmail(),
+            'firstname' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
+            'picture' => fake()->imageUrl($width=200, $height=200),
+            'description' => fake()->text(100),
+            'car_owned' => $car_owned,
+            'driver_license' => $driver_license,
+
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
 }
