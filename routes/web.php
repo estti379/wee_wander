@@ -31,10 +31,8 @@ Route::get('/create-event', [EventsController::class, 'create']);
 Route::get('/carpool',function(){
     return view('carpool.create');
 });
+
 // CarPool List
-//Route::get('/carpool/list',function(){
-//   return view('carpool.list');
-//});
 Route::get('/carpool/list', function () {
     return view('carpool.list', [
         'users' => [[
@@ -48,6 +46,7 @@ Route::get('/carpool/list', function () {
             'luggage' => 'yes',
             'dog' => 'yes',
             'smokers' => 'yes',
+            'price' => '45€',
         ],
          [
             'username' => 'koko',
@@ -60,6 +59,7 @@ Route::get('/carpool/list', function () {
             'luggage' => 'yes',
             'dog' => 'yes',
             'smokers' => 'yes',
+            'price' => '75€',
          ],
          [
             'username' => 'popo',
@@ -72,6 +72,7 @@ Route::get('/carpool/list', function () {
             'luggage' => 'yes',
             'dog' => 'yes',
             'smokers' => 'yes',
+            'price' => '50€',
         ]]
     ]);
 });
