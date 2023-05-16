@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Adventure;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Trails extends Model
 {
@@ -20,5 +22,10 @@ class Trails extends Model
         'location_long',
         'location_latit'
     ];
+
+    public function adventures(): HasMany
+    {
+        return $this->hasMany(Adventure::class);
+    }
 }
 
