@@ -12,6 +12,7 @@
         <p>Luggage allowed: <?php echo $user['luggage']; ?></p>
         <p>Dog allowed: <?php echo $user['dog']; ?></p>
         <p>Smokers allowed: <?php echo $user['smokers']; ?></p>
+        <p> Asked price : <?php echo $user['price']; ?></p>
     
     <button>Driver info</button>
 </div> 

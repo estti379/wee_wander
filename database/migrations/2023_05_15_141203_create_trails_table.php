@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('location_long');
             $table->string('location_latit');
             // add map
+            $table->timestamps();
         });
     }
 
