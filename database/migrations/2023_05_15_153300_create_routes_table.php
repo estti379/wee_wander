@@ -28,6 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_carowner');
             $table->unsignedBigInteger('id_start_adventure');
             $table->unsignedBigInteger('id_end_adventure');
+            $table->timestamps();
         });
 
         Schema::table('routes', function(Blueprint $table) {

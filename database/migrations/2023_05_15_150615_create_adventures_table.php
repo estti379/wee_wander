@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_trail');
             $table->dateTime('start_date');
             $table->dateTime('due_date');
+            $table->timestamps();
         });
 
         Schema::table('adventures', function(Blueprint $table) {
