@@ -1,7 +1,9 @@
-
+<link rel="stylesheet" href="\css\carpool_card_style.css"/>
             {{-- Create Carpool From --}}
             <x-layout>
+                <div class="createCarpool">
                 <h2>Create Carpool</h2>
+                
                 <form method="POST" action="#">  
                     @csrf 
                     <label>City Departure</label>
@@ -57,4 +59,5 @@
                     {{-- Submit carpool --}}
                     <button type="submit">Create Carpool</button>
                 </form>
+                </div>
             </x-layout>

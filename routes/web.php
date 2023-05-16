@@ -43,16 +43,8 @@ Route::get('/carpool',[CarpoolController::class, 'index']);
 Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
 //=============================================================
-// Storer CarPool 
-//Route::post('/carpool/store', [CarpoolController::class, 'store']);
-
-//=============================================================
-// CarPool all List
-Route::get('/carpool.list', function () {
-    return view('carpool', [ 
-        'list'=>Carpool::all()
-    ]);
-});
+// Store CarPool 
+Route::post('/carpool/store', [CarpoolController::class, 'store']);
 
 //=============================================================
 

@@ -13,7 +13,7 @@ class CarpoolController extends Controller
     public function index()
     {
         $shareroadDetails=Route::all();
-        return view ('carpool',[
+        return view ('carpool.lists',[
             'shareroaddetails'=>$shareroadDetails
         ]);
        
@@ -22,7 +22,7 @@ class CarpoolController extends Controller
      public function show(Route $shareroad_card)
      {
          return view('carpool.show', [
-             'carpool' => $shareroad_card
+             'carpool'=>$shareroad_card
          ]);
      }
 
