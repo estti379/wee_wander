@@ -32,8 +32,11 @@ Route::get('/carpool',function(){
     return view('carpool.create');
 });
 
+// Storer CarPool 
+Route::post('/carpool/store', [CarpoolController::class, 'store']);
+
 // CarPool List
-Route::get('/carpool/list', function () {
+Route::get('/carpool.list', function () {
     return view('carpool.list', [
         'users' => [[
             'username' => 'Momo',
@@ -76,3 +79,4 @@ Route::get('/carpool/list', function () {
         ]]
     ]);
 });
+
