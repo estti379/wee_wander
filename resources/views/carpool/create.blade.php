@@ -2,7 +2,7 @@
             {{-- Create Carpool From --}}
             <x-layout>
                 <h2>Create Carpool</h2>
-                <form method="POST" action="carpool/store">  
+                <form method="POST" action="#">  
                     @csrf 
                     <label>City Departure</label>
                     <select name="city">

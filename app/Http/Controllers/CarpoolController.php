@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carpool;
+use App\Models\Route;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class CarpoolController extends Controller
+
 {
-    //Get and Show all listings
+    //Get and Show all carpool
     public function index()
     {
-        return view('carpool.index', [
-            'carpool' => Carpool::latest()->filter(request(['tag', 'search']))
-                ->paginate(4),
+        $shareroadDetails=Route::all();
+        return view ('carpool',[
+            'shareroaddetails'=>$shareroadDetails
+        ]);
+       
+    }
+     //Show single carpool
+     public function show(Route $shareroad_card)
+     {
+         return view('carpool.show', [
+             'carpool' => $shareroad_card
+         ]);
+     }
 
-        ]);
-    }
-    //Show single shareroad
-    public function show(Carpool $shareroad_card)
-    {
-        return view('carpool.show', [
-            'carpool' => $shareroad_card
-        ]);
-    }
     // Create Form View
     public function create()
     {
@@ -50,7 +52,7 @@ class CarpoolController extends Controller
         //now, if one of those field failed, it will show an error
         // if good completed we will redirect it to the hompage
 
-        Carpool::create($formFields);
-        return redirect('/')->with('message', 'Listing created successfully');
+        Route::create($formFields);
+        return redirect('/')->with('message', 'Carpool created successfully');
     }
 } // end of the class
