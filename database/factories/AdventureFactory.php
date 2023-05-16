@@ -16,7 +16,7 @@ class AdventureFactory extends Factory
      */
     public function definition(): array
     {
-        $start_date = $this->faker->dateTimeBetween("-30 day", "+30 day");;
+        $start_date = $this->faker->dateTimeBetween("-30 day", "+30 day");
         $helper_date = clone $start_date;
         $helper_date->modify("-1 day");
         $due_date = $this->faker->dateTimeBetween($helper_date, $start_date);
