@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Adventure;
 use App\Models\Event;
 use App\Models\Trails;
 use App\Models\User;
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Event::factory(10)->create();
         Trails::factory(10)->create();
+        Adventure::factory(10)->create();
     }
 }
