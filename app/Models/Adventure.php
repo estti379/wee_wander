@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Trails;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Adventure extends Model
@@ -30,6 +32,16 @@ class Adventure extends Model
     public function trails(): BelongsTo
     {
         return $this->belongsTo(Trails::class, 'id_trail');
+    }
+
+    public function routes_start(): HasMany
+    {
+        return $this->hasMany(Route::class);
+    }
+
+    public function routes_end(): HasMany
+    {
+        return $this->hasMany(Route::class);
     }
 
 

@@ -32,7 +32,7 @@ class RouteFactory extends Factory
             'bike_capacity' => rand(1, 6),
             'pets_allowed' => $this->faker->boolean(),
             'smokers_allowed' => $this->faker->boolean(),
-            'lugage' => $this->faker->boolean(),
+            'luggage' => $this->faker->boolean(),
             'id_carowner' => rand(1, 10),
             'id_start_adventure' => rand(1, 10),
             'id_end_adventure' => rand(1, 10),

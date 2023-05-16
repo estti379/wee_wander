@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('bike_capacity');
             $table->boolean('pets_allowed');
             $table->boolean('smokers_allowed');
-            $table->boolean('lugage');
+            $table->boolean('lugagge');
             $table->unsignedBigInteger('id_carowner');
             $table->unsignedBigInteger('id_start_adventure');
             $table->unsignedBigInteger('id_end_adventure');

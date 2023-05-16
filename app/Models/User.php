@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Event;
+use App\Models\Route;
 use App\Models\AdventureParticipants;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function adventure_participants(): HasMany
     {
         return $this->hasMany(AdventureParticipants::class);
+    }
+
+    public function routes(): HasMany
+    {
+        return $this->hasMany(Route::class);
     }
 
     
