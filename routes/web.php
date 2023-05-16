@@ -26,7 +26,10 @@ Route::get('/events/{id}', [EventsController::class, 'eventDetails']);
 
 //Route for Create Event
 Route::get('/create-event', [EventsController::class, 'create']);
-    
+
+// route for specific trail information
+Route::get('/events/{id}/trail', [EventsController::class, 'getTrail']);
+
 // CarPool 
 Route::get('/carpool',function(){
     return view('carpool.create');

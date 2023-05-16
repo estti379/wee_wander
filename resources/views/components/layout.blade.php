@@ -10,9 +10,10 @@
   {{-- Possible navbar --}}
   <nav>
     <ul>
-      <li>item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
+      <li><a href="/events"> Events list page</a></li>
+      <li><a href="/events/{id}">Events Details</a></li>
+      <li><a href="/events/{id}/trail">Trail Details</a></li>
+      <li><a href="/create-event">Create Event</a></li>
     </ul>
   </nav>
   {{-- This is a alpha version. Just the skeleton --}}

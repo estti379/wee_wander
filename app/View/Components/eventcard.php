@@ -33,10 +33,8 @@ class eventcard extends Component
     
     public function eventsData(){
         return [
-            'location' => 'Location of the Event',
             'start_date' => 'Starting Data Information - 01/01/2025',
             'end_date' => 'Ending Date Information- 01/01/2026',
-            'Distance' => 'Distance information of event - 10km'
         ];
     }
 }
