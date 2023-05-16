@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
     //This method needs to fetch the DB information and put it inside the Event card
     public function eventsCard(){
+        //SELECT * FROM events
+        $events = Event::all();
+        
         $eventTitle = "This is the Event Title - but it needs to fetch from the info of the DB";
         $pageTitle = "Events Page";
 
