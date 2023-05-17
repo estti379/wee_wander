@@ -14,7 +14,7 @@ class CarpoolController extends Controller
     public function index()
     {
         $shareRoadDetails=Route::all();
-        return view ('carpool.lists',['shareRoadDetails'=>$shareRoadDetails]);
+        return view('carpool.lists', ['shareRoadDetails' => $shareRoadDetails]);
     }
     
 
