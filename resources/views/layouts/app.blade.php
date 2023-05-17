@@ -29,5 +29,6 @@
   <footer>
     WeeWander Footer &copy;
   </footer>
+  @yield('createform')
 </body>
 </html>
