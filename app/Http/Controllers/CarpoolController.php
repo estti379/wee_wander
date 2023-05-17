@@ -13,32 +13,26 @@ class CarpoolController extends Controller
     //Get and Show all carpool
     public function index()
     {
-        $shareroadDetails=Route::all();
-        return view ('carpool.lists',[
-            'shareroaddetails'=>$shareroadDetails
-        ]);
-       
+        $shareRoadDetails=Route::all();
+        return view ('carpool.lists',['shareRoadDetails'=>$shareRoadDetails]);
     }
+    
+
      //Show single carpool
      public function show(Route $shareroad_card)
      {
-         return view('carpool.show', [
-             'carpool'=>$shareroad_card
-         ]);
+         return view('carpool.show', ['carpool'=>$shareroad_card]);
      }
 
     // Create Form View
     public function create()
     {
         $adventures = Adventure::all();
-        return view('carpool.create',['adventures' => $adventures]);
+        return view('carpool.create', ['adventures' => $adventures]);
     }
-
-
 
     public function store(){
         $carpoolForm = new Route();
-        
         $carpoolForm->id_carowner=1;                     // TO DO ADD Value request('id_carowner');
         $carpoolForm->start_location_long=50;            // request('city');
         $carpoolForm->start_location_latit=49;            // request('city');

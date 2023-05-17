@@ -19,7 +19,7 @@
                     <select value="adventure">
                         @foreach($adventures as $adventure)
                             <option value="{{ $adventure->trail_id }}">
-                                Trail ID: {{ $adventure->trail_id }} | Start Date: {{ $adventure->start_date }}
+                                Trail: {{ $adventure->trail->name }} | Start Date: {{ $adventure->start_date }}
                             </option>
                         @endforeach
                         </select> <br>
