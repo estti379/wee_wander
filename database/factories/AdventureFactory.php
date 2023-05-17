@@ -21,8 +21,8 @@ class AdventureFactory extends Factory
         $helper_date->modify("-1 day");
         $due_date = $this->faker->dateTimeBetween($helper_date, $start_date);
         return [
-            'id_event' => rand(1, 10),
-            'id_trail' => rand(1, 10),
+            'event_id' => rand(1, 10),
+            'trail_id' => rand(1, 10),
             'start_date' => $start_date,
             'due_date' => $due_date,
         ];

@@ -18,20 +18,20 @@ class Adventure extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_event',
-        'id_trail',
+        'event_id',
+        'trail_id',
         'start_date',
         'due_date',
     ];
 
-    public function events(): BelongsTo
+    public function event(): BelongsTo
     {
-        return $this->belongsTo(Event::class, 'id_event');
+        return $this->belongsTo(Event::class);
     }
 
-    public function trails(): BelongsTo
+    public function trail(): BelongsTo
     {
-        return $this->belongsTo(Trail::class, 'id_trail');
+        return $this->belongsTo(Trail::class);
     }
 
     public function routes_start(): HasMany
