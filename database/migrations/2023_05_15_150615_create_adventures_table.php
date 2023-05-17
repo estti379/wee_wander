@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('adventures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_event');
-            $table->unsignedBigInteger('id_trail');
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('trail_id');
             $table->dateTime('start_date');
             $table->dateTime('due_date');
             $table->timestamps();
         });
 
         Schema::table('adventures', function(Blueprint $table) {
-            $table->foreign('id_event')->references('id')->on('events');
-            $table->foreign('id_trail')->references('id')->on('trails');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('trail_id')->references('id')->on('trails');
         });
     }
 

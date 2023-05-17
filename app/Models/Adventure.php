@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Trails;
+use App\Models\Trail;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Adventure extends Model
@@ -16,20 +18,30 @@ class Adventure extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_event',
-        'id_trail',
+        'event_id',
+        'trail_id',
         'start_date',
         'due_date',
     ];
 
-    public function events(): BelongsTo
+    public function event(): BelongsTo
     {
-        return $this->belongsTo(Event::class, 'id_event');
+        return $this->belongsTo(Event::class);
     }
 
-    public function trails(): BelongsTo
+    public function trail(): BelongsTo
     {
-        return $this->belongsTo(Trails::class, 'id_trail');
+        return $this->belongsTo(Trail::class);
+    }
+
+    public function routesStart(): HasMany
+    {
+        return $this->hasMany(Route::class, "start_adventure_id");
+    }
+
+    public function routesEnd(): HasMany
+    {
+        return $this->hasMany(Route::class, "end_adventure_id");
     }
 
 

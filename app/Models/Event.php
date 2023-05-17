@@ -20,14 +20,14 @@ class Event extends Model
      */
     protected $fillable = [
         'title',
-        'id_organizer',
+        'organizer_id',
     ];
 
 
     //relationships
-    public function users(): BelongsTo
+    public function organizer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_organizer');
+        return $this->belongsTo(User::class);
     }
 
     public function adventures(): HasMany{
