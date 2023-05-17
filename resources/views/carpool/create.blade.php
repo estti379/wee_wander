@@ -12,7 +12,7 @@
                     </select><br>
 
                     <label>Adventure</label>
-                    <input type="text" name="end_location" placeholder="End Location"><br>
+                    <input type="text" name="end_location_long" placeholder="End Location"><br>
                     @error('end_location')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -40,7 +40,7 @@
                     </select><br>
             
                     <label>Time</label>
-                    <input type="time" name="time" placeholder="Time"><br>
+                    <input type="Time" name="time" placeholder="Time"><br>
                     @error('time')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -50,8 +50,12 @@
                     <input type="radio" name="pets_allowed" value="no"><br>
             
                     <label>Luggage allowed</label>
-                    <input type="radio" name="luggage" value="yes">
-                    <input type="radio" name="luggage" value="no"><br>
+                    <select name="luggage">
+                        <option value="false">0</option> 
+                        <option value="1">1</option> 
+                        <option value="2">2</option> 
+                        <option value="3">3</option> 
+                    </select><br>
             
                     <label>Smokers allowed</label>
                     <input type="radio" name="smokers_allowed" value="yes">
