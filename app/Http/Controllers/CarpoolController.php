@@ -40,19 +40,18 @@ class CarpoolController extends Controller
         $carpoolForm->end_location_long=request('end_location_long');
         $carpoolForm->end_location_latit=51;
         $carpoolForm->start_date=request('start_date').' '.request('time');
-
         //$dateTimeString = request('start_date').' '.request('time');
         // $carpoolForm->start_date=DateTime::createFromFormat('d/m/Y, H:i', $dateTimeString);
-
         $carpoolForm->max_seats=request('max_seats');
         $carpoolForm->bike_capacity=request('bike_capacity');
         $carpoolForm->pets_allowed=request('pets_allowed');
         $carpoolForm->luggage=request('luggage');
         $carpoolForm->smokers_allowed=request('smokers_allowed');
         $carpoolForm->price=request('price');
-        // error_log($carpoolForm);
-       $carpoolForm->save();
-        return redirect('/')->with('message', 'Carpool created successfully');
+        // Save the data to de DB
+        $carpoolForm->save();
+        return redirect('/')->with('Carpool created successfully');
+        // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
     }
 
 } // end of the class

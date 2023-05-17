@@ -19,5 +19,7 @@
         <p>Smokers allowed: <?php echo $element['smokers_allowed']; ?></p>
         <p> Asked price : <?php echo $element['price']; ?></p>
     
-    <button>Driver info</button>
+    <button>Driver info</button> <button> Edit</button>
+
+
 </div> 
