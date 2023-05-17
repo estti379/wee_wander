@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Adventure;
+use App\Models\AdventureParticipants;
 use App\Models\Event;
 use App\Models\Route;
 use App\Models\RouteParticipants;
@@ -24,6 +25,14 @@ class DatabaseSeeder extends Seeder
         Trail::factory(10)->create();
         Adventure::factory(10)->create();
         Route::factory(10)->create();
-        RouteParticipants::factory(10)->create();
+        for ($i=0; $i < 4; $i++) { 
+            RouteParticipants::factory(1)->create();
+        }
+        for ($i=0; $i < 4; $i++) { 
+            AdventureParticipants::factory(1)->create();
+        }
+        
     }
+
+
 }
