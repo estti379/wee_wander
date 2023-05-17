@@ -12,3 +12,9 @@
     background-color: cornflowerblue;
     outline: 3px solid black;
 }
+
+.create_event_form {
+    background-color: cornflowerblue;
+    outline: 3px solid black;
+    padding: 10px;
+}

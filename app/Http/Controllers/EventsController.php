@@ -51,9 +51,11 @@ class EventsController extends Controller
         $adventure = Adventure::create([
             'trail_id' => $request->input('trail'),
             'event_id' => $event->id,
-            'start_date' => new DateTime('now'),
-            'due_date' => new DateTime('now')
+            'start_date' => $request->input('starting_date'),
+            'due_date' => $request->input('due_date')
         ]);
+
+
         return redirect('/events');
     }
 
