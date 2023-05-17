@@ -8,16 +8,13 @@
   <form action="/events" method="POST">
     @csrf
     <span>Title of the event : </span><input type="text" name="eventTitle"><br>
-    <!--
-    <span>Starting Date : </span></label><input type="date" name=""><br>
-    <span>Due Date : </span><input type="date" name=""><br>
-    <span>Trail : </span>
-    <select name="">
-      <option value="">Trail 1</option>
-      <option value="">Trail 2</option>
-      <option value="">Trail 3</option>
+    <span>Select your trail : </span>
+    <select name="trail" >
+      <option value="Select a trail"></option>
+      @foreach ($trails as $trail)
+        <option value="{{ $trail->id }}">{{ $trail->name }}</option>
+      @endforeach
     </select><br>
-     -->
     <input type="submit" name="" value="Criar Evento">
   </form>
 @endsection

@@ -3,7 +3,12 @@
 @section('title', 'Event Details')
 @section('content')
 
-  <h1>This is the page of the event detail</h1>
+  <ul>
+    <p>Event title : {{ $event['title']}}</p>
+    <p>Adventure start date {{ $adventure[0]['start_date'] }} </p>
+    
+    
+  </ul>
   <x-trailcard />
   
 @endsection

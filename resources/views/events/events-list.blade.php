@@ -2,13 +2,14 @@
 @section('title', 'Events List')
 
 
-  
+
   {{-- Events list view --}}
   {{-- The variables are being retrieved from the route --}}
   {{-- If youre passing a variable, we need to use : before  --}}
   {{-- <x-eventcard text="This is the event card - Just example" :eventTitle="$eventTitle"/> <br>   --}}
   @section('content')
   <div>
+    {{-- {{ dd($events) }} --}}
     {{-- informations being retrieved by the eventsCard() method in controllers --}}
     @foreach ($events as $event)
       <div>
@@ -16,7 +17,8 @@
       </div>
       <div class="event-card">
         <p>Title : {{ $event['title']}}</p>
-        <p>Id Organizer : {{ $event['id_organizer']}}</p>
+        <p>Id Organizer : {{ $event['organizer_id']}}</p>
+        
       </div>
     @endforeach
   </div>
