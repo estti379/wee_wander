@@ -8,13 +8,21 @@
                     @csrf 
                     <label>City Departure</label>
                     <select name="start_location_long">
-                        <option value="city">-</option>  {{-- Foreach city loop inside of this row --}}
+                        <option value="city">-
+                            {{-- Foreach city loop inside of this row --}}
+                        </option>  
                     </select><br>
                     <label>Distance</label>
                     <input type="text" name="distance" placeholder="km"><br>
                     
                     <label>Adventure</label>
-                    <input type="text" name="end_location_long" placeholder="End Location"><br>
+                    <select value="adventure">
+                        @foreach($adventures as $adventure)
+                            <option value="{{ $adventure->trail_id }}">
+                                Trail ID: {{ $adventure->trail_id }} | Start Date: {{ $adventure->start_date }}
+                            </option>
+                        @endforeach
+                        </select> <br>
                     {{-- To Add id_start_adventure  Variable--}}
 
                     @error('end_location')

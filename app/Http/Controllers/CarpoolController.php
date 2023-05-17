@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
+use App\Models\Adventure;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -29,8 +30,10 @@ class CarpoolController extends Controller
     // Create Form View
     public function create()
     {
-        return view('carpool.create');
+        $adventures = Adventure::all();
+        return view('carpool.create',['adventures' => $adventures]);
     }
+
 
 
     public function store(){
