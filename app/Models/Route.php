@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Route extends Model
 {
@@ -39,54 +40,18 @@ class Route extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function adventure_start(): BelongsTo
+    public function start_adventure(): BelongsTo
     {
         return $this->belongsTo(Adventure::class);
     }
 
-    public function adventure_end(): BelongsTo
+    public function end_adventure(): BelongsTo
     {
         return $this->belongsTo(Adventure::class);
     }
 
-
-
-
-    /*
-    // method for carpool create 
-    public function create(){
-        return view ('carpool.create');
+    public function participants(): BelongsToMany
+    {
+        return $this->belongsToMany(Route::class, 'route_participants', 'route_id', 'participant_id');
     }
-    public function all(){    //retrieve = all
-        return [
-            'start_location_long' => '',
-            'start_location_latit' => '',
-            'end_location_long' => '',
-            'end_location_latit' => '',
-            'distance' => '',
-            'start_date' => '',
-            'price' => '',
-            'max_seats' => '',
-            'bike_capacity' => '',
-            'pets_allowed' => '',
-            'smokers_allowed' => '',
-            'luggage' => '',
-            'id_carowner' => '',
-            'id_start_adventure' => '',
-            'id_end_adventure' => ''
-        ];
-    }
-
-    public function find($id){
-        $carpoolDetails=self::all();
-        foreach($carpoolDetails as $carpoolDetail){
-            if($carpoolDetail['id'== $id]){
-                return $carpoolDetail;
-            }
-        }
-    }
-    
-
-    
-*/
 }

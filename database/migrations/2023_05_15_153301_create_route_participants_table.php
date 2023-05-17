@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('route_participants', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_route');
-            $table->unsignedBigInteger('id_participant');
+            $table->unsignedBigInteger('route_id');
+            $table->unsignedBigInteger('participant_id');
             $table->timestamps();
         });
 
         Schema::table('route_participants', function(Blueprint $table) {
-            $table->foreign('id_route')->references('id')->on('routes');
-            $table->foreign('id_participant')->references('id')->on('users');
-            $table->unique(['id_route', 'id_participant']);
+            $table->foreign('route_id')->references('id')->on('routes');
+            $table->foreign('participant_id')->references('id')->on('users');
+            $table->unique(['route_id', 'participant_id']);
         });
     }
 

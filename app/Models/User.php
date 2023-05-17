@@ -8,6 +8,7 @@ use App\Models\Route;
 use App\Models\AdventureParticipants;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -59,10 +60,14 @@ class User extends Authenticatable
         return $this->hasMany(AdventureParticipants::class);
     }
 
-    public function routes(): HasMany
+    public function routesOwned(): HasMany
     {
         return $this->hasMany(Route::class, "carowner_id");
     }
 
+    public function routesParticipatingIn(): BelongsToMany
+    {
+        return $this->belongsToMany(Route::class, 'route_participants', 'participant_id', 'route_id');
+    }
     
 }
