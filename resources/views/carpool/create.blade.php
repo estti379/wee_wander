@@ -10,7 +10,7 @@
                     <select name="start_location_long">
                         <option value="city">-</option>  {{-- Foreach city loop inside of this row --}}
                     </select><br>
-                    
+
                     <label>Adventure</label>
                     <input type="text" name="end_location" placeholder="End Location"><br>
                     @error('end_location')
@@ -18,13 +18,13 @@
                     @enderror
             
                     <label>Date</label>
-                    <input type="date" name="date" placeholder="Date"><br>
+                    <input type="date" name="start_date" placeholder="Date"><br>
                     @error('date')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
             
                     <label>Free seats</label>
-                    <select name="seats">
+                    <select name="max_seats">
                         <option value="1">1</option> 
                         <option value="2">2</option> 
                         <option value="3">3</option> 
@@ -32,7 +32,7 @@
                     </select><br>
             
                     <label>Bike Rack available</label>
-                    <select name="bikeRack">
+                    <select name="bike_capacity">
                         <option value="false">0</option> 
                         <option value="1">1</option> 
                         <option value="2">2</option> 
@@ -46,17 +46,19 @@
                     @enderror
             
                     <label>Dog allowed</label>
-                    <input type="radio" name="dog" value="yes">
-                    <input type="radio" name="dog" value="no"><br>
+                    <input type="radio" name="pets_allowed" value="yes">
+                    <input type="radio" name="pets_allowed" value="no"><br>
             
                     <label>Luggage allowed</label>
                     <input type="radio" name="luggage" value="yes">
                     <input type="radio" name="luggage" value="no"><br>
             
                     <label>Smokers allowed</label>
-                    <input type="radio" name="smokers" value="yes">
-                    <input type="radio" name="smokers" value="no"><br>
-            
+                    <input type="radio" name="smokers_allowed" value="yes">
+                    <input type="radio" name="smokers_allowed" value="no"><br>
+
+                    <label>Asked price</label>
+                    <input type="text" name="price" placeholder="0€"><br>
                     {{-- Submit carpool --}}
                     <button type="submit">Create Carpool</button>
                 </form>

@@ -33,23 +33,22 @@ class CarpoolController extends Controller
     }
 
 
-    public function store($request){
+    public function store(){
+        $carpoolForm = new Route();
+        
+        $carpoolForm->username=request('username');
+        $carpoolForm->start_location=request('city');
+        $carpoolForm->end_location=request('end_location');
+        $carpoolForm->date=request('start_date');
+        $carpoolForm->vmax_seats=request('max_seats');
+        $carpoolForm->bike_capacity=request('bike_capacity');
+        $carpoolForm->time=request('time');
+        $carpoolForm->pets_allowed=request('pets_allowed');
+        $carpoolForm->luggage=request('luggage');
+        $carpoolForm->smokers_allowed=request('smokers_allowed');
+        $carpoolForm->price=request('price');
 
-        error_log(request('end_location'));
-        error_log( $formFields = $request->validate([
-            'username' => 'required',
-            'location' => 'required',
-            'adventure' => ['required', Rule::unique('carpool', 'adventure')],
-            'seats' => 'required',
-            'date' => ['required', 'date'],
-            'time' => ['required', 'time'],
-            'luggage' => 'required',
-            'dog' => '',
-            'smokers' =>'',
-            'price' => 'required'
-        ])
-    );
-    Route::create($formFields);
+       $carpoolForm->save();
         return redirect('/')->with('message', 'Carpool created successfully');
     }
 
