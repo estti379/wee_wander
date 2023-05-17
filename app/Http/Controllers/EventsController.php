@@ -61,10 +61,11 @@ class EventsController extends Controller
 
     //method to edit event - for now just the title.
     public function edit($id){
-
+        $trails = Trail::all();
         $event = Event::find($id); //Eloquent to connect to DB and find specific event by the id
 
-        return view('events.events-edit')->with('event', $event);
+        return view('events.events-edit')->with(['event' => $event,
+                                                'trails' => $trails]);
     }
 
     //Update event information on DB - For now just id and id_organizer.
@@ -75,6 +76,19 @@ class EventsController extends Controller
             ->update([
                 'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
                 'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
+        ]);
+
+
+        $adventure = Adventure::where('id', $id)
+            ->update([
+                'trail_id' => $request->input('trail'),
+                'start_date' => $request->input('starting_date'),
+                'due_date' => $request->input('due_date')
+        ]);
+        
+        $adventure = Trail::where('id', $id)
+            ->update([
+                'name' => $request->input('$trail->name'),
         ]);
 
         return redirect('/events');

@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title')</title>
   <link rel="stylesheet" href="/css/event_card_style.css">
+  <script type="text/javascript" src="/js/script.js"></script>
 </head>
 <body>
   {{-- Possible navbar --}}
@@ -25,7 +26,8 @@
   <main>
     @yield('content')
   </main>
-
+    
+    
   <footer>
     WeeWander Footer &copy;
   </footer>

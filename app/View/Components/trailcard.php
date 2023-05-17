@@ -25,12 +25,14 @@ class trailcard extends Component
         return view('components.trailcard');
     }
 
-    public function trailDetails(){
+    public function trailDetails($id){
+        /*
         return [
             'title' => 'Trail title - needs to fetch with the DB',
             'location' => 'Trail location - needs to fetch with the DB',
             'distance' => 'Distance - needs to fetch with the DB',
             'image' => 'Image - needs to fetch the DB'
         ];
+        */
     }
 }
