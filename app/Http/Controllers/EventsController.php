@@ -108,8 +108,8 @@ class EventsController extends Controller
 
     //This method gets the trail _ THE IS BUGGED - FIND A WAY TO FIX THIS
     public function getTrail($id){
-
-        return view('trails.trail-details');
+        $title = 'Trail Details';
+        return view('trails.trail-details', ['title' => $title]);
     }
 
 }

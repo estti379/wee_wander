@@ -19,102 +19,61 @@
       <span>Due date : </span><input type="date" name="due_date"><br>
       <input type="submit" name="" value="Create Event">
     </form>
+    <button id="another-trail-button">Add another trail</button>
   </div>
 
-  <button id="another-trail-button">Add another trail</button>
+  
   {{-- JAVASCRIPT TO CREATE A NEW TRAIL IN create-event --}}
   @section('createform')
   <script>
-    // DEFINES THE JS TO RUN ON CLICK OF THE BUTTON
-    //ITS SEPARATED BY FUNCTIONS INSIDE
-    document.querySelector("#another-trail-button").addEventListener("click", function () {
-      let body = document.querySelector('body');
+    document.getElementById('another-trail-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Clone the 'trail' select input
+      var trailInput = document.querySelector('select[name="trail"]');
+      var clonedTrailInput = trailInput.cloneNode(true);
+      
+      // Create a span for the trail select
+      var trailSpan = document.createElement('span');
+      trailSpan.textContent = 'Select your trail : ';
+  
+      // Clone the 'starting_date' input
+      var startingDateInput = document.querySelector('input[name="starting_date"]');
+      var clonedStartingDateInput = startingDateInput.cloneNode(true);
 
-      // Create a new div with the required class
-      let formContainer = document.createElement('div');
-      formContainer.className = "create_event_container";
+      // Create a span for the starting_date input
+      var startingDateSpan = document.createElement('span');
+      startingDateSpan.textContent = 'Starting date : ';
+  
+      // Clone the 'due_date' input
+      var dueDateInput = document.querySelector('input[name="due_date"]');
+      var clonedDueDateInput = dueDateInput.cloneNode(true);
 
-      // Append the new div to the body (or wherever you want it)
-      body.appendChild(formContainer);
+      // Create a span for the due_date input
+      var dueDateSpan = document.createElement('span');
+      dueDateSpan.textContent = 'Due date : ';
+  
+      // Get the form element
+      var form = document.querySelector('form[action="/events"]');
+      var submitButton = form.querySelector('input[type="submit"]');
+  
+      // Create a new trail title
+      var newTrailTitle = document.createElement('h3');
+      newTrailTitle.textContent = 'Choose another trail';
 
-      let newForm = createEventForm();
-
-      formContainer.appendChild(newForm);
-});
-
-// CREATES A NEW FORM 
-function createEventForm() {
-  let newForm = document.createElement("form");
-  newForm.action = "/events";
-  newForm.method = "POST";
-
-
-  newForm.appendChild(createInputElement("text", "eventTitle", "Title of the event : "));
-  newForm.appendChild(createTrailSelect());
-  newForm.appendChild(createInputElement("date", "starting_date", "Starting date : "));
-  newForm.appendChild(createInputElement("date", "due_date", "Due date : "));
-  newForm.appendChild(document.createElement("br"));
-
-  return newForm;
-}
-
-//CREATE THE INPUTS AND GARANTIES THAT THE TITLE WILL BE THE SAME FOR THE NEW CREATIONS
-function createInputElement(type, name, label) {
-  let inputContainer = document.createElement("div");
-
-  let labelElement = document.createElement("span");
-  labelElement.textContent = label;
-  inputContainer.appendChild(labelElement);
-
-  let inputElement = document.createElement("input");
-  inputElement.type = type;
-  inputElement.name = name;
-
-  // if the element type is text and the name is eventTitle
-  if(type === 'text' && name === 'eventTitle') {
-    let originalTitleElement = document.querySelector('[name="eventTitle"]');
-    if(originalTitleElement) {
-      inputElement.value = originalTitleElement.value;
-      inputElement.readOnly = true;
-    }
-  }
-
-  inputContainer.appendChild(inputElement);
-
-  inputContainer.appendChild(document.createElement("br"));
-
-  return inputContainer;
-}
-
-//CREATE THE ELEMENTS OF THE TRAILS
-function createTrailSelect() {
-    let selectContainer = document.createElement("div");
-
-    let labelElement = document.createElement("span");
-    labelElement.textContent = "Select your trail : ";
-    selectContainer.appendChild(labelElement);
-
-    let selectElement = document.createElement("select");
-    selectElement.name = "trail";
-
-    let trailOption = document.createElement("option");
-    trailOption.value = "Select a trail";
-    trailOption.textContent = "Select a trail";
-    selectElement.appendChild(trailOption);
-
-    @foreach ($trails as $trail)
-      let option{{ $trail->id }} = document.createElement("option");
-      option{{ $trail->id }}.value = "{{ $trail->id }}";
-      option{{ $trail->id }}.textContent = "{{ $trail->name }}";
-      selectElement.appendChild(option{{ $trail->id }});
-    @endforeach
-
-    selectContainer.appendChild(selectElement);
-    selectContainer.appendChild(document.createElement("br"));
-
-    return selectContainer;
-}
-
+      // Insert new trail title, spans, and cloned elements before the submit button
+      form.insertBefore(document.createElement('br'), submitButton);
+      form.insertBefore(newTrailTitle, submitButton);
+      form.insertBefore(trailSpan, submitButton);
+      form.insertBefore(clonedTrailInput, submitButton);
+      form.insertBefore(document.createElement('br'), submitButton);
+      form.insertBefore(startingDateSpan, submitButton);
+      form.insertBefore(clonedStartingDateInput, submitButton);
+      form.insertBefore(document.createElement('br'), submitButton);
+      form.insertBefore(dueDateSpan, submitButton);
+      form.insertBefore(clonedDueDateInput, submitButton);
+      form.insertBefore(document.createElement('br'), submitButton);
+    });
   </script>
 @endsection
 @endsection
