@@ -8,7 +8,7 @@
         @if ($shareRoadDetails === null || count($shareRoadDetails) === 0)
             <li>empty</li>
         @else
-            @foreach ($shareRoadDetails as $element)
+            @foreach ($shareRoadDetails->sortByDesc('created_at') as $element)
                 <li><x-shareroad_card :element="$element"/></li>
             @endforeach
         @endif

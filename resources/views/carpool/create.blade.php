@@ -4,7 +4,7 @@
                 <div class="createCarpool">
                 <h2>Create Carpool</h2>
                 
-                <form method="POST" action="/carpool">  
+                <form method="POST" action="/carpool" enctype="multipart/form-data">  
                     @csrf 
                     <label>City Departure</label>
                     <select name="start_location_long">
@@ -25,15 +25,10 @@
                         </select> <br>
                     {{-- To Add id_start_adventure  Variable--}}
 
-                    @error('end_location')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
             
                     <label>Date</label>
                     <input type="date" name="start_date" placeholder="Date"><br>
-                    @error('date')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
+
             
                     <label>Free seats</label>
                     <select name="max_seats">
@@ -53,21 +48,18 @@
             
                     <label>Time</label>
                     <input type="Time" name="time" placeholder="Time"><br>
-                    @error('time')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
             
                     <label>Dog allowed</label>
-                    <input type="radio" name="pets_allowed" value="1">
-                    <input type="radio" name="pets_allowed" value="0"><br>
+                    <input type="radio" name="pets_allowed" value="yes">
+                    <input type="radio" name="pets_allowed" value="no"><br>
             
                     <label>Luggage allowed</label>
-                    <input type="radio" name="luggage" value="1">
-                    <input type="radio" name="luggage" value="0"><br>
+                    <input type="radio" name="luggage" value="yes">
+                    <input type="radio" name="luggage" value="no"><br>
             
                     <label>Smokers allowed</label>
-                    <input type="radio" name="smokers_allowed" value="1">
-                    <input type="radio" name="smokers_allowed" value="0"><br>
+                    <input type="radio" name="smokers_allowed" value="yes">
+                    <input type="radio" name="smokers_allowed" value="no"><br>
 
                     <label>Asked price</label>
                     <input type="text" name="price" placeholder="0€"><br>
