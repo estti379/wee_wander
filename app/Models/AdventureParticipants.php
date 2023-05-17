@@ -14,13 +14,5 @@ class AdventureParticipants extends Model
         'id_participant',
     ];
 
-    public function users(): BelongsTo
-    {
-        return $this->belongsTo(AdventureParticipants::class, 'id_participant');
-    }
 
-    public function events(): BelongsTo
-    {
-        return $this->belongsTo(AdventureParticipants::class, 'id_adventure');
-    }
 }
