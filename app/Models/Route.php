@@ -40,12 +40,12 @@ class Route extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function adventure_start(): BelongsTo
+    public function start_adventure(): BelongsTo
     {
         return $this->belongsTo(Adventure::class);
     }
 
-    public function adventure_end(): BelongsTo
+    public function end_adventure(): BelongsTo
     {
         return $this->belongsTo(Adventure::class);
     }
