@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function events(): HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Event::class, "organizer_id");
     }
 
     public function adventure_participants(): HasMany
