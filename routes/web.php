@@ -44,7 +44,7 @@ Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
 //=============================================================
 // Store CarPool 
-Route::post('/carpool/store', [CarpoolController::class, 'store']);
+Route::post('/carpool', [CarpoolController::class, 'store']);
 
 //=============================================================
 

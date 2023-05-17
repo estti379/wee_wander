@@ -32,8 +32,29 @@ class CarpoolController extends Controller
         return view('carpool.create');
     }
 
+
+    public function store($request){
+
+        error_log(request('end_location'));
+        error_log( $formFields = $request->validate([
+            'username' => 'required',
+            'location' => 'required',
+            'adventure' => ['required', Rule::unique('carpool', 'adventure')],
+            'seats' => 'required',
+            'date' => ['required', 'date'],
+            'time' => ['required', 'time'],
+            'luggage' => 'required',
+            'dog' => '',
+            'smokers' =>'',
+            'price' => 'required'
+        ])
+    );
+    Route::create($formFields);
+        return redirect('/')->with('message', 'Carpool created successfully');
+    }
+
     //Store Listing Data
-    public function store(Request $request)
+   /* public function store(Request $request)
     {
         //dd($request->all());
 
@@ -54,5 +75,5 @@ class CarpoolController extends Controller
 
         Route::create($formFields);
         return redirect('/')->with('message', 'Carpool created successfully');
-    }
+    }*/
 } // end of the class
