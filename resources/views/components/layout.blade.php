@@ -14,6 +14,8 @@
       <li><a href="/events/{id}">Events Details</a></li>
       <li><a href="/events/{id}/trail">Trail Details</a></li>
       <li><a href="/create-event">Create Event</a></li>
+      <li><a href="/carpool">Carpool List </a></li>
+      <li><a href="/carpool/create">Carpool Create </a></li>
     </ul>
   </nav>
   {{-- This is a alpha version. Just the skeleton --}}

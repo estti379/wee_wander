@@ -1,18 +1,23 @@
-@props(['user'])
 
-<div>
-    <h2>The carpool drives to <?php echo $user['adventure']; ?> at ('start_date');</h2>
-        <p>name: <?php echo $user['username'];?></p>
-        <p>City Departure: <?php echo $user['location']; ?></p>  
-        <p>Adventure: <?php echo $user['adventure']; ?></p>           
-        <p>Seats available: <?php echo $user['seats']; ?></p>
-        <p>Bike Rack available: <?php echo $user['bike_rack']; ?></p>
-        <p>Date: <?php echo $user['date']; ?></p>
-        <p>Time: <?php echo $user['time']; ?></p>
-        <p>Luggage allowed: <?php echo $user['luggage']; ?></p>
-        <p>Dog allowed: <?php echo $user['dog']; ?></p>
-        <p>Smokers allowed: <?php echo $user['smokers']; ?></p>
-        <p> Asked price : <?php echo $user['price']; ?></p>
+<link rel="stylesheet" href="/css/carpool_card_style.css">
+
+
+{{--================== SHARE ROAD CARD ==========================--}}
+
+@props(['element'])
+
+<div class="shareroad_card">
+    <h2>The carpool drives to <?php echo $element['end_location_long'],$element['end_location_latit']; ?> at <?php echo $element['id_start_adventure']; ?>;</h2>
+        <p>Username: <?php echo $element['id_carowner'];?></p>
+        <p>City Departure: <?php echo $element['start_location_long'],$element['start_location_latit']; ?></p>  
+        <p>Adventure: <?php echo $element['end_location_long'],$element['end_location_latit']; ?></p>           
+        <p>Seats available: <?php echo $element['max_seats']; ?></p>
+        <p>Bike Rack available: <?php echo $element['bike_capacity']; ?></p>
+        <p>Date & Time : <?php echo $element['start_date']; ?></p>
+        <p>Lugage allowed: <?php echo $element['lugage']; ?></p>
+        <p>Dog allowed: <?php echo $element['pets_allowed']; ?></p>
+        <p>Smokers allowed: <?php echo $element['smokers_allowed']; ?></p>
+        <p> Asked price : <?php echo $element['price']; ?></p>
     
     <button>Driver info</button>
 </div> 
