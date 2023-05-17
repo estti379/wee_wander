@@ -1,4 +1,4 @@
-@props(['adventures'])
+@props(['shareRoadDetails'])
 
 {{-- ====================  ShareRoad List ===================== --}}
 
@@ -9,7 +9,7 @@
             <li>empty</li>
         @else
             @foreach ($shareRoadDetails as $element)
-                <li><x-shareroad_card :element="$element" :adventures="$adventures" /></li>
+                <li><x-shareroad_card :element="$element"/></li>
             @endforeach
         @endif
     </ul>

@@ -4,10 +4,10 @@
 
 {{--================== SHARE ROAD CARD ==========================--}}
 
-@props(['element', 'adventures'])
+@props(['element'])
 
 <div class="shareroad_card">
-    <h2>The carpool drives to {{ $adventures }} at <?php echo $element['id_start_adventure']; ?>;</h2>
+    <h2>The carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_adventure->start_date }}</h2>
         <p>Username: <?php echo $element['id_carowner'];?></p>
         <p>City Departure: <?php echo $element['start_location_long'],$element['start_location_latit']; ?></p>  
         <p>Adventure: <?php echo $element['end_location_long'],$element['end_location_latit']; ?></p>           
