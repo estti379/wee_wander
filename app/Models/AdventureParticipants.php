@@ -10,8 +10,8 @@ class AdventureParticipants extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_adventure',
-        'id_participant',
+        'adventure_id',
+        'participant_id',
     ];
 
 
