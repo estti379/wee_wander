@@ -18,7 +18,7 @@ class EventFactory extends Factory
     {
         return [
             'title' => fake()->words(rand(1,6), true),
-            'id_organizer' => rand(1,10),
+            'organizer_id' => rand(1,10),
 
         ];
     }

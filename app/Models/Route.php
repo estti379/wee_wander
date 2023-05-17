@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Route extends Model
 {
@@ -26,11 +28,30 @@ class Route extends Model
         'bike_capacity',
         'pets_allowed',
         'smokers_allowed',
-        'luggage', // corrected spelling
-        'id_carowner',
-        'id_start_adventure',
-        'id_end_adventure',
+        'luggage',
+        'carowner_id',
+        'start_adventure_id',
+        'end_adventure_id',
     ];
+
+    public function carowner(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function adventure_start(): BelongsTo
+    {
+        return $this->belongsTo(Adventure::class);
+    }
+
+    public function adventure_end(): BelongsTo
+    {
+        return $this->belongsTo(Adventure::class);
+    }
+
+
+
+
     /*
     // method for carpool create 
     public function create(){

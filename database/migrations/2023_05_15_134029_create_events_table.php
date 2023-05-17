@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('id_organizer');
+            $table->unsignedBigInteger('organizer_id');
             $table->timestamps();
             
         });
 
         Schema::table('events', function(Blueprint $table) {
-            $table->foreign('id_organizer')->references('id')->on('users');
+            $table->foreign('organizer_id')->references('id')->on('users');
         });
     }
 
