@@ -9,18 +9,15 @@ use Illuminate\View\Component;
 class eventcard extends Component
 {
     // this is being retrieved from the attribute of the component
-    public $text;
-    public $eventTitle;
+    
     
 
     /**
      * Create a new component instance.
      */
-    public function __construct($text, $eventTitle)
+    public function __construct()
     {
         //
-        $this->text = $text;
-        $this->eventTitle = $eventTitle;
     }
 
     /**
@@ -31,10 +28,12 @@ class eventcard extends Component
         return view('components.eventcard');
     }
     
+    /*
+    This does not work
     public function eventsData(){
-        return [
-            'start_date' => 'Starting Data Information - 01/01/2025',
-            'end_date' => 'Ending Date Information- 01/01/2026',
-        ];
+        $events = Event::all();
+
+        return ['events' => $events];
     }
+    */
 }

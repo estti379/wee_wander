@@ -1,0 +1,11 @@
+.shareroad_card {
+    background-color: beige;
+    outline: 1px solid black;
+}
+.createCarpool{
+    background-color: beige;
+    outline: 1px solid black;
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+}

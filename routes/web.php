@@ -21,17 +21,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route for list all events
+//List all events
 Route::get('/events', [EventsController::class, 'eventsCard']);
 
-// route for specific event
+// Specific event
 Route::get('/events/{id}', [EventsController::class, 'eventDetails']);
 
-//Route for Create Event
+//Create Event
 Route::get('/create-event', [EventsController::class, 'create']);
 
-// route for specific trail information
+//Storing event
+Route::post('/events', [EventsController::class, 'store']);
+
+//Edit event
+Route::get('/events/{id}/edit', [EventsController::class, 'edit']);
+
+//Specific trail information
 Route::get('/events/{id}/trail', [EventsController::class, 'getTrail']);
+
+//Updating an event
+Route::put('/events/{id}', [EventsController::class, 'update']);
+
+//Deleting an event
+Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+
+
+
 
 //=============================================================
 // Route Show all carpool
@@ -43,16 +58,8 @@ Route::get('/carpool',[CarpoolController::class, 'index']);
 Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
 //=============================================================
-// Storer CarPool 
-//Route::post('/carpool/store', [CarpoolController::class, 'store']);
-
-//=============================================================
-// CarPool all List
-Route::get('/carpool.list', function () {
-    return view('carpool', [ 
-        'list'=>Carpool::all()
-    ]);
-});
+// Store CarPool 
+Route::post('/carpool', [CarpoolController::class, 'store']);
 
 //=============================================================
 

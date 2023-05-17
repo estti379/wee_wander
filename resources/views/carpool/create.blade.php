@@ -1,13 +1,16 @@
-
+<link rel="stylesheet" href="\css\carpool_card_style.css"/>
             {{-- Create Carpool From --}}
             <x-layout>
+                <div class="createCarpool">
                 <h2>Create Carpool</h2>
-                <form method="POST" action="#">  
+                
+                <form method="POST" action="/carpool">  
                     @csrf 
                     <label>City Departure</label>
-                    <select name="city">
+                    <select name="start_location_long">
                         <option value="city">-</option>  {{-- Foreach city loop inside of this row --}}
                     </select><br>
+                    
                     <label>Adventure</label>
                     <input type="text" name="end_location" placeholder="End Location"><br>
                     @error('end_location')
@@ -57,4 +60,5 @@
                     {{-- Submit carpool --}}
                     <button type="submit">Create Carpool</button>
                 </form>
+                </div>
             </x-layout>
