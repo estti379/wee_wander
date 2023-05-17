@@ -38,7 +38,10 @@ class CarpoolController extends Controller
         
         $carpoolForm->id_carowner=1;                     // TO DO ADD Value request('id_carowner');
         $carpoolForm->start_location_long=50;            // request('city');
+        $carpoolForm->start_location_latit=49;            // request('city');
+        $carpoolForm->distance=request('distance');
         $carpoolForm->end_location_long=request('end_location_long');
+        $carpoolForm->end_location_latit=51;
         $carpoolForm->start_date=request('start_date').' '.request('time');
 
         //$dateTimeString = request('start_date').' '.request('time');
@@ -51,7 +54,7 @@ class CarpoolController extends Controller
         $carpoolForm->smokers_allowed=request('smokers_allowed');
         $carpoolForm->price=request('price');
         // error_log($carpoolForm);
-       //$carpoolForm->save();
+       $carpoolForm->save();
         return redirect('/')->with('message', 'Carpool created successfully');
     }
 

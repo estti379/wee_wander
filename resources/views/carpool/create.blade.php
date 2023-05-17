@@ -10,9 +10,13 @@
                     <select name="start_location_long">
                         <option value="city">-</option>  {{-- Foreach city loop inside of this row --}}
                     </select><br>
-
+                    <label>Distance</label>
+                    <input type="text" name="distance" placeholder="km"><br>
+                    
                     <label>Adventure</label>
                     <input type="text" name="end_location_long" placeholder="End Location"><br>
+                    {{-- To Add id_start_adventure  Variable--}}
+
                     @error('end_location')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -46,20 +50,16 @@
                     @enderror
             
                     <label>Dog allowed</label>
-                    <input type="radio" name="pets_allowed" value="yes">
-                    <input type="radio" name="pets_allowed" value="no"><br>
+                    <input type="radio" name="pets_allowed" value="1">
+                    <input type="radio" name="pets_allowed" value="0"><br>
             
                     <label>Luggage allowed</label>
-                    <select name="luggage">
-                        <option value="false">0</option> 
-                        <option value="1">1</option> 
-                        <option value="2">2</option> 
-                        <option value="3">3</option> 
-                    </select><br>
+                    <input type="radio" name="luggage" value="1">
+                    <input type="radio" name="luggage" value="0"><br>
             
                     <label>Smokers allowed</label>
-                    <input type="radio" name="smokers_allowed" value="yes">
-                    <input type="radio" name="smokers_allowed" value="no"><br>
+                    <input type="radio" name="smokers_allowed" value="1">
+                    <input type="radio" name="smokers_allowed" value="0"><br>
 
                     <label>Asked price</label>
                     <input type="text" name="price" placeholder="0€"><br>
