@@ -17,6 +17,7 @@ class CarpoolController extends Controller
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails]);
     }
     
+    
 
      //Show single carpool
      public function show(Route $shareroad_card)
@@ -30,9 +31,12 @@ class CarpoolController extends Controller
         $adventures = Adventure::all();
         return view('carpool.create', ['adventures'=> $adventures]);
     }
-    public function edit(Route $editShareRoad)
+    // Edit Form
+    public function edit($id)
     {
-        return view('carpool.edit', ['editCarpool' => $editShareRoad]);
+    $shareRoadDetails = Route::find($id);
+    // Pass the share road details to the view
+    return view('carpool.edit', ['element' => $shareRoadDetails]);
     }
 
 

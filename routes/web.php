@@ -57,7 +57,7 @@ Route::get('/carpool',[CarpoolController::class, 'index']);
 Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
 //Edit Carpool
-Route::get('/carpool/edit', [CarpoolController::class, 'edit']);
+Route::get('/carpool/{id}/edit', [CarpoolController::class, 'edit']);
 
 //Updating an event
 Route::put('/carpool/{id}', [CarpoolController::class, 'update']);

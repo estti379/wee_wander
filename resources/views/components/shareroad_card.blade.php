@@ -14,13 +14,13 @@
         <p>Adventure Location: <?php echo $element['end_location_long'],$element['end_location_latit']; ?></p>           
         <p>Seats available: <?php echo $element['max_seats']; ?></p>
         <p>Bike Rack available: <?php echo $element['bike_capacity']; ?></p>
-        <p>Date & Time : <?php echo $element['start_date']; ?></p>
+        <p>Date & Time Departure: <?php echo $element['start_date']; ?></p>
         <p>Luggage allowed: <?php echo $element['lugage'] ? 'Yes' : 'No'; ?></p>
         <p>Dog allowed: <?php echo $element['pets_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Smokers allowed: <?php echo $element['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
-        <p> Asked price : <?php echo $element['price']; ?></p>
+        <p>Asked price : <?php echo $element['price']; ?></p>
     
-    <button>Driver info</button> <button> Edit</button>
+        <button><a href="#">Driver info</a></button> <button><a href="carpool/edit">Edit</a><button><a href="carpool/update">Join Carpool</a></button>
 
 
 </div> 

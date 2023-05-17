@@ -1,74 +1,91 @@
-@extends('layouts.app')
-@section('title', 'Create Carpool ')
+<link rel="stylesheet" href="/css/carpool_card_style.css">
 
+{{--================== SHARE ROAD CARD ==========================--}}
 
-@section('content')
-<h1>Update Carpool Info</h1>
-  {{-- Form edit--}}
-  <form method="POST" action="/carpool">  
-    @csrf 
-    <label>City Departure</label>
-    <select name="start_location_long" value="{{$editShareRoad->city}}">
-        <option value="city">-
-            {{-- Foreach city loop inside of this row --}}
-        </option>  
-    </select><br>
-    <label>Distance</label>
-    <input type="text" name="distance" placeholder="km" value="{{$editShareRoad->distance}}"><br>
+@props(['element'])
+
+<div class="shareroad_card">
+    <h2>The carpool drives to {{ $element->start_adventure->trail->name }} on {{ $element->start_adventure->start_date }}</h2>
     
-    <label>Adventure</label>
-    <select value="{{$editShareRoad->adventure}}">
-        @foreach($adventures as $adventure)
-            <option value="{{ $adventure->trail_id }}">
-                Trail: {{ $adventure->trail->name }} | Start Date: {{ $adventure->start_date }}
-            </option>
-        @endforeach
-        </select> <br>
+    <form method="POST" action="/carpool/{{ $element->id }}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        
+        <div>
+            <label for="carowner_id">Username:</label>
+            <input type="text" name="carowner_id" value="{{ $element->carowner_id }}">
+        </div>
+        
+        <div>
+            <label for="start_location_long">City Departure:</label>
+            <input type="text" name="start_location_long" value="{{ $element->start_location_long }}">
+        </div>
+        
+        <div>
+            <label for="start_location_latit">City Departure Latitude:</label>
+            <input type="text" name="start_location_latit" value="{{ $element->start_location_latit }}">
+        </div>
+        
+        <div>
+            <label for="end_location_long">Adventure Location:</label>
+            <input type="text" name="end_location_long" value="{{ $element->end_location_long }}">
+        </div>
+        
+        <div>
+            <label for="end_location_latit">Adventure Location Latitude:</label>
+            <input type="text" name="end_location_latit" value="{{ $element->end_location_latit }}">
+        </div>
+        
+        <div>
+            <label for="max_seats">Seats available:</label>
+            <input type="number" name="max_seats" value="{{ $element->max_seats }}">
+        </div>
+        
+        <div>
+            <label for="bike_capacity">Bike Rack available:</label>
+            <input type="number" name="bike_capacity" value="{{ $element->bike_capacity }}">
+        </div>
+        
+        <div>
+            <label for="start_date">Date & Time:</label>
+            <input type="datetime-local" name="start_date" value="{{ date('Y-m-d\TH:i', strtotime($element->start_date)) }}">
+        </div>
+        
+        <div>
+            <label for="lugage">Luggage allowed:</label>
+            <select name="lugage">
+                <option value="1" {{ $element->lugage ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->lugage ? '' : 'selected' }}>No</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="pets_allowed">Dog allowed:</label>
+            <select name="pets_allowed">
+                <option value="1" {{ $element->pets_allowed ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->pets_allowed ? '' : 'selected' }}>No</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="smokers_allowed">Smokers allowed:</label>
+            <select name="smokers_allowed">
+                <option value="1" {{ $element->smokers_allowed ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->smokers_allowed ? '' : 'selected' }}>No</option>
+            </select>
+        </div>
+        
+        <div>
+            {{-- Needed to create another form for the delete button because of the request --}}
+            <form action="/carpool/{{ $element->id }}" method="POST">
+                @csrf
+                @method('delete') 
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        
+        <button type="submit">Update</button>
+    </form>
+</div>
 
-    <label>Date</label>
-    <input type="date" name="start_date" placeholder="Date" value="{{$editShareRoad->start_date}}"><br>
-
-    <label>Free seats</label>
-    <select name="max_seats" value="{{$editShareRoad->max_seats}}">
-        <option value="1">1</option> 
-        <option value="2">2</option> 
-        <option value="3">3</option> 
-        <option value="4">4</option>  
-    </select><br>
-
-    <label>Bike Rack available</label>
-    <select name="bike_capacity" value="{{$editShareRoad->bike_capacity}}">
-        <option value="false">0</option> 
-        <option value="1">1</option> 
-        <option value="2">2</option> 
-        <option value="3">3</option> 
-    </select><br>
-
-    <label>Time</label>
-    <input type="Time" name="time" placeholder="Time" value="{{$editShareRoad->time}}"><br>
-
-    <label>Dog allowed</label>
-    <input type="radio" name="pets_allowed" value="yes">
-    <input type="radio" name="pets_allowed" value="no"><br>
-
-    <label>Luggage allowed</label>
-    <input type="radio" name="luggage" value="yes">
-    <input type="radio" name="luggage" value="no"><br>
-
-    <label>Smokers allowed</label>
-    <input type="radio" name="smokers_allowed" value="yes">
-    <input type="radio" name="smokers_allowed" value="no"><br>
-
-    <label>Asked price</label>
-    <input type="text" name="price" placeholder="0€" value="{{$editShareRoad->price}}"><br>
-    {{-- Submit carpool --}}
-    <button type="submit">Edit Carpool</button>
-</form>
-
-  {{-- needed to create another form to delete button because of the request --}}
-  <form action="/carpool/{{ $carpool->id }}" method="POST">
-    @csrf
-    @method('delete') 
-    <button type="submit">Delete</button>
-  </form>
 @endsection
