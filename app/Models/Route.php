@@ -29,24 +29,24 @@ class Route extends Model
         'pets_allowed',
         'smokers_allowed',
         'luggage',
-        'id_carowner',
-        'id_start_adventure',
-        'id_end_adventure',
+        'carowner_id',
+        'start_adventure_id',
+        'end_adventure_id',
     ];
 
-    public function users(): BelongsTo
+    public function carowner(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_carowner');
+        return $this->belongsTo(User::class);
     }
 
-    public function adventures_start(): BelongsTo
+    public function adventure_start(): BelongsTo
     {
-        return $this->belongsTo(Adventure::class, 'id_start_adventure');
+        return $this->belongsTo(Adventure::class);
     }
 
-    public function adventures_end(): BelongsTo
+    public function adventure_end(): BelongsTo
     {
-        return $this->belongsTo(Adventure::class, 'id_end_adventure');
+        return $this->belongsTo(Adventure::class);
     }
 
 

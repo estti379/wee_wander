@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function routes(): HasMany
     {
-        return $this->hasMany(Route::class);
+        return $this->hasMany(Route::class, "carowner_id");
     }
 
     

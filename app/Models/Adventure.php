@@ -34,14 +34,14 @@ class Adventure extends Model
         return $this->belongsTo(Trail::class);
     }
 
-    public function routes_start(): HasMany
+    public function routesStart(): HasMany
     {
-        return $this->hasMany(Route::class);
+        return $this->hasMany(Route::class, "start_adventure_id");
     }
 
-    public function routes_end(): HasMany
+    public function routesEnd(): HasMany
     {
-        return $this->hasMany(Route::class);
+        return $this->hasMany(Route::class, "end_adventure_id");
     }
 
 
