@@ -53,8 +53,11 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 //User login page
 Route::get('/login', [UserController::class, 'login']);
 
- //User authentication
- Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+//User authentication logic
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+//User authentication logic
+Route::get('/users/{id}', [UserController::class, 'show']);
 
 /*
  * END: User Management
