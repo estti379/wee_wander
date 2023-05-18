@@ -4,14 +4,15 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Adventure;
-use App\Models\AdventureParticipants;
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Route;
-use App\Models\RouteParticipants;
 use App\Models\Trail;
-use App\Models\User;
+use App\Models\Adventure;
 use Illuminate\Database\Seeder;
+use App\Models\RouteParticipants;
+use Illuminate\Support\Facades\DB;
+use App\Models\AdventureParticipants;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,6 +33,18 @@ class DatabaseSeeder extends Seeder
             AdventureParticipants::factory(1)->create();
         }
         
+        //create specific user test user
+        DB::table('users')->insert([
+            'username' => 'test',
+            'password' => password_hash("password", PASSWORD_DEFAULT),
+            'email' => fake()->unique()->safeEmail(),
+            'firstname' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
+            'picture' => fake()->imageUrl($width=200, $height=200),
+            'description' => fake()->text(100),
+            'car_owned' => "hidden",
+            'driver_license' => "hidden",
+        ]);
     }
 
 
