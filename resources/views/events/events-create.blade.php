@@ -1,5 +1,4 @@
 <x-layout :pageTitle=$pageTitle>
-{{-- EXTENDS SECTION FROM resources\views\layouts\app.blade.php - NEEDS TO BE CHANGED TO A COMPONENT --}}
     <div class="create_event_container">
       {{-- Form to create a new user --}}
       <form action="/events" method="POST">
