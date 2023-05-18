@@ -45,8 +45,11 @@ Route::put('/events/{id}', [EventsController::class, 'update']);
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 
-
-
+//=============================================================
+//Testing implementation of map
+Route::get('/testing', function(){
+    return view('testing.testing');
+});
 
 //=============================================================
 // Route Show all carpool
