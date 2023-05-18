@@ -4,7 +4,7 @@ use App\Models\Route as Carpool;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CarpoolController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,16 @@ Route::put('/events/{id}', [EventsController::class, 'update']);
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 
 
+/*
+ * START: User Management
+ */
 
+//User login page
+Route::get('/login', [UserController::class, 'login']);
+
+/*
+ * END: User Management
+ */
 
 //=============================================================
 // Route Show all carpool
