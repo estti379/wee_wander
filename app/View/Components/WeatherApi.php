@@ -36,7 +36,7 @@ class WeatherApi extends Component
     
     public function getWeather(){
         
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=" . $this->lat . "&longitude=" . $this->long . "&hourly=temperature_2m,rain";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=" . $this->lat . "&longitude=" . $this->long . "&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Europe%2FLondon";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -51,3 +51,7 @@ class WeatherApi extends Component
         return $weatherData; 
     }
 }
+    
+
+
+

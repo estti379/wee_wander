@@ -118,7 +118,8 @@ class EventsController extends Controller
     public function getTrail($id){
 
         $pageTitle = 'Trail Details';
-        $event = Event::find($id); //specific event with eloquent 
+        $event = Event::find($id); 
+        //specific event with eloquent 
         //this gets the information of Event(model)->adventures. 
         //dont forgoert that for access the information of trails after
         //it will be necessary a loop
@@ -128,5 +129,4 @@ class EventsController extends Controller
                                              'event' => $event,
                                             'adventures' => $adventures]);
     }
-
 }
