@@ -1,8 +1,5 @@
-@extends('layouts.app')
-@section('title', 'Create Events Page')
 
-
-@section('content')
+<x-layout :pageTitle=$pageTitle>
 <h1>Update Event Info</h1>
   {{-- Form to create a new user --}}
   <form action="/events/{{ $event->id }}" method="POST">
@@ -27,4 +24,4 @@
     @method('delete') 
     <button type="submit">Delete</button>
   </form>
-@endsection
+</x-layout>

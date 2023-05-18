@@ -11,17 +11,20 @@ class EventsController extends Controller
 {
     //This method select all events from the DB
     public function eventsCard(){
+        $pageTitle = 'Events Lista Page';
         //SELECT * FROM events
         $event = Event::all();
 
         return view('events.events-list', [
             'events' => $event,
+            'pageTitle' => $pageTitle
         ]);
     }
 
 
     // Display event details - This should fetch with information from the DB
     public function eventDetails($id){
+        $pageTitle = 'Event Details';
         $event = Event::find($id);
         $adventure = $event->adventures;
         /*
@@ -29,15 +32,18 @@ class EventsController extends Controller
                                                    'adventure' => $adventure]); //The with takes the $event as an object
         */
         return view('events.event-details',['adventure' => $adventure,
-                                            'event' => $event]);
+                                            'event' => $event,
+                                            'pageTitle' => $pageTitle]);
         }
 
 
     // This method redirect to create view
     public function create(){
+        $pageTitle = 'Create a new event';
         $trails = Trail::all();
         
-        return view('events.events-create', ['trails' => $trails]);
+        return view('events.events-create', ['trails' => $trails,
+                                             'pageTitle' => $pageTitle]);
     }
 
     //this method stores the information on view on the DB
@@ -61,11 +67,13 @@ class EventsController extends Controller
 
     //method to edit event - for now just the title.
     public function edit($id){
+        $pageTitle = 'Edit page';
         $trails = Trail::all();
         $event = Event::find($id); //Eloquent to connect to DB and find specific event by the id
 
         return view('events.events-edit')->with(['event' => $event,
-                                                'trails' => $trails]);
+                                                'trails' => $trails,
+                                                'pageTitle'=>$pageTitle]);
     }
 
     //Update event information on DB - For now just id and id_organizer.
@@ -108,8 +116,17 @@ class EventsController extends Controller
 
     //This method gets the trail _ THE IS BUGGED - FIND A WAY TO FIX THIS
     public function getTrail($id){
-        $title = 'Trail Details';
-        return view('trails.trail-details', ['title' => $title]);
+
+        $pageTitle = 'Trail Details';
+        $event = Event::find($id); //specific event with eloquent 
+        //this gets the information of Event(model)->adventures. 
+        //dont forgoert that for access the information of trails after
+        //it will be necessary a loop
+        $adventures = $event->adventures; 
+
+        return view('trails.trail-details', ['pageTitle' => $pageTitle,
+                                             'event' => $event,
+                                            'adventures' => $adventures]);
     }
 
 }

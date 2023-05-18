@@ -1,8 +1,5 @@
-@extends('layouts.app')
-@section('title', 'Create Events Page')
-
+<x-layout :pageTitle=$pageTitle>
 {{-- EXTENDS SECTION FROM resources\views\layouts\app.blade.php - NEEDS TO BE CHANGED TO A COMPONENT --}}
-@section('content')
   <div class="create_event_container">
     {{-- Form to create a new user --}}
     <form action="/events" method="POST">
@@ -24,7 +21,6 @@
 
   
   {{-- JAVASCRIPT TO CREATE A NEW TRAIL IN create-event --}}
-  @section('createform')
   <script>
     document.getElementById('another-trail-button').addEventListener('click', function(e) {
       e.preventDefault();
@@ -75,6 +71,4 @@
       form.insertBefore(document.createElement('br'), submitButton);
     });
   </script>
-@endsection
-@endsection
-
+</x-layout>
