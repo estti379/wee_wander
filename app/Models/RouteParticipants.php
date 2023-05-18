@@ -10,7 +10,7 @@ class RouteParticipants extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_route',
-        'id_participant',
+        'route_id',
+        'participant_id',
     ];
 }

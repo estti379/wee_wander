@@ -33,9 +33,9 @@ class RouteFactory extends Factory
             'pets_allowed' => $this->faker->boolean(),
             'smokers_allowed' => $this->faker->boolean(),
             'luggage' => $this->faker->boolean(),
-            'id_carowner' => rand(1, 10),
-            'id_start_adventure' => rand(1, 10),
-            'id_end_adventure' => rand(1, 10),
+            'carowner_id' => rand(1, 10),
+            'start_adventure_id' => rand(1, 10),
+            'end_adventure_id' => rand(1, 10),
 
         ];
     }

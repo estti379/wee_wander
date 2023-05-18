@@ -24,17 +24,17 @@ return new class extends Migration
             $table->integer('bike_capacity');
             $table->boolean('pets_allowed');
             $table->boolean('smokers_allowed');
-            $table->boolean('lugagge');
-            $table->unsignedBigInteger('id_carowner');
-            $table->unsignedBigInteger('id_start_adventure');
-            $table->unsignedBigInteger('id_end_adventure');
+            $table->boolean('luggage');
+            $table->unsignedBigInteger('carowner_id');
+            $table->unsignedBigInteger('start_adventure_id');
+            $table->unsignedBigInteger('end_adventure_id');
             $table->timestamps();
         });
 
         Schema::table('routes', function(Blueprint $table) {
-            $table->foreign('id_carowner')->references('id')->on('users');
-            $table->foreign('id_start_adventure')->references('id')->on('adventures');
-            $table->foreign('id_end_adventure')->references('id')->on('adventures');
+            $table->foreign('carowner_id')->references('id')->on('users');
+            $table->foreign('start_adventure_id')->references('id')->on('adventures');
+            $table->foreign('end_adventure_id')->references('id')->on('adventures');
         });
 
     }

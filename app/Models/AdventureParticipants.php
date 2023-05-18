@@ -10,17 +10,9 @@ class AdventureParticipants extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_adventure',
-        'id_participant',
+        'adventure_id',
+        'participant_id',
     ];
 
-    public function users(): BelongsTo
-    {
-        return $this->belongsTo(AdventureParticipants::class, 'id_participant');
-    }
 
-    public function events(): BelongsTo
-    {
-        return $this->belongsTo(AdventureParticipants::class, 'id_adventure');
-    }
 }
