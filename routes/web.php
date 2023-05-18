@@ -53,10 +53,13 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 //User login page
 Route::get('/login', [UserController::class, 'login']);
 
+//Log User Out
+Route::match(["get","post"],'/logout', [UserController::class, 'logout']);
+
 //User authentication logic
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-//User authentication logic
+//User details page
 Route::get('/users/{id}', [UserController::class, 'show']);
 
 /*

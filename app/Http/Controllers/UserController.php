@@ -10,6 +10,10 @@ class UserController extends Controller
 {
     // Show Login Form
     public function login() {
+        if( Auth::check() ){
+            //An user is already logged in
+            return redirect('/')->with('message', 'You are already logged in!');
+        }
         return view('users.login');
     }
 
@@ -27,6 +31,17 @@ class UserController extends Controller
         }
 
         return back()->withErrors(['userName' => 'Invalid Credentials'])->onlyInput('userName');
+    }
+
+    // Logout User
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logged out!');
+
     }
 
     // Show user detail page
