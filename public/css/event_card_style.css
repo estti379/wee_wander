@@ -18,3 +18,15 @@
     outline: 3px solid black;
     padding: 10px;
 }
+
+.event-details-card {
+    background-color: rgb(164, 248, 220);
+    outline: 3px solid black;
+    padding: 10px;
+}
+
+.trail-details-card {
+    background-color: rgb(112, 123, 189);
+    outline: 3px solid black;
+    padding: 10px;
+}
