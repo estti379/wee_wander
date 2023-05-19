@@ -13,8 +13,8 @@
         <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     
         <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p>           
         <p>Seats available: <strong>{{ $element->max_seats}}</strong></p>
-        <p>Bike Rack available: {{ $element->bike_capacity }}</p>
-        <p>Date & Time Departure:  {{ $element->start_date }}</p>
+        <p>Bike Rack available: <?php echo $element['bike_capacity'] ? 'Yes' : 'No'; ?></p>  {{--{{ $element->bike_capacity }}--}}
+        <p>Date & Time Departure: {{ $element->start_date }}</p>
         <p>Luggage allowed: <?php echo $element['lugage'] ? 'Yes' : 'No'; ?></p>
         <p>Dog allowed: <?php echo $element['pets_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Smokers allowed: <?php echo $element['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
@@ -22,14 +22,17 @@
         <button><a href="#">Driver info</a></button> 
         <div>
 
-            <!--========================= Checks if it's the creator ===============================-->
+@php
+    //TO DO :move logic to controller
+@endphp                 
+<!--========================= Checks if it's the creator ===============================-->
             @if (Auth::check() && Auth::user()->id == $element->carowner->id)
-            <button><a href="carpool/edit/{{$element->id}}">Edit</a>    
+                <button><a href="carpool/edit/{{$element->id}}">Edit</a>    
             @endif
-            
+                
             <div>
                 <!--========================= Check if the user is logged in and not the car owner =========================-->
-                @if (Auth::check() && Auth::user()->id != $element->carowner->id && participants())
+                @if (Auth::check() && Auth::user()->id != $element->carowner->id )
                     <!-- ========================= Button to join the carpool =========================-->
                     <form action="/carpool/join/{{ $element->id }}" method="POST">
                         @csrf
