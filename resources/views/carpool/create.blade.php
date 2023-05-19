@@ -41,9 +41,11 @@
                     <label>Bike Rack available</label>
                     <input type="radio" name="bike_capacity" value="yes">
                     <input type="radio" name="bike_capacity" value="no"><br>
+
                     {{--  BONUS F.T 
                         <select name="bike_capacity">
                         <option value="false">0</option> 
+                        
                         <option value="1">1</option> 
                         <option value="2">2</option> 
                         <option value="3">3</option> 

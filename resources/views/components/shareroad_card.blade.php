@@ -19,7 +19,7 @@
         <p>Dog allowed: <?php echo $element['pets_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Smokers allowed: <?php echo $element['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Asked price :  {{ $element->price }}</p>
-        <button><a href="#">Driver info</a></button> 
+        <button><a href="#">Driver info</a></button><button><a href="/carpool/{{$element->id}}">carpool detais</a></button>
         <div>
 
 @php
