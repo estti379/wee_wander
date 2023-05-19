@@ -39,6 +39,10 @@ class EventsController extends Controller
 
     // This method redirect to create view
     public function create(){
+        if (!Auth::check()) {
+            return redirect('/login')->with('message', 'You have to be logged in to create an event!');
+        }
+
         $pageTitle = 'Create a new event';
         // Gets the information of all trails to the form
         $trails = Trail::all(); 
@@ -62,9 +66,9 @@ class EventsController extends Controller
 
 
         $event = Event::create([
-            
+
             'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
-            'organizer_id'=> Auth::id() //organizer_id will have the same id as the user that is logged in.
+            'organizer_id'=>Auth::id() //organizer_id will have the same id as the user that is logged in.
         ]);
 
         //get date + hour and put it together
