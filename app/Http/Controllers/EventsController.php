@@ -88,49 +88,57 @@ class EventsController extends Controller
         $pageTitle = 'Edit page';
         $trails = Trail::all();
         $event = Event::find($id); //Eloquent to connect to DB and find specific event by the id
+        
+        //This acces the value of specific trail, in this case, index 0
+     
 
         return view('events.events-edit')->with(['event' => $event,
                                                 'trails' => $trails,
-                                                'pageTitle'=>$pageTitle]);
+                                                'pageTitle'=>$pageTitle,
+                                                ]);
     }
 
     //Update event information on DB - For now just id and id_organizer.
     //Needs to learn how to connect databases to change foreign keys.
     public function update(Request $request, $id){
         //validation
-        $formFields = $request->validate([
+        // dd($request);
+        $validation = [
             'eventTitle' => 'required',
-            'trail' => 'required',
-            'start_time' => 'required',
-            'starting_date' => 'required',
-            'due_date' => 'required',
-            'end_time' => 'required',
+        ];
+        
+        foreach (Event::find($id)->adventures as $key => $adventure) {
+            $index = $adventure->id;
+            $validation['trail_E' . $index] = 'required';
+            $validation['starting_date_E' . $index] = 'required';
+            $validation['start_time_E' . $index] = 'required'; 
+            $validation['due_date_E' . $index] = 'required'; 
+            $validation['end_time_E' . $index] = 'required'; 
+        }
 
-        ]);
+        $formFields = $request->validate($validation);
 
-         //get date + hour and put it together
-         $startDate = $request->input('starting_date') . ' ' . $request->input('start_time');
-         $startDate = new DateTime($startDate);
- 
-         $dueDate = $request->input('due_date') . ' ' . $request->input('end_time');
-         $dueDate = new DateTime($dueDate);
-
-        $event = Event::where('id', $id)
+        $event = Event::find($id)
             ->update([
                 'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
                 'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
         ]);
 
-
-        $adventure = Adventure::where('id', $id)
-            ->update([
-                'trail_id' => $request->input('trail'),
+        foreach (Event::find($id)->adventures as $key => $adventure) {
+            $index = $adventure->id;
+            //get date + hour and put it together
+            $startDate = $request->input('starting_date_E' . $index) . ' ' . $request->input('start_time_E' . $index);
+            $startDate = new DateTime($startDate);
+ 
+            $dueDate = $request->input('due_date_E' . $index) . ' ' . $request->input('end_time_E' . $index);
+            
+            $dueDate = new DateTime($dueDate);
+            $adventure->update([
+                'trail_id' => $request->input('trail_E' . $index),
                 'start_date' => $startDate,
                 'due_date' => $dueDate
         ]);
-
-        
-
+    }
         return redirect('/events');
     }
 
