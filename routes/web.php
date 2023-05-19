@@ -45,10 +45,16 @@ Route::put('/events/{id}', [EventsController::class, 'update']);
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 
+//=============================================================
+//Testing implementation of map
+Route::get('/testing', function(){
+    return view('testing.testing');
+});
 
 /*
  * START: User Management
  */
+
 
 //User login page
 Route::get('/login', [UserController::class, 'login']);
@@ -66,26 +72,29 @@ Route::get('/users/{id}', [UserController::class, 'show']);
  * END: User Management
  */
 
+
 //=============================================================
+                    // ROUTES(CARPOOL) ROUTE
 // Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
-
-//=============================================================
 // Create new CarPool 
 Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
-//=============================================================
+//Edit Carpool
+Route::get('/carpool/{id}/edit', [CarpoolController::class, 'edit']);
+
+//Updating an event
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+
 // Store CarPool 
 Route::post('/carpool', [CarpoolController::class, 'store']);
 
-//=============================================================
-
-//=============================================================
 // Route Show single carpool
-//Route::get('/carpool',[CarpoolController::class, 'index']);
 Route::get('/carpool/{id}', function ($id) {
-    return view('carpool', [ 
+    return view('carpool.lists', [ 
         'carpool'=>Carpool::find($id)
     ]);
 });
+
+

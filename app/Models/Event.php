@@ -32,7 +32,7 @@ class Event extends Model
 
     public function adventures(): HasMany{
 
-        return $this->hasMany(Adventure::class);
+        return $this->hasMany(Adventure::class, 'event_id');
     }
 
     public function adventure_participants(): HasMany

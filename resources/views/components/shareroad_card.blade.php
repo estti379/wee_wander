@@ -7,17 +7,20 @@
 @props(['element'])
 
 <div class="shareroad_card">
-    <h2>The carpool drives to <?php echo $element['end_location_long'],$element['end_location_latit']; ?> at <?php echo $element['id_start_adventure']; ?>;</h2>
-        <p>Username: <?php echo $element['id_carowner'];?></p>
-        <p>City Departure: <?php echo $element['start_location_long'],$element['start_location_latit']; ?></p>  
-        <p>Adventure: <?php echo $element['end_location_long'],$element['end_location_latit']; ?></p>           
-        <p>Seats available: <?php echo $element['max_seats']; ?></p>
-        <p>Bike Rack available: <?php echo $element['bike_capacity']; ?></p>
-        <p>Date & Time : <?php echo $element['start_date']; ?></p>
-        <p>Lugage allowed: <?php echo $element['lugage']; ?></p>
-        <p>Dog allowed: <?php echo $element['pets_allowed']; ?></p>
-        <p>Smokers allowed: <?php echo $element['smokers_allowed']; ?></p>
-        <p> Asked price : <?php echo $element['price']; ?></p>
+    <h2>The carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_adventure->start_date }}</h2>
+        <p>Username: <?php echo $element['carowner_id'];?></p>
+        <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
+        <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     
+        <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p>           
+        <p>Seats available: {{ $element->max_seats}}</p>
+        <p>Bike Rack available: {{ $element->bike_capacity }}</p>
+        <p>Date & Time Departure:  {{ $element->start_date }}</p>
+        <p>Luggage allowed: <?php echo $element['lugage'] ? 'Yes' : 'No'; ?></p>
+        <p>Dog allowed: <?php echo $element['pets_allowed'] ? 'Yes' : 'No'; ?></p>
+        <p>Smokers allowed: <?php echo $element['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
+        <p>Asked price :  {{ $element->price }}</p>
     
-    <button>Driver info</button>
+        <button><a href="#">Driver info</a></button> <button><a href="carpool/edit">Edit</a><button><a href="carpool/update">Join Carpool</a></button>
+
+
 </div> 

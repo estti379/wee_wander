@@ -1,94 +1,132 @@
 <?php
 
 namespace App\Http\Controllers;
+use DateTime;
 use App\Models\Event;
+use App\Models\Trail;
+use App\Models\Adventure;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
     //This method select all events from the DB
     public function eventsCard(){
+        $pageTitle = 'Events Lista Page';
         //SELECT * FROM events
-        $events = Event::all()->toArray();
-        
-        return view('events.events-list', [
-            'events' => $events
-        ]);
-
-        /*
-        Outdated
-        $eventTitle = "This is the Event Title - but it needs to fetch from the info of the DB";
-        $pageTitle = "Events Page";
+        $event = Event::all();
 
         return view('events.events-list', [
-            'eventTitle' => $eventTitle,
+            'events' => $event,
             'pageTitle' => $pageTitle
         ]);
-        */
-        
     }
 
 
-    // This method should fetch with information from the DB
+    // Display event details - This should fetch with information from the DB
     public function eventDetails($id){
+        $pageTitle = 'Event Details';
         $event = Event::find($id);
-        return view('events.event-details', ['event' => $event]);
-    }
-    
+        $adventure = $event->adventures;
+        /*
+        return view('events.event-details')->with(['event' => $event,
+                                                   'adventure' => $adventure]); //The with takes the $event as an object
+        */
+        return view('events.event-details',['adventure' => $adventure,
+                                            'event' => $event,
+                                            'pageTitle' => $pageTitle]);
+        }
+
 
     // This method redirect to create view
     public function create(){
-
-        return view('events.events-create');
+        $pageTitle = 'Create a new event';
+        $trails = Trail::all();
+        
+        return view('events.events-create', ['trails' => $trails,
+                                             'pageTitle' => $pageTitle]);
     }
 
     //this method stores the information on view on the DB
     public function store(request $request){
-       
+
         $event = Event::create([
             'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
-            'id_organizer'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
+            'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
         ]);
+
+        $adventure = Adventure::create([
+            'trail_id' => $request->input('trail'),
+            'event_id' => $event->id,
+            'start_date' => $request->input('starting_date'),
+            'due_date' => $request->input('due_date')
+        ]);
+
+
         return redirect('/events');
     }
 
     //method to edit event - for now just the title.
     public function edit($id){
-        
+        $pageTitle = 'Edit page';
+        $trails = Trail::all();
         $event = Event::find($id); //Eloquent to connect to DB and find specific event by the id
-        
-        return view('events.events-edit')->with('event', $event);
+
+        return view('events.events-edit')->with(['event' => $event,
+                                                'trails' => $trails,
+                                                'pageTitle'=>$pageTitle]);
     }
 
-
+    //Update event information on DB - For now just id and id_organizer.
+    //Needs to learn how to connect databases to change foreign keys.
     public function update(Request $request, $id){
-        
+
         $event = Event::where('id', $id)
             ->update([
                 'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
-                'id_organizer'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
+                'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
+        ]);
+
+
+        $adventure = Adventure::where('id', $id)
+            ->update([
+                'trail_id' => $request->input('trail'),
+                'start_date' => $request->input('starting_date'),
+                'due_date' => $request->input('due_date')
+        ]);
+        
+        $adventure = Trail::where('id', $id)
+            ->update([
+                'name' => $request->input('$trail->name'),
         ]);
 
         return redirect('/events');
     }
 
-    public function destroy($id) { 
+    //Delete event of the DB
+    public function destroy($id) {
         $event = Event::find($id);
-    
+
         if($event){
             $event->delete();
         }
-    
+
         return redirect('/events');
     }
-    
+
 
     //This method gets the trail _ THE IS BUGGED - FIND A WAY TO FIX THIS
     public function getTrail($id){
 
-        return view('trails.trail-details');
+        $pageTitle = 'Trail Details';
+        $event = Event::find($id); 
+        //specific event with eloquent 
+        //this gets the information of Event(model)->adventures. 
+        //dont forgoert that for access the information of trails after
+        //it will be necessary a loop
+        $adventures = $event->adventures; 
+
+        return view('trails.trail-details', ['pageTitle' => $pageTitle,
+                                             'event' => $event,
+                                            'adventures' => $adventures]);
     }
-
-
-    
 }
