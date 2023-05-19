@@ -1,7 +1,5 @@
-<x-layout>
-    {{-- @php
-        dd($userDetails);
-    @endphp --}}
+<x-layout  :pageTitle="$pageTitle">
+
     <h2>Page of user: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
     
     <div>
