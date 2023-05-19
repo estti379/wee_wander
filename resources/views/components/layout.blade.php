@@ -19,6 +19,9 @@
       <li><a href="/carpool">Carpool Lists </a></li>
       <li><a href="/carpool/create">Carpool Create </a></li>
     </ul>
+    <div>
+        <x-nav-login/>
+    </div>
   </nav>
   {{-- This is a alpha version. Just the skeleton --}}
   <main>
