@@ -3,7 +3,7 @@
 
 
 {{--================== SHARE ROAD CARD ==========================--}}
-
+{{--@section ('last_carpool')--}}
 @props(['element'])
 
 <div class="shareroad_card">
@@ -19,8 +19,14 @@
         <p>Dog allowed: <?php echo $element['pets_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Smokers allowed: <?php echo $element['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
         <p>Asked price :  {{ $element->price }}</p>
-    
-        <button><a href="#">Driver info</a></button> <button><a href="carpool/edit">Edit</a><button><a href="carpool/update">Join Carpool</a></button>
-
-
+        <button><a href="#">Driver info</a></button> 
+        <div>
+            <button><a href="carpool/edit/{{$element->id}}">Edit</a>
+            <button><a href="carpool/update">Join Carpool</a></button>
+        </div>
 </div> 
+{{--@endsection ('last_carpool')--}}
+
+
+
+

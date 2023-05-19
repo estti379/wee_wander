@@ -2,19 +2,18 @@
 
 {{--================== SHARE ROAD CARD ==========================--}}
 
-@props(['element'])
+{{--@props(['element'])--}}
+{{$pageTitle='test'}}
+<x-layout :pageTitle='$pageTitle'>
 
 <div class="shareroad_card">
-    <h2>The carpool drives to {{ $element->start_adventure->trail->name }} on {{ $element->start_adventure->start_date }}</h2>
+    <h2>Edit the carpool that drives to {{ $element->start_adventure->trail->name }} <br>
+        on {{ $element->start_adventure->start_date }}</h2>
     
     <form method="POST" action="/carpool/{{ $element->id }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         
-        <div>
-            <label for="carowner_id">Username:</label>
-            <input type="text" name="carowner_id" value="{{ $element->carowner_id }}">
-        </div>
         
         <div>
             <label for="start_location_long">City Departure:</label>
@@ -87,5 +86,5 @@
         <button type="submit">Update</button>
     </form>
 </div>
+</x-layout>
 
-@endsection

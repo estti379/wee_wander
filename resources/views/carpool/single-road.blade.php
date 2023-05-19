@@ -1,3 +1,3 @@
-@foreach ($users as $user)
-<li> <x-shareroad_card :user='$user'/></li> 
-@endforeach
+<x-layout :pageTitle='$pageTitle'>
+ <x-shareroad_card :element='$carpool'/>
+</x-layout>

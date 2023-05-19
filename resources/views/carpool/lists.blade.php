@@ -1,8 +1,8 @@
-@props(['shareRoadDetails'])
+{{-- @props(['shareRoadDetails']) --}}
 
 {{-- ====================  ShareRoad List ===================== --}}
 
-<x-layout>
+<x-layout :pageTitle='$pageTitle'>
     <h2>Available carpools</h2>
     <ul>
         @if ($shareRoadDetails === null || count($shareRoadDetails) === 0)

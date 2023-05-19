@@ -82,19 +82,15 @@ Route::get('/carpool',[CarpoolController::class, 'index']);
 Route::get('/carpool/create',[CarpoolController::class, 'create']);
 
 //Edit Carpool
-Route::get('/carpool/{id}/edit', [CarpoolController::class, 'edit']);
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 
-//Updating an event
+//Updating an Carpool
 Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
 
 // Store CarPool 
 Route::post('/carpool', [CarpoolController::class, 'store']);
 
 // Route Show single carpool
-Route::get('/carpool/{id}', function ($id) {
-    return view('carpool.lists', [ 
-        'carpool'=>Carpool::find($id)
-    ]);
-});
+Route::get('/carpool/{id}',[CarpoolController::class, 'show']);
 
 

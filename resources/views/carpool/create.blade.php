@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="\css\carpool_card_style.css"/>
             {{-- Create Carpool From --}}
-            <x-layout>
+            <x-layout :pageTitle=$pageTitle>
                 <div class="createCarpool">
                 <h2>Create Carpool</h2>
                 
