@@ -1,6 +1,7 @@
 <x-layout :pageTitle=$pageTitle>
 <div class="trail-details-card">
   <h1>Trail Details</h1>
+  
   <p><strong>Adventure ID : </strong>{{ $adventures[0]['id'] }}</p>
   <p><strong>Trail ID : </strong>{{ $adventures[0]['trail']['id'] }}</p>
   <p><strong>Trail title : </strong></strong>{{ $adventures[0]['trail']['name'] }}</p>

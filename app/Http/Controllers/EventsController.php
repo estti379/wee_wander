@@ -49,6 +49,7 @@ class EventsController extends Controller
 
     //this method stores the information on view on the DB
     public function store(request $request){
+        
         $formFields = $request->validate([
             'eventTitle' => 'required',
             'trail' => 'required',
@@ -61,6 +62,7 @@ class EventsController extends Controller
 
 
         $event = Event::create([
+            
             'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
             'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
         ]);
@@ -78,7 +80,6 @@ class EventsController extends Controller
             'start_date' => $startDate,
             'due_date' => $dueDate
         ]);
-
         return redirect('/events');
     }
 
@@ -155,7 +156,7 @@ class EventsController extends Controller
 
 
     //This method gets the trail _ THE IS BUGGED - FIND A WAY TO FIX THIS
-    public function getTrail($id){
+    public function getTrail($id, $trailId){
 
         $pageTitle = 'Trail Details';
         $event = Event::find($id);
@@ -164,9 +165,9 @@ class EventsController extends Controller
         //dont forgoert that for access the information of trails after
         //it will be necessary a loop
         $adventures = $event->adventures;
-
         return view('trails.trail-details', ['pageTitle' => $pageTitle,
                                              'event' => $event,
-                                            'adventures' => $adventures]);
+                                            'adventures' => $adventures,
+                                            'trialId' => $trailId]);
     }
 }

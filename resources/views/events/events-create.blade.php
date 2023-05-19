@@ -6,13 +6,9 @@
         <span>Title of the event : </span><input type="text" name="eventTitle"  value="{{old('eventTitle')}}"><br>
         <span>Select your trail : </span>
         <select name="trail" >
-        <option value ="">Select a trail</option>
+        <option value="{{old('trail')}}">Select a trail</option>
           @foreach ($trails as $trail)
-            <option value="{{ $trail->id }}"
-              @if (old('trail') == $trail->id)
-                  selected
-              @endif
-              >{{ $trail->name }} </option>
+            <option value="{{ $trail->id }}">{{ $trail->name }}</option>
           @endforeach
         </select><br>
         <span>Starting date : </span><input type="date" name="starting_date"  value="{{old('starting_date')}}">

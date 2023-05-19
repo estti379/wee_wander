@@ -18,7 +18,7 @@
           <p>Due Time: {{ $adventure->due_date }}</p>
         @endforeach
         <button><a href="/events/{{ $event->id }}">Event Details</a></button>
-        <button><a href="events/{{ $event->id }}/edit">Edit/Delete Event</a></button>
+        <button><a href="events/edit/{{ $event->id }}">Edit/Delete Event</a></button>
       </div>
     @endforeach
   </div>

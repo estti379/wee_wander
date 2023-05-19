@@ -13,8 +13,9 @@ class CarpoolController extends Controller
     //Get and Show all carpool
     public function index()
     {
+        
         $shareRoadDetails=Route::all();
-        return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails]);
+        return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails, 'pageTitle' => 'WeeWander lists']);
     }
     
     
@@ -29,14 +30,15 @@ class CarpoolController extends Controller
     public function create()
     {
         $adventures = Adventure::all();
-        return view('carpool.create', ['adventures'=> $adventures]);
+        return view('carpool.create', ['adventures'=> $adventures, 'pageTitle'=>'Carpool Create']);
     }
     // Edit Form
     public function edit($id)
     {
+    
     $shareRoadDetails = Route::find($id);
     // Pass the share road details to the view
-    return view('carpool.edit', ['element' => $shareRoadDetails]);
+    return view('carpool.edit', ['element' => $shareRoadDetails, 'pageTitle'=>'Carpool Edit']);
     }
 
 

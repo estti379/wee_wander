@@ -6,12 +6,15 @@
       <h1>{{ $event->title}}</h1> {{-- Event Title --}}
       @foreach($event->adventures as $adventure)
           <div class="trail-details-card">
+            <h2>Adventure ID - {{ $adventure->id }}</h2>
             <h2>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</h2>
             <p>Starting Time: {{ $adventure->start_date }}</p>
             <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long"/>
-            <button>
-              <a href="/events/{{$event->id}}/trail">Trail Details</a>
-            </button>
+              <p>HERE GOES CARPOOL SOLUTIONS FOR THIS TRIAL</p>
+              <p>IF 0 NOTHING IS SHOW - LINK TO CREATE A NEW CARPOOLING</p>
+              <button>
+                <a href="/events/{{$event->id}}/trail/{{$adventure->trail->id}}">Trail Details</a>
+              </button>
           </div>
       @endforeach
     </ul>

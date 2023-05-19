@@ -16,7 +16,8 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//=============================================================
+//EVENT MNGMT
 Route::get('/', function () {
     return view('index', ["pageTitle"=>"WeeWander - Home"]);
 });
@@ -34,13 +35,13 @@ Route::get('/create-event', [EventsController::class, 'create']);
 Route::post('/events', [EventsController::class, 'store']);
 
 //Edit event
-Route::get('/events/{id}/edit', [EventsController::class, 'edit']);
+Route::get('/events/edit/{id}/', [EventsController::class, 'edit']);
 
 //Updating an event
 Route::put('/events/{id}', [EventsController::class, 'update']);
 
 //Specific trail information
-Route::get('/events/{id}/trail', [EventsController::class, 'getTrail']);
+Route::get('/events/{id}/trail/{trailId}', [EventsController::class, 'getTrail']);
 
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
@@ -50,6 +51,8 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 Route::get('/testing', function(){
     return view('testing.testing');
 });
+
+//=============================================================
 
 /*
  * START: User Management
