@@ -99,4 +99,24 @@ class CarpoolController extends Controller
             // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
         }
 
+        public function joinCarpool($id)
+        {
+            if (!Auth::check()) {
+                return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
+            }
+        
+            $carpool = Route::find($id);
+            $user = Auth::user();
+        
+            // Associate the user with the carpool
+            $carpool->participants()->attach($user);
+        
+            // Update the max_seat count for the joined user
+            $carpool->max_seat = $user->max_seat -1;
+            $carpool->save();
+        
+            return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
+        }
+        
+        
 } // end of the class

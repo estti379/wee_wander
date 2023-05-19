@@ -26,7 +26,16 @@
                 
             @endif
             
-            <button><a href="carpool/update">Join Carpool</a></button>
+            <div>
+                <!-- Check if the user is logged in and not the car owner -->
+                @if (Auth::check() && Auth::user()->id != $element->carowner->id)
+                    <!-- Button to join the carpool -->
+                    <form action="/carpool/join/{{ $element->id }}" method="POST">
+                        @csrf
+                        <button type="submit">Join Carpool</button>
+                    </form>
+                @endif
+            </div>
         </div>
 </div> 
 {{--@endsection ('last_carpool')--}}

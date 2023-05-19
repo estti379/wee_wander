@@ -87,8 +87,10 @@ Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 // Store CarPool 
 Route::post('/carpool/store', [CarpoolController::class, 'store']);
 
-//Updating an Carpool
+// Updating an Carpool
 Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
 // Route Show single carpool
 Route::get('/carpool/{id}',[CarpoolController::class, 'show']);

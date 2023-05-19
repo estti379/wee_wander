@@ -74,6 +74,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Adventure::class, 'adventure_participants', 'participant_id', 'adventure_id');
     }
-
+    
     
 }
