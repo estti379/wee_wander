@@ -14,7 +14,7 @@ class UserController extends Controller
             //An user is already logged in
             return redirect('/')->with('message', 'You are already logged in!');
         }
-        return view('users.login');
+        return view('users.login', ["pageTitle"=> "WeeWander - Sign In"]);
     }
 
     // Authenticate User
@@ -49,10 +49,11 @@ class UserController extends Controller
         $userDetails = User::find($id);
 
         $isOwner = $this->checkIfPageOwner($id);
-
+        $pageOwnerName = $userDetails->firstname." ".$userDetails->lastname;
         return view('users.show', [
             "userDetails" => $userDetails,
             "isOwner" => $isOwner,
+            "pageTitle"=> "WeeWander - ".$pageOwnerName." page",
         ]);
     }
 
