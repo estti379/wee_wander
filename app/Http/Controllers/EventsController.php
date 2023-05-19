@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Trail;
 use App\Models\Adventure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -14,10 +15,9 @@ class EventsController extends Controller
         $pageTitle = 'Events Lista Page';
         //SELECT * FROM events
         $event = Event::all();
-
         return view('events.events-list', [
             'events' => $event,
-            'pageTitle' => $pageTitle
+            'pageTitle' => $pageTitle,
         ]);
     }
 
@@ -64,7 +64,7 @@ class EventsController extends Controller
         $event = Event::create([
             
             'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
-            'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
+            'organizer_id'=> Auth::id() //organizer_id will have the same id as the user that is logged in.
         ]);
 
         //get date + hour and put it together
@@ -170,4 +170,5 @@ class EventsController extends Controller
                                             'adventures' => $adventures,
                                             'trialId' => $trailId]);
     }
+    
 }
