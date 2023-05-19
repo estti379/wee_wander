@@ -46,30 +46,6 @@ class CarpoolController extends Controller
     // Pass the share road details to the view
         return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
     }
-    public function update(Request $request,$id){
-        $carpoolUpdate =Route::find($id);
-        $carpoolUpdate->start_location_long=$request->input('start_location_long');            // request('city');
-        $carpoolUpdate->start_location_latit=$request->input('start_location_latit');
-        $carpoolUpdate->end_location_long=$request->input('end_location_long');
-        $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
-        //==============================================================================================
-        $carpoolUpdate->start_adventure_id=1;  //{{ $adventure->start_date }}                     
-        $carpoolUpdate->end_adventure_id=1;  //{{ $adventure->end_date }}
-        $carpoolUpdate->distance=$request->input('distance');       
-        $carpoolUpdate->start_date=$request->input('start_date').' '.request('time');
-        $carpoolUpdate->max_seats=$request->input('max_seats');
-        $carpoolUpdate->bike_capacity=$request->input('bike_capacity');
-        $carpoolUpdate->pets_allowed=$request->input('pets_allowed') ? 1 : 0;
-        $carpoolUpdate->luggage=$request->input('luggage') ? 1 : 0;
-        $carpoolUpdate->smokers_allowed=$request->input('smokers_allowed') ? 1 : 0;
-        $carpoolUpdate->price=$request->input('price');
-        
-        // Save the data to de DB
-        {{dd($carpoolUpdate);}}
-        $carpoolUpdate->save();
-        return redirect('/')->with('Carpool edited successfully');
-        // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
-    }
 
     public function store(){
         $carpoolForm = new Route();
@@ -98,5 +74,29 @@ class CarpoolController extends Controller
         return redirect('/')->with('Carpool created successfully');
         // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
     }
+
+        // Update Form
+        public function update(Request $request,$id){
+            $carpoolUpdate =Route::find($id);
+            $carpoolUpdate->start_location_long=$request->input('start_location_long');            // request('city');
+            $carpoolUpdate->start_location_latit=$request->input('start_location_latit');
+            $carpoolUpdate->end_location_long=$request->input('end_location_long');
+            $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
+            $carpoolUpdate->start_adventure_id=1;  //{{ $adventure->start_date }}                     
+            $carpoolUpdate->end_adventure_id=1;  //{{ $adventure->end_date }}
+            $carpoolUpdate->distance=$request->input('distance');       
+            $carpoolUpdate->start_date=$request->input('start_date');//.' '.request('time');
+            $carpoolUpdate->max_seats=$request->input('max_seats');
+            $carpoolUpdate->bike_capacity=$request->input('bike_capacity');
+            $carpoolUpdate->pets_allowed=$request->input('pets_allowed') ? 1 : 0;
+            $carpoolUpdate->luggage=$request->input('luggage') ? 1 : 0;
+            $carpoolUpdate->smokers_allowed=$request->input('smokers_allowed') ? 1 : 0;
+            $carpoolUpdate->price=$request->input('price');
+            
+            // Save the data to de DB
+            $carpoolUpdate->save();
+            return redirect('/carpool')->with('Carpool edited successfully');
+            // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
+        }
 
 } // end of the class

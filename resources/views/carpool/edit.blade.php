@@ -24,6 +24,11 @@
             <label for="start_location_latit">City Departure Latitude:</label>
             <input type="text" name="start_location_latit" value="{{ $element->start_location_latit }}">
         </div>
+
+        <div>
+            <label for="distance">Distance:</label>
+            <input type="text" name="distance" value="{{ $element->distance }}">
+        </div>
         
         <div>
             <label for="end_location_long">Adventure Location:</label>
@@ -51,10 +56,10 @@
         </div>
         
         <div>
-            <label for="lugage">Luggage allowed:</label>
-            <select name="lugage">
-                <option value="1" {{ $element->lugage ? 'selected' : '' }}>Yes</option>
-                <option value="0" {{ $element->lugage ? '' : 'selected' }}>No</option>
+            <label for="luggage">Luggage allowed:</label>
+            <select name="luggage">
+                <option value="1" {{ $element->luggage ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->luggage ? '' : 'selected' }}>No</option>
             </select>
         </div>
         
@@ -73,18 +78,18 @@
                 <option value="0" {{ $element->smokers_allowed ? '' : 'selected' }}>No</option>
             </select>
         </div>
-        
         <div>
-            {{-- Needed to create another form for the delete button because of the request --}}
-            <form action="/carpool/{{ $element->id }}" method="POST">
-                @csrf
-                @method('delete') 
-                <button type="submit">Delete</button>
-            </form>
+            <label for="price">Asked price</label>
+                    <input type="text" name="price" placeholder="0€"><br>
         </div>
-        
-        <button type="submit">validate modifications</button>
+        <button type="submit">update</button>
     </form>
+                {{-- Needed to create another form for the delete button because of the request --}}
+                <form action="/carpool/{{ $element->id }}" method="POST">
+                    @csrf
+                    @method('delete') 
+                    <button type="submit">Delete</button>
+                </form>
 </div>
 </x-layout>
 

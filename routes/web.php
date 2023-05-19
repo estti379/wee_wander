@@ -75,7 +75,6 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 //=============================================================
                     // ROUTES(CARPOOL) ROUTE
-                    
 // Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
