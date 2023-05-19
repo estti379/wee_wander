@@ -1,4 +1,4 @@
-@props(['shareRoadDetails']);
+@props(['shareRoadDetails'])
 
 {{-- ====================  ShareRoad List ===================== --}}
 
