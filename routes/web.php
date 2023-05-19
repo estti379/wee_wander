@@ -75,6 +75,7 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 //=============================================================
                     // ROUTES(CARPOOL) ROUTE
+                    
 // Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
@@ -84,11 +85,11 @@ Route::get('/carpool/create',[CarpoolController::class, 'create']);
 //Edit Carpool
 Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 
+// Store CarPool 
+Route::post('/carpool/store', [CarpoolController::class, 'store']);
+
 //Updating an Carpool
 Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
-
-// Store CarPool 
-Route::post('/carpool', [CarpoolController::class, 'store']);
 
 // Route Show single carpool
 Route::get('/carpool/{id}',[CarpoolController::class, 'show']);

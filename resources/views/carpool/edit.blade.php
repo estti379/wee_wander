@@ -83,7 +83,7 @@
             </form>
         </div>
         
-        <button type="submit">Update</button>
+        <button type="submit">validate modifications</button>
     </form>
 </div>
 </x-layout>
