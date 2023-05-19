@@ -12,7 +12,7 @@
         <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
         <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     
         <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p>           
-        <p>Seats available: {{ $element->max_seats}}</p>
+        <p>Seats available: <strong>{{ $element->max_seats}}</strong></p>
         <p>Bike Rack available: {{ $element->bike_capacity }}</p>
         <p>Date & Time Departure:  {{ $element->start_date }}</p>
         <p>Luggage allowed: <?php echo $element['lugage'] ? 'Yes' : 'No'; ?></p>
@@ -21,15 +21,16 @@
         <p>Asked price :  {{ $element->price }}</p>
         <button><a href="#">Driver info</a></button> 
         <div>
+
+            <!--========================= Checks if it's the creator ===============================-->
             @if (Auth::check() && Auth::user()->id == $element->carowner->id)
-            <button><a href="carpool/edit/{{$element->id}}">Edit</a>
-                
+            <button><a href="carpool/edit/{{$element->id}}">Edit</a>    
             @endif
             
             <div>
-                <!-- Check if the user is logged in and not the car owner -->
-                @if (Auth::check() && Auth::user()->id != $element->carowner->id)
-                    <!-- Button to join the carpool -->
+                <!--========================= Check if the user is logged in and not the car owner =========================-->
+                @if (Auth::check() && Auth::user()->id != $element->carowner->id && participants())
+                    <!-- ========================= Button to join the carpool =========================-->
                     <form action="/carpool/join/{{ $element->id }}" method="POST">
                         @csrf
                         <button type="submit">Join Carpool</button>

@@ -120,3 +120,23 @@ class CarpoolController extends Controller
         
         
 } // end of the class
+//// Join Carpool
+/*public function join($id)
+{
+    if (!Auth::check()) {
+        return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
+    }
+    
+    $carpool = Route::find($id);
+    
+    if ($carpool->available_seats <= 0) {
+        return redirect('/')->with('message', 'No available seats in the Carpool');
+    }
+    
+    $carpool->participants()->attach(Auth::user()->id);
+    $carpool->available_seats -= 1;
+    $carpool->save();
+    
+    return redirect('/')->with('message', 'You have joined the Carpool successfully');
+}
+}*/
