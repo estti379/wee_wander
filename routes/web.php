@@ -36,11 +36,11 @@ Route::post('/events', [EventsController::class, 'store']);
 //Edit event
 Route::get('/events/{id}/edit', [EventsController::class, 'edit']);
 
-//Specific trail information
-Route::get('/events/{id}/trail', [EventsController::class, 'getTrail']);
-
 //Updating an event
 Route::put('/events/{id}', [EventsController::class, 'update']);
+
+//Specific trail information
+Route::get('/events/{id}/trail', [EventsController::class, 'getTrail']);
 
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
