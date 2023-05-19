@@ -15,6 +15,7 @@
         @foreach($event->adventures as $adventure)
           <p>Trail title : {{ $adventure->trail->name }}</p>
           <p>Starting Time: {{ $adventure->start_date }}</p>
+          <p>Due Time: {{ $adventure->due_date }}</p>
         @endforeach
         <button><a href="/events/{{ $event->id }}">Event Details</a></button>
         <button><a href="events/{{ $event->id }}/edit">Edit/Delete Event</a></button>
