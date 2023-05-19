@@ -8,13 +8,16 @@ use Illuminate\View\Component;
 
 class WeatherApi extends Component
 {   
+    public $lat;
+    public $long;
     
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($lat, $long)
     {
-        //
+        $this->lat = $lat;
+        $this->long = $long;
     }
 
     /**
@@ -33,7 +36,7 @@ class WeatherApi extends Component
     
     public function getWeather(){
         
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=-23.55&longitude=-46.64&hourly=temperature_2m";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=" . $this->lat . "&longitude=" . $this->long . "&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Europe%2FLondon";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -45,12 +48,10 @@ class WeatherApi extends Component
         //$prettyJson = json_encode($weatherData, JSON_PRETTY_PRINT);
         //return response($prettyJson)->header('Content-Type', 'application/json');
         
-        return $weatherData;
-        /*
-        return view('components.weather-api', 
-                [
-                    'weatherData' => $weatherData
-                ]);
-        */        
+        return $weatherData; 
     }
 }
+    
+
+
+

@@ -52,6 +52,6 @@ class Route extends Model
 
     public function participants(): BelongsToMany
     {
-        return $this->belongsToMany(Route::class, 'route_participants', 'route_id', 'participant_id');
+        return $this->belongsToMany(User::class, 'route_participants', 'route_id', 'participant_id');
     }
 }
