@@ -1,11 +1,5 @@
-  {{-- Events list view --}}
-  {{-- The variables are being retrieved from the route --}}
-  {{-- If youre passing a variable, we need to use : before  --}}
-  {{-- <x-eventcard text="This is the event card - Just example" :eventTitle="$eventTitle"/> <br>   --}}
-
 <x-layout :pageTitle=$pageTitle>
   <div> 
-    {{-- {{ dd($events) }} --}}
     {{-- informations being retrieved by the eventsCard() method in controllers --}}
     @foreach ($events as $event)
       {{-- {{dd($event)}} --}}
@@ -23,13 +17,13 @@
         <!-- Button to edit event -->
               <button><a href="events/edit/{{ $event->id }}">Edit/Delete Event</a></button>
         @endif
-
           @if (Auth::check())
           Logged in user ID: {{ Auth::user()->id }} <br>
           Event organizer ID: {{ $event->organizer_id }}
           @endif
-      
       </div>
     @endforeach
+    {{-- For pagination --}}
+    {{ $events->links() }} 
   </div>
 </x-layout>

@@ -13,8 +13,8 @@ class EventsController extends Controller
     //This method select all events from the DB
     public function eventsCard(){
         $pageTitle = 'Events Lista Page';
-        //SELECT * FROM events
-        $event = Event::all();
+        //Select the Events. Paginate is for pagination.
+        $event = Event::paginate(4);
         return view('events.events-list', [
             'events' => $event,
             'pageTitle' => $pageTitle,
@@ -27,10 +27,7 @@ class EventsController extends Controller
         $pageTitle = 'Event Details';
         $event = Event::find($id);
         $adventure = $event->adventures;
-        /*
-        return view('events.event-details')->with(['event' => $event,
-                                                   'adventure' => $adventure]); //The with takes the $event as an object
-        */
+
         return view('events.event-details',['adventure' => $adventure,
                                             'event' => $event,
                                             'pageTitle' => $pageTitle]);
@@ -39,12 +36,12 @@ class EventsController extends Controller
 
     // This method redirect to create view
     public function create(){
+        //Session check
         if (!Auth::check()) {
             return redirect('/login')->with('message', 'You have to be logged in to create an event!');
         }
 
         $pageTitle = 'Create a new event';
-        // Gets the information of all trails to the form
         $trails = Trail::all(); 
 
         return view('events.events-create', ['trails' => $trails,
@@ -64,9 +61,7 @@ class EventsController extends Controller
 
         ]);
 
-
         $event = Event::create([
-
             'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
             'organizer_id'=>Auth::id() //organizer_id will have the same id as the user that is logged in.
         ]);
@@ -87,31 +82,27 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
-    //method to edit event - for now just the title.
+    //Method to edit event.
     public function edit($id){
        
         $pageTitle = 'Edit page';
         $trails = Trail::all();
-        $event = Event::find($id); //Eloquent to connect to DB and find specific event by the id
+        $event = Event::find($id);
         
-        //This acces the value of specific trail, in this case, index 0
-     
-
         return view('events.events-edit')->with(['event' => $event,
                                                 'trails' => $trails,
                                                 'pageTitle'=>$pageTitle,
                                                 ]);
     }
 
-    //Update event information on DB - For now just id and id_organizer.
-    //Needs to learn how to connect databases to change foreign keys.
+    //Update event information
     public function update(Request $request, $id){
         //validation
-        // dd($request);
         $validation = [
             'eventTitle' => 'required',
         ];
-        
+        //Here we had the most insane bug ever.
+        //commented this just to never forget the suffering.
         foreach (Event::find($id)->adventures as $key => $adventure) {
             $index = $adventure->id;
             $validation['trail_E' . $index] = 'required';
@@ -125,19 +116,18 @@ class EventsController extends Controller
 
         $event = Event::find($id)
             ->update([
-                'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
+                'title' => $request->input('eventTitle'),
                 'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
         ]);
 
         foreach (Event::find($id)->adventures as $key => $adventure) {
             $index = $adventure->id;
-            //get date + hour and put it together
+            //put date + time in a format that DB accepts.
             $startDate = $request->input('starting_date_E' . $index) . ' ' . $request->input('start_time_E' . $index);
             $startDate = new DateTime($startDate);
- 
             $dueDate = $request->input('due_date_E' . $index) . ' ' . $request->input('end_time_E' . $index);
-            
             $dueDate = new DateTime($dueDate);
+
             $adventure->update([
                 'trail_id' => $request->input('trail_E' . $index),
                 'start_date' => $startDate,
@@ -147,6 +137,7 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
+    //METHOD NOT WORKING PROPERLY -- NEEDS TO FIX
     //Delete event of the DB
     public function destroy($id) {
         $event = Event::find($id);
@@ -154,20 +145,15 @@ class EventsController extends Controller
         if($event){
             $event->delete();
         }
-
         return redirect('/events');
     }
 
 
-    //This method gets the trail _ THE IS BUGGED - FIND A WAY TO FIX THIS
+
     public function getTrail($id, $trailId){
 
         $pageTitle = 'Trail Details';
         $event = Event::find($id);
-        //specific event with eloquent
-        //this gets the information of Event(model)->adventures.
-        //dont forgoert that for access the information of trails after
-        //it will be necessary a loop
         $adventures = $event->adventures;
         return view('trails.trail-details', ['pageTitle' => $pageTitle,
                                              'event' => $event,

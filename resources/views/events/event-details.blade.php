@@ -11,7 +11,9 @@
             <p>Starting Time: {{ $adventure->start_date }}</p>
             <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long"/>
               <p>HERE GOES CARPOOL SOLUTIONS FOR THIS TRIAL</p>
-              <p>IF 0 NOTHING IS SHOW - LINK TO CREATE A NEW CARPOOLING</p>
+              <button>
+                <a href="/carpool/create">Create a carpool!</a><br>
+              </button><br>
               <button>
                 <a href="/events/{{$event->id}}/trail/{{$adventure->trail->id}}">Trail Details</a>
               </button>
