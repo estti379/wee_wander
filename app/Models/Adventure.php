@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Adventure extends Model
 {
@@ -44,6 +45,10 @@ class Adventure extends Model
         return $this->hasMany(Route::class, "end_adventure_id");
     }
 
+    public function participants(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'adventure_participants', 'adventure_id', 'participant_id');
+    }
 
 
 }
