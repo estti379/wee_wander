@@ -8,9 +8,14 @@
                     @csrf 
                     <label>City Departure</label>
                     <select name="start_location_long">
-                        <option value="city">-
-                            {{-- Foreach city loop inside of this row --}}
-                        </option>  
+                        @if ($data)
+                            @foreach ($data as $item)
+                                <option value="{{ $item['lng'] }}">
+                                    City: {{ $item['city'] }}
+                                    test
+                                </option>
+                            @endforeach
+                        @endif
                     </select><br>
                     <label>Distance</label>
                     <input type="text" name="distance" placeholder="km"><br>

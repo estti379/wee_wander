@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Route;
 use App\Models\Adventure;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CarpoolController extends Controller
 
@@ -21,11 +22,20 @@ class CarpoolController extends Controller
     }
     
      //Show single carpool
-     public function show($id)
+    public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
         return view('carpool.single-road', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
      }
+
+     // Retrieve JSON FILE
+     public function retrieveJson()
+     {
+         $jsonData = Storage::disk('public')->get('storage/app/public/lu.json');
+         $data = json_decode($jsonData, true);
+         return $data;
+     }
+
 
     // Create Form View
     public function create()
@@ -33,9 +43,11 @@ class CarpoolController extends Controller
         if (!Auth::check()) {
             return redirect('/login')->with('message', 'You have to be logged in to create a Carpool!');
         }
+        $data = $this->retrieveJson();
         $adventures = Adventure::all();
-        return view('carpool.create', ['adventures'=> $adventures,'pageTitle'=>'WeeWander carpool-create']);
+        return view('carpool.create', ['adventures' => $adventures,'data' => $data,'pageTitle' => 'WeeWander carpool-create']);
     }
+
     // Edit Form
     public function edit($id)
     {
@@ -117,8 +129,9 @@ class CarpoolController extends Controller
         
             return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
         }
-        
-        
+
+
+    
 } // end of the class
 //// Join Carpool
 /*public function join($id)
