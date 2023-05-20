@@ -25,7 +25,7 @@ class CarpoolController extends Controller
     public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('carpool.single-road', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
+        return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
      }
 
      // Retrieve JSON FILE
@@ -38,9 +38,8 @@ class CarpoolController extends Controller
          return $data;
      }
     }
-
-
-    // Create Form View
+//====================================================================================================================================
+     // Create Form View
     public function create()
     {
         if (!Auth::check()) {
@@ -51,6 +50,7 @@ class CarpoolController extends Controller
         return view('carpool.create', ['adventures' => $adventures,'data' => $data,'pageTitle' => 'WeeWander carpool-create']);
     }
 
+//====================================================================================================================================
     // Edit Form
     public function edit($id)
     {
@@ -58,25 +58,26 @@ class CarpoolController extends Controller
         return redirect('/login')->with('message', 'You have to be logged in to edit the Carpool!');
     }
         $shareRoadDetails = Route::find($id);
+
+//====================================================================================================================================
     // Pass the share road details to the view
         return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
     }
-
+    //====================================================================================================================================
+    // Store Form
     public function store(){
         $carpoolForm = new Route();
 
-        $carpoolForm->carowner_id=Auth::user()->id;                     // TO DO ADD Value request('id_carowner');
+        $carpoolForm->carowner_id=Auth::user()->id;       // TO DO ADD Value request('id_carowner');
         $carpoolForm->start_location_long=50;            // request('city');
         $carpoolForm->start_location_latit=49;            // request('city');
         $carpoolForm->end_location_long=50;                   //request('end_location_long');
         $carpoolForm->end_location_latit=51;  
-        //==============================================================================================
+
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
         $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
         $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
-        //$dateTimeString = request('start_date').' '.request('time');
-        // $carpoolForm->start_date=DateTime::createFromFormat('d/m/Y, H:i', $dateTimeString);
         $carpoolForm->max_seats=request('max_seats');
         $carpoolForm->bike_capacity=request('bike_capacity');
         $carpoolForm->pets_allowed = request('pets_allowed') ? 1 : 0;
@@ -90,6 +91,7 @@ class CarpoolController extends Controller
         // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
     }
 
+    //====================================================================================================================================
         // Update Form
         public function update(Request $request,$id){
             $carpoolUpdate =Route::find($id);
@@ -113,6 +115,7 @@ class CarpoolController extends Controller
             return redirect('/carpool')->with('Carpool edited successfully');
             // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
         }
+//====================================================================================================================================
 
         public function joinCarpool($id)
         {
@@ -130,6 +133,7 @@ class CarpoolController extends Controller
             return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
         }
 
+//====================================================================================================================================
 
     
 } // end of the class
