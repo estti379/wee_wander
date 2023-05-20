@@ -19,12 +19,9 @@
         <p>Temperature Now: {{ $weatherData['hourly']['temperature_2m'][$nextHourIndex] }} &#8451;</p>
         <p>Precipitation Probability next hour: {{ $weatherData['hourly']['precipitation_probability'][$nextHourIndex] }} %</p>
         
-        {{-- test of illustration--}}
-        {{-- {{ $weatherData['hourly']['precipitation_probability'][$nextHourIndex] = 99 }} --}}
-        
-        {{-- Put illustrative picture according to the Precipitation Probability infromation of the API
+        {{-- Put illustrative picture according to the weathercode of the trail. Information of the API
         Values are on the documentation  --}}
-        @switch($weatherData['hourly']['precipitation_probability'][$nextHourIndex])
+        @switch($weatherData['daily']['weathercode'][0])
             @case(0)
                 <img src="\images\weather-icons\wi-day-sunny.svg" alt="sunny-icon" class="weather-icon">
                 @break
