@@ -33,8 +33,11 @@ class CarpoolController extends Controller
      {
          $jsonData = Storage::disk('public')->get('storage/app/public/lu.json');
          $data = json_decode($jsonData, true);
+         if (is_object($data)) {
+            $data = [$data];
          return $data;
      }
+    }
 
 
     // Create Form View
@@ -70,7 +73,7 @@ class CarpoolController extends Controller
         //==============================================================================================
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
         $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
-        $carpoolForm->distance=request('distance');       
+        $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
         //$dateTimeString = request('start_date').' '.request('time');
         // $carpoolForm->start_date=DateTime::createFromFormat('d/m/Y, H:i', $dateTimeString);
@@ -96,7 +99,7 @@ class CarpoolController extends Controller
             $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
             $carpoolUpdate->start_adventure_id=1;  //{{ $adventure->start_date }}                     
             $carpoolUpdate->end_adventure_id=1;  //{{ $adventure->end_date }}
-            $carpoolUpdate->distance=$request->input('distance');       
+            $carpoolUpdate->distance=1;   // BONUS FEATURE $request->input('distance');       
             $carpoolUpdate->start_date=$request->input('start_date');//.' '.request('time');
             $carpoolUpdate->max_seats=$request->input('max_seats');
             $carpoolUpdate->bike_capacity=$request->input('bike_capacity');
@@ -119,12 +122,9 @@ class CarpoolController extends Controller
         
             $carpool = Route::find($id);
             $user = Auth::user();
-        
             // Associate the user with the carpool
             $carpool->participants()->attach($user);
-        
             // Update the max_seat count for the joined user
-            $carpool->max_seat = $user->max_seat -1;
             $carpool->save();
         
             return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');

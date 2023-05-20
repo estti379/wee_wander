@@ -24,11 +24,20 @@
             <label for="start_location_latit">City Departure Latitude:</label>
             <input type="text" name="start_location_latit" value="{{ $element->start_location_latit }}">
         </div>
-
-        <div>
+<select name="start_location_long">
+    @if ($data)
+        @foreach ($data as $item)
+            <option value="{{ $item['lng'] }}">
+                City: {{ $item['city'] }}
+            </option>
+        @endforeach
+    @endif
+</select><br>
+                    {{-- BONUS FEATURE --}}
+        {{-- <div>
             <label for="distance">Distance:</label>
             <input type="text" name="distance" value="{{ $element->distance }}">
-        </div>
+        </div>--}}
         
         <div>
             <label for="end_location_long">Adventure Location:</label>

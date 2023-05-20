@@ -12,13 +12,14 @@
                             @foreach ($data as $item)
                                 <option value="{{ $item['lng'] }}">
                                     City: {{ $item['city'] }}
-                                    test
                                 </option>
                             @endforeach
                         @endif
                     </select><br>
-                    <label>Distance</label>
-                    <input type="text" name="distance" placeholder="km"><br>
+
+                    {{-- BONUS FEATURE --}}
+                    {{-- <label>Distance</label>
+                    <input type="text" name="distance" placeholder="km"><br> --}}
                     
                     <label>Adventure</label>
                     <select value="adventure">
