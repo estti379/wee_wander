@@ -24,8 +24,7 @@ class CarpoolController extends Controller
     public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('singleroad{id
-    }', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
+        return view('carpool.singleroad{id}', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
      }
 
      // Retrieve JSON FILE
@@ -45,7 +44,7 @@ class CarpoolController extends Controller
         $dataArray = $item->data;
         // Access the JSON data as an associative array
         }   
-        */
+            */
      }
     }
 //====================================================================================================================================
@@ -124,21 +123,27 @@ class CarpoolController extends Controller
         }
 //====================================================================================================================================
 
-        public function joinCarpool($id)
-        {
-            if (!Auth::check()) {
-                return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
-            }
-        
-            $carpool = Route::find($id);
-            $user = Auth::user();
-            // Associate the user with the carpool
-            $carpool->participants()->attach($user);
-            // Update the max_seat count for the joined user
-            $carpool->save();
-        
-            return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
-        }
+public function joinCarpool($id)
+{
+    if (!Auth::check()) {
+        return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
+    }
+
+    $carpool = Route::find($id);
+    $user = Auth::user();
+    
+    // Check if the user is already associated with the carpool
+    if (!$carpool->participants()->where('participant_id', $user->id)->exists()) {
+        // Associate the user with the carpool
+        $carpool->participants()->attach($user);
+    }
+    
+    // Update the max_seat count for the joined user
+    $carpool->save();
+
+    return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
+}
+
 
 //====================================================================================================================================
 

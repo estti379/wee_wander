@@ -53,11 +53,17 @@
             <label for="max_seats">Seats available:</label>
             <input type="number" name="max_seats" value="{{ $element->max_seats }}">
         </div>
-        
-        <div>
+
+        <label for="bike_capacity">Luggage allowed:</label>
+            <select name="bike_capacity">
+                <option value="1" {{ $element->luggage ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->luggage ? '' : 'selected' }}>No</option>
+            </select>
+        {{-- Bonus Feature --}}
+        {{-- <div>
             <label for="bike_capacity">Bike Rack available:</label>
             <input type="number" name="bike_capacity" value="{{ $element->bike_capacity }}">
-        </div>
+        </div> --}}
         
         <div>
             <label for="start_date">Date & Time:</label>
