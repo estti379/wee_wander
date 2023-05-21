@@ -117,7 +117,6 @@ class EventsController extends Controller
         $event = Event::find($id)
             ->update([
                 'title' => $request->input('eventTitle'),
-                'organizer_id'=> 1 //value 1 defined just to the store method work - this value needs to be changed after
         ]);
 
         foreach (Event::find($id)->adventures as $key => $adventure) {
