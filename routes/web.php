@@ -83,6 +83,9 @@ Route::put('/users/updateSensitive', [UserController::class, 'updateSensitive'])
 //User update bio
 Route::put('/users/updateBio', [UserController::class, 'updateBio']);
 
+//User update details
+Route::put('/users/updateDetails', [UserController::class, 'updateDetails']);
+
 // Show Register/Create Form
 Route::get('/register', [UserController::class, 'create']);
 

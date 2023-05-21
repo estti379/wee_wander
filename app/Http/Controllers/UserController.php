@@ -179,6 +179,22 @@ class UserController extends Controller
 
     }
 
+    // Update User Details
+    public function updateDetails(Request $request){
+    if(!Auth::check()){
+        return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
+    }
+
+    $user = USER::find(Auth::user()->id);
+    $user->update([
+        "car_owned" => $request["car_owned"],
+        "driver_license" => $request["driver_license"],
+    ]);
+
+    return redirect('/profile');
+
+    }
+
 
 
 

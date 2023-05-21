@@ -32,6 +32,9 @@
     @endif
     <hr>
     <p>Owns a car: {{$userDetails->car_owned}}</p>
-    <p>Has a driver license:{{$userDetails->driver_license}}</p>
+    <p>Has a driver license: {{$userDetails->driver_license}}</p>
+    @if ($isOwner)
+        <x-users.changeDetailsForm :userDetails="$userDetails"/>
+    @endif
     <hr>
 </x-layout>
