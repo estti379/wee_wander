@@ -37,14 +37,20 @@ class UserFactory extends Factory
             $driver_license = "hidden";
         }
 
+        $firstname = fake()->firstName();
+        $lastname = fake()->lastName();
+
+        $randomImageUrl = fake()->imageUrl(200, 200, $firstname." ".$lastname);
+        $URLsnippets = explode("+", $randomImageUrl);
+        $randomImageUrl = $URLsnippets[0]."+".$URLsnippets[1];
 
         return [
             'username' => fake()->userName(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => password_hash('password',  PASSWORD_DEFAULT),
             'email' => fake()->unique()->safeEmail(),
-            'firstname' => fake()->firstName(),
-            'lastname' => fake()->lastName(),
-            'picture' => fake()->imageUrl($width=200, $height=200),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'picture' => $randomImageUrl,
             'description' => fake()->text(100),
             'car_owned' => $car_owned,
             'driver_license' => $driver_license,
