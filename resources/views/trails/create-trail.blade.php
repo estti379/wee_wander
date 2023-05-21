@@ -2,7 +2,7 @@
 <x-layout :pageTitle=$pageTitle>
   <div class="create_event_container">
     {{-- Form to create a new user --}}
-    <form action="/events" method="POST">
+    <form action="/trails" method="POST">
       @csrf
       <span>Name of the trail: </span><input type="text" name="trailName"  value="{{old('trailName')}}"><br>
       <span>Distance: </span><input type="text" name="trailDistance"  value="{{old('trailDistance')}}"><br>

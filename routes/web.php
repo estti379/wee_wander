@@ -52,7 +52,7 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 // create trail
 Route::get('/create-trail', [TrailController::class, 'create']);
 // store trail
-Route::post('/events', [TrailController::class, 'store']);
+Route::post('/trails', [TrailController::class, 'store']);
 
 //=============================================================
 //Testing implementation of map
