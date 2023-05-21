@@ -24,7 +24,7 @@ class CarpoolController extends Controller
     public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
+        return view('singleroad{id}', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
      }
 
      // Retrieve JSON FILE
@@ -57,8 +57,6 @@ class CarpoolController extends Controller
         return redirect('/login')->with('message', 'You have to be logged in to edit the Carpool!');
     }
         $shareRoadDetails = Route::find($id);
-
-//====================================================================================================================================
     // Pass the share road details to the view
         return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
     }
@@ -72,7 +70,6 @@ class CarpoolController extends Controller
         $carpoolForm->start_location_latit=49;            // request('city');
         $carpoolForm->end_location_long=50;                   //request('end_location_long');
         $carpoolForm->end_location_latit=51;  
-
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
         $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
         $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
