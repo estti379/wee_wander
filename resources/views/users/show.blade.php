@@ -13,6 +13,9 @@
         <div>
             <p>First Name: {{$userDetails->firstname}}</p>
             <p>Last Name: {{$userDetails->lastname}}</p>
+            @if ($isOwner)
+                <x-users.changeNameForm :userDetails="$userDetails"/>
+            @endif
             <br>
             @if ($isOwner)
                 <h4>Information shown only to owner:</h4>

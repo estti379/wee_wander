@@ -126,6 +126,24 @@ class UserController extends Controller
 
     }
 
+        // Update User first and last Name
+        public function updateName(Request $request){
+            if(!Auth::check()){
+                return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
+            }
+    
+            $formFields = $request->validate([
+                'firstname' => ['required', 'min:2'],
+                'lastname' => ['required', 'min:2'],
+            ]);
+    
+            $user = USER::find(Auth::user()->id);
+            $user->update($formFields);
+    
+            return redirect('/profile');
+    
+        }
+
 
 
 
