@@ -77,6 +77,9 @@ Route::put('/users/updateImage', [UserController::class, 'updateImage']);
 //User update name
 Route::put('/users/updateName', [UserController::class, 'updateName']);
 
+//User update sensitive information
+Route::put('/users/updateSensitive', [UserController::class, 'updateSensitive']);
+
 // Show Register/Create Form
 Route::get('/register', [UserController::class, 'create']);
 

@@ -21,6 +21,7 @@
                 <h4>Information shown only to owner:</h4>
                 <p>Username: {{$userDetails->username}}</p>
                 <p>Email: {{$userDetails->email}}</p>
+                <x-users.changeSensitiveForm :userDetails="$userDetails"/>
             @endif           
         </div>
     </div>

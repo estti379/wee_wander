@@ -82,11 +82,11 @@ class UserController extends Controller
     // Create New User
     public function store(Request $request) {
         $formFields = $request->validate([
-            'username' => ['required', 'min:5', Rule::unique('users', 'email')],
+            'username' => ['required', 'min:5', Rule::unique('users', 'username')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'firstname' => ['required', 'min:2'],
             'lastname' => ['required', 'min:2'],
-            'password' => 'required|confirmed|min:6',
+            'password' => ['required','confirmed','min:6'],
         ]);
 
         // Hash Password
@@ -126,23 +126,44 @@ class UserController extends Controller
 
     }
 
-        // Update User first and last Name
-        public function updateName(Request $request){
-            if(!Auth::check()){
-                return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
-            }
-    
-            $formFields = $request->validate([
-                'firstname' => ['required', 'min:2'],
-                'lastname' => ['required', 'min:2'],
-            ]);
-    
-            $user = USER::find(Auth::user()->id);
-            $user->update($formFields);
-    
-            return redirect('/profile');
-    
+    // Update User first and last Name
+    public function updateName(Request $request){
+        if(!Auth::check()){
+            return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
         }
+
+        $formFields = $request->validate([
+            'firstname' => ['required', 'min:2'],
+            'lastname' => ['required', 'min:2'],
+        ]);
+
+        $user = USER::find(Auth::user()->id);
+        $user->update($formFields);
+
+        return redirect('/profile');
+
+    }
+    // Update User first and last Name
+    public function updateSensitive(Request $request){
+    if(!Auth::check()){
+        return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
+    }
+
+    $user = USER::find(Auth::user()->id);
+
+    $formFields = $request->validate([
+        'username' => ['required', 'min:5', Rule::unique('users', 'username')->ignore($user->id, 'id')],
+        'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id, 'id')],
+        'password' => ['required','confirmed','min:6'],
+
+    ]);
+
+    
+    $user->update($formFields);
+
+    return redirect('/profile');
+
+}
 
 
 
