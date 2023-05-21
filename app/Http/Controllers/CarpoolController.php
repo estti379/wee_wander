@@ -24,7 +24,7 @@ class CarpoolController extends Controller
     public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('carpool.singleroad{id}', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
+        return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-detail']);
      }
 
      // Retrieve JSON FILE

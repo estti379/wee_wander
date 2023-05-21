@@ -113,7 +113,7 @@ Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
 Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
 // Show single carpool
-Route::get('/carpool/singleroad', [CarpoolController::class, 'show']);
+Route::get('/carpool{id}', [CarpoolController::class, 'show']);
 
 // Testing implementation of map
 Route::get('/testing', function () {
