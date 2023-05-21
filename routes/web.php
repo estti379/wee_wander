@@ -71,6 +71,9 @@ Route::post('/users', [UserController::class, 'store']);
 //User authentication logic
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
+//User update image
+Route::put('/users/updateImage', [UserController::class, 'updateImage']);
+
 // Show Register/Create Form
 Route::get('/register', [UserController::class, 'create']);
 

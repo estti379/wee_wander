@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{$pageTitle}}</title>
   
+  {{-- css styles will be pushed into here --}}
+  @stack('style')
+
   <link rel="stylesheet" href="/css/event_card_style.css">
   {{-- BOOTSTRAP CDN  --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
@@ -35,6 +38,9 @@
   <footer>
     WeeWander Footer &copy;
   </footer>
+
+    {{-- scripts will be pushed into here --}}
+    @stack('scripts')
 </body>
 </html>
 

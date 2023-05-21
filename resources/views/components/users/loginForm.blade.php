@@ -16,7 +16,7 @@
 
     <p>
         Don't have an account?
-        <a href="/register" class="text-laravel">Register</a>
+        <a href="/register">Register</a>
     </p>
 
     <input type="submit" value="Sign In">

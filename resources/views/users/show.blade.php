@@ -4,7 +4,11 @@
     
     <div>
         <div>
-           <img src={{$userDetails->picture}}>
+            <img src={{$userDetails->picture}}>
+            <br>
+            @if ($isOwner)
+                <x-users.changeImageForm :userDetails="$userDetails"/>
+            @endif 
         </div>
         <div>
             <p>First Name: {{$userDetails->firstname}}</p>

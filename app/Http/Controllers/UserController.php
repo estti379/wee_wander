@@ -109,6 +109,23 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User created and logged in');
     }
 
+    // Update User Image
+    public function updateImage(Request $request){
+        if(!Auth::check()){
+            return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
+        }
+
+        $formFields = $request->validate([
+            'picture' => 'required',
+        ]);
+
+        $user = USER::find(Auth::user()->id);
+        $user->update($formFields);
+
+        return redirect('/profile');
+
+    }
+
 
 
 
