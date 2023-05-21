@@ -21,11 +21,17 @@ class CarpoolController extends Controller
     }
     
      //Show single carpool
-    public function show($id)
+   /* public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
         return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-detail']);
-     }
+     }*/
+     public function show($id)
+    {
+    $carpool = Route::find($id);
+    return view('carpool.singleroad', ['carpool' => $carpool,'pageTitle'=>'WeeWander carpool-detail']);
+    }
+
 
      // Retrieve JSON FILE
      public function retrieveJson()
