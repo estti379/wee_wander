@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -57,6 +58,57 @@ class UserController extends Controller
         ]);
     }
 
+    // Show user detail page
+    public function profile() {
+        if( !Auth::check() ){
+            return redirect('/login')->with('message', 'You have to be logged in to access this page!');
+        }
+
+        $userDetails = Auth::user();
+
+        $pageOwnerName = $userDetails->firstname." ".$userDetails->lastname;
+        return view('users.show', [
+            "userDetails" => $userDetails,
+            "isOwner" => true,
+            "pageTitle"=> "WeeWander - ".$pageOwnerName." page",
+        ]);
+    }
+
+    // Show Register/Create Form
+    public function create() {
+        return view('users.register', ["pageTitle"=> "WeeWander - Register"]);
+    }
+
+    // Create New User
+    public function store(Request $request) {
+        $formFields = $request->validate([
+            'username' => ['required', 'min:5', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'firstname' => ['required', 'min:2'],
+            'lastname' => ['required', 'min:2'],
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        // Hash Password
+        $formFields['password'] = password_hash($formFields['password'],  PASSWORD_DEFAULT);
+
+        //Populate mising columns
+        $randomImageUrl = fake()->imageUrl(200, 200, $formFields['firstname']." ".$formFields['lastname']);
+        $URLsnippets = explode("+", $randomImageUrl);
+        $formFields['picture'] = $URLsnippets[0]."+".$URLsnippets[1];
+        $formFields['description'] = "";
+        $formFields['car_owned'] = "hidden";
+        $formFields['driver_license'] = "hidden";
+
+        // Create User
+        $user = User::create($formFields);
+
+        // Login
+        Auth::login($user);
+
+        return redirect('/')->with('message', 'User created and logged in');
+    }
+
 
 
 
@@ -65,7 +117,7 @@ class UserController extends Controller
      * Helper functions!
      */
 
-     private function checkIfPageOwner($id) {
+     private function checkIfPageOwner($id):bool {
         if( !Auth::check() ){
             //No user is logged in
             $isOwner = false;

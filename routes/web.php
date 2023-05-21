@@ -65,8 +65,17 @@ Route::get('/login', [UserController::class, 'login']);
 //Log User Out
 Route::match(["get","post"],'/logout', [UserController::class, 'logout']);
 
+// Create New User
+Route::post('/users', [UserController::class, 'store']);
+
 //User authentication logic
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// Show Register/Create Form
+Route::get('/register', [UserController::class, 'create']);
+
+// Show logged in user profile
+Route::get('/profile', [UserController::class, 'profile']);
 
 //User details page
 Route::get('/users/{id}', [UserController::class, 'show']);
