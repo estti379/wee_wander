@@ -24,7 +24,8 @@ class CarpoolController extends Controller
     public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('singleroad{id}', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
+        return view('singleroad{id
+    }', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
      }
 
      // Retrieve JSON FILE
@@ -35,6 +36,16 @@ class CarpoolController extends Controller
          if (is_object($data)) {
             $data = [$data];
          return $data;
+
+
+         /*$jsonData = \App\Models\JsonData::all();
+
+        // Loop through the data and access the 'data' attribute
+        foreach ($jsonData as $item) {
+        $dataArray = $item->data;
+        // Access the JSON data as an associative array
+        }   
+        */
      }
     }
 //====================================================================================================================================
