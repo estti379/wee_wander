@@ -27,7 +27,9 @@
     </div>
     <hr>
     <h4>Bio:</h4>
-    <p>{{$userDetails->description}}</p>
+    @if ($isOwner)
+        <x-users.changeBioForm :userDetails="$userDetails"/>
+    @endif
     <hr>
     <p>Owns a car: {{$userDetails->car_owned}}</p>
     <p>Has a driver license:{{$userDetails->driver_license}}</p>

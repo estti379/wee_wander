@@ -80,6 +80,9 @@ Route::put('/users/updateName', [UserController::class, 'updateName']);
 //User update sensitive information
 Route::put('/users/updateSensitive', [UserController::class, 'updateSensitive']);
 
+//User update bio
+Route::put('/users/updateBio', [UserController::class, 'updateBio']);
+
 // Show Register/Create Form
 Route::get('/register', [UserController::class, 'create']);
 

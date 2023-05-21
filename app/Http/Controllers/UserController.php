@@ -143,7 +143,8 @@ class UserController extends Controller
         return redirect('/profile');
 
     }
-    // Update User first and last Name
+
+    // Update User sensitive information
     public function updateSensitive(Request $request){
     if(!Auth::check()){
         return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
@@ -163,7 +164,20 @@ class UserController extends Controller
 
     return redirect('/profile');
 
-}
+    }
+
+    // Update User Bio
+    public function updateBio(Request $request){
+    if(!Auth::check()){
+        return redirect('/login')->with('message', 'You need to be logged in to have access to this page!');
+    }
+
+    $user = USER::find(Auth::user()->id);
+    $user->update([ "description" => $request["description"] ]);
+
+    return redirect('/profile');
+
+    }
 
 
 
