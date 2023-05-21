@@ -2,9 +2,10 @@
 
 use App\Models\Route as Carpool;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrailController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CarpoolController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,13 @@ Route::get('/events/{id}/trail/{trailId}', [EventsController::class, 'getTrail']
 
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+//=============================================================
+//TRAILS
+
+// create trail
+Route::get('/create-trail', [TrailController::class, 'create']);
+// store trail
+Route::post('/events', [TrailController::class, 'store']);
 
 //=============================================================
 //Testing implementation of map
