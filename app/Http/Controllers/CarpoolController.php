@@ -17,7 +17,6 @@ class CarpoolController extends Controller
     public function index()
     {
         $shareRoadDetails=Route::all();
-
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails,'pageTitle'=>'WeeWander carpool-list']);
     }
     
@@ -45,9 +44,9 @@ class CarpoolController extends Controller
         if (!Auth::check()) {
             return redirect('/login')->with('message', 'You have to be logged in to create a Carpool!');
         }
-        $data = $this->retrieveJson();
+        //$data = $this->retrieveJson();
         $adventures = Adventure::all();
-        return view('carpool.create', ['adventures' => $adventures,'data' => $data,'pageTitle' => 'WeeWander carpool-create']);
+        return view('carpool.create', ['adventures' => $adventures,'pageTitle' => 'WeeWander carpool-create']); //'data' => $data
     }
 
 //====================================================================================================================================
@@ -87,7 +86,7 @@ class CarpoolController extends Controller
         
         // Save the data to de DB
         $carpoolForm->save();
-        return redirect('/')->with('Carpool created successfully');
+        return redirect('/')->with('message','Carpool created successfully');
         // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
     }
 
@@ -112,7 +111,7 @@ class CarpoolController extends Controller
             
             // Save the data to de DB
             $carpoolUpdate->save();
-            return redirect('/carpool')->with('Carpool edited successfully');
+            return redirect('/carpool')->with('message','Carpool edited successfully');
             // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
         }
 //====================================================================================================================================

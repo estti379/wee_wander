@@ -75,11 +75,11 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 //=============================================================
                     // ROUTES(CARPOOL) ROUTE
-// Route Show all carpool
+/*// Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
 // Create new CarPool 
-Route::get('/carpool/create',[CarpoolController::class, 'create']);
+Route::post('/carpool/create',[CarpoolController::class, 'create']);
 
 //Edit Carpool
 Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
@@ -88,13 +88,34 @@ Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 Route::post('/carpool/store', [CarpoolController::class, 'store']);
 
 // Updating an Carpool
-//Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
-Route::match(['get', 'put'], '/carpool/{id}', [CarpoolController::class, 'update']);
-
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
 // Join the Carpool
 Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
 // Route Show single carpool
-Route::get('/carpool/singleroad',[CarpoolController::class, 'show']);
+Route::get('/carpool/singleroad',[CarpoolController::class, 'show']);*/
+
+//==================================================================
 
 
+// Show all carpool
+Route::get('/carpool', [CarpoolController::class, 'index']);
+
+// Create new CarPool
+Route::get('/carpool/create', [CarpoolController::class, 'create']);
+Route::post('/carpool/create', [CarpoolController::class, 'store']);
+
+// Edit Carpool
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
+
+// Show single carpool
+Route::get('/carpool/singleroad/{id}', [CarpoolController::class, 'show']);
+
+// Testing implementation of map
+Route::get('/testing', function () {
+    return view('testing.testing');
+});

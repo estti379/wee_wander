@@ -8,13 +8,17 @@
                     @csrf 
                     <label>City Departure</label>
                     <select name="start_location_long">
-                        @if ($data)
-                            @foreach ($data as $item)
-                                <option value="{{ $item['lng'] }}">
+                        {{--@if ($data)  --}}                {{--  DISPLAYS NO ARRAY  --}}
+                            {{--@foreach ($data as $item)
+                                <option value="city">
                                     City: {{ $item['city'] }}
                                 </option>
                             @endforeach
-                        @endif
+                        @endif --}}
+                        <option value="city">
+                        --
+                        </option>
+
                     </select><br>
 
                     {{-- BONUS FEATURE --}}
@@ -48,8 +52,8 @@
                     <input type="radio" name="bike_capacity" value="yes">
                     <input type="radio" name="bike_capacity" value="no"><br>
 
-                    {{--  BONUS F.T 
-                        <select name="bike_capacity">
+                    {{--  BONUS F.T --}}
+                    {{-- <select name="bike_capacity">
                         <option value="false">0</option> 
                         
                         <option value="1">1</option> 
