@@ -57,6 +57,12 @@
   
   <footer>
     WeeWander Footer &copy;
+    <ul>
+      <li><a href="">icon</li>
+        <li><a href="">icon</li>
+          <li><a href="">icon</li>
+            <li><a href="">icon</li>
+    </ul>
   </footer>
 
     {{-- scripts will be pushed into here --}}
