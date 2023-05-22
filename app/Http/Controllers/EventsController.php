@@ -7,21 +7,29 @@ use App\Models\Trail;
 use App\Models\Adventure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class EventsController extends Controller
 {
     //This method select all events from the DB
     public function eventsCard(Request $request){
         $pageTitle = 'WeeWander - Events List Page';
+
+        //querry builder
+        $query = Event::query();
         if ($request->has('organizer')) {
-           $query = Event::where('organizer_id', $request->input('organizer'));
-        } else {
-            $query = Event::all();
+           $query->where('organizer_id', $request->input('organizer'));
+        }
+
+        if ($request->has('upcoming') && $request->has('upcoming') == true) {
+            $query->whereHas('adventures', function (Builder $query) {
+                $query->where('start_date', '>', new DateTime("now"));
+            });
         }
         
-        $event = $query->get();
         //Select the Events. Paginate is for pagination.
-        $event = $event->paginate(4);
+        $event = $query->paginate(4);
+        
         
         return view('events.events-list', [
             'events' => $event,
