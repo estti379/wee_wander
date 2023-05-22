@@ -21,6 +21,14 @@ class TrailController extends Controller
 
     // method to store trail informations in the db
     public function store(Request $request){
+        $formFields = $request->validate([
+            'trailName' => 'required',
+            'trailDistance' => 'required|numeric',
+            'location_long' => 'required',
+            'location_latit' => 'required',
+        ]);
+
+
 
         // Create a new trail instance
         $trail = Trail::create([
@@ -29,6 +37,7 @@ class TrailController extends Controller
             'location_long' => $request->input('location_long'),
             'location_latit' => $request->input('location_latit')
         ]);
+
         // Redirect to a success page or perform any other necessary actions
         return redirect('/events');
         }

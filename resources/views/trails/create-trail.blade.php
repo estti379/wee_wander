@@ -15,7 +15,22 @@
     <span>Choose a location: </span>
     <div id="map" style="height: 400px;">
     </div>
-    
+    {{-- display error --}}
+      @error('trailName')
+        <p>{{$message}}</p>
+      @enderror
+      @error('trailDistance')
+        <p>{{$message}}</p>
+      @enderror
+      @php
+          $errorMap = 'You need to chose a starting position on map';
+      @endphp
+      @error('location_latit')
+        <p>{{$errorMap}}</p>
+      @enderror
+      @error('location_long')
+        <p>{{$errorMap}}</p>
+      @enderror
   </div>
   {{-- Leaflet.js LIVRARY TO MAP TO DISPLAY THE MAP--}}
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
