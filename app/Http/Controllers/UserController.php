@@ -159,7 +159,7 @@ class UserController extends Controller
 
     ]);
 
-    
+    $formFields['password']=password_hash($formFields['password'],  PASSWORD_DEFAULT);
     $user->update($formFields);
 
     return redirect('/profile');

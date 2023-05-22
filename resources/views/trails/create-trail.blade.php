@@ -1,9 +1,9 @@
 {{-- get script --}}
 @push('scripts')
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-{{-- Leaflet.js script to get coordenates--}}
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 {{-- Leaflet.js LIVRARY TO MAP TO DISPLAY THE MAP--}}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+{{-- Leaflet.js script to get coordenates--}}
 <script src="{{ URL::asset('js/maps/leaflet-library.js') }}"></script>
 @endpush
 
