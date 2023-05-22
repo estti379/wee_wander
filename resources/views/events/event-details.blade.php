@@ -13,8 +13,10 @@
             <h2>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</h2>
             <p>Starting Time: {{ $adventure->start_date }}</p>
           </div>
+          <div class="col-md-8">
             <div class="card-body">
             <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long"/>
+          </div>
           </div>
       @endforeach
     </ul>
