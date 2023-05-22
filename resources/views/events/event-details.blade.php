@@ -6,11 +6,11 @@
     <div class="card-body">
     <ul>
       <p >Event Id : {{ $event->id}}</p>
-      <h1 class="card-title">{{ $event->title}}</h1> {{-- Event Title --}}
+      <h2 class="card-title">{{ $event->title}}</h2> {{-- Event Title --}}
       @foreach($event->adventures as $adventure)
 
-            <h2>Adventure ID - {{ $adventure->id }}</h2>
-            <h2>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</h2>
+            <p>Adventure ID - {{ $adventure->id }}</p>
+            <p>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</p>
             <p>Starting Time: {{ $adventure->start_date }}</p>
           </div>
           <div class="col-md-8">
@@ -25,6 +25,8 @@
     <p>HERE GOES CARPOOL SOLUTIONS FOR THIS TRIAL</p><br>
     <a href="/carpool/create" class="btn btn-primary">Create a carpool!</a>     
     <a href="/events/{{$event->id}}/trail/{{$adventure->trail->id}}" class="btn btn-primary">Trail Details</a>
+    <a href="/events"  class="btn btn-primary">Back</a>
+    
   </div>
 </div>
   </div>

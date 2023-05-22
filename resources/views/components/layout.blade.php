@@ -43,10 +43,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/carpool/create">Carpool Create</a>
           </li>
-          <div class="nav-item">
-            <x-nav-login/>
-          </div>
         </ul>
+        <div class="nav-item">
+          <x-nav-login/>
+        </div>
       </div>
     </div>
   </nav>
