@@ -2,9 +2,10 @@
 
 use App\Models\Route as Carpool;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrailController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CarpoolController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,13 @@ Route::get('/events/{id}/trail/{trailId}', [EventsController::class, 'getTrail']
 
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+//=============================================================
+//TRAILS
+
+// create trail
+Route::get('/create-trail', [TrailController::class, 'create']);
+// store trail
+Route::post('/trails', [TrailController::class, 'store']);
 
 //=============================================================
 //Testing implementation of map
@@ -102,26 +110,49 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 //=============================================================
                     // ROUTES(CARPOOL) ROUTE
-// Route Show all carpool
+/*// Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
 // Create new CarPool 
-Route::get('/carpool/create',[CarpoolController::class, 'create']);
+Route::post('/carpool/create',[CarpoolController::class, 'create']);
 
 //Edit Carpool
-Route::get('/carpool/{id}/edit', [CarpoolController::class, 'edit']);
-
-//Updating an event
-Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 
 // Store CarPool 
-Route::post('/carpool', [CarpoolController::class, 'store']);
+Route::post('/carpool/store', [CarpoolController::class, 'store']);
+
+// Updating an Carpool
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
 // Route Show single carpool
-Route::get('/carpool/{id}', function ($id) {
-    return view('carpool.lists', [ 
-        'carpool'=>Carpool::find($id),
-    ]);
+Route::get('/carpool/singleroad',[CarpoolController::class, 'show']);*/
+
+//==================================================================
+
+
+// Show all carpool
+Route::get('/carpool', [CarpoolController::class, 'index']);
+
+// Create new CarPool
+Route::get('/carpool/create', [CarpoolController::class, 'create']);
+Route::post('/carpool/create', [CarpoolController::class, 'store']);
+
+// Edit Carpool
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
+
+// Show single carpool
+//Route::get('/carpool{id}', [CarpoolController::class, 'show']);
+Route::get('/carpool/{id}', [CarpoolController::class, 'show']);
+
+
+// Testing implementation of map
+Route::get('/testing', function () {
+    return view('testing.testing');
 });
-
-
