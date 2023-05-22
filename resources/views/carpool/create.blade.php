@@ -1,4 +1,11 @@
-<link rel="stylesheet" href="\css\carpool_card_style.css"/>
+@push('style')
+    <link rel="stylesheet" href="\css\carpool_card_style.css"/>
+@endpush
+@push('scripts')
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+@endpush
+
+
             {{-- Create Carpool From --}}
             <x-layout :pageTitle=$pageTitle>
                 <div class="createCarpool">
