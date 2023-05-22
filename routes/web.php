@@ -131,7 +131,9 @@ Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 Route::get('/carpool/singleroad',[CarpoolController::class, 'show']);*/
 
 //==================================================================
-
+/*
+ * Carpool management
+ */
 
 // Show all carpool
 Route::get('/carpool', [CarpoolController::class, 'index']);

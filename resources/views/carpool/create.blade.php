@@ -2,7 +2,13 @@
     <link rel="stylesheet" href="\css\carpool_card_style.css"/>
 @endpush
 @push('scripts')
+{{-- Import leaflet library --}}
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+{{-- JS script for markers on map  --}}
+  <script src="{{ URL::asset('js/maps/leaflet-library-carpool.js') }}"></script>
+{{-- import leaflet library for route --}}
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+
 @endpush
 
 
@@ -11,23 +17,8 @@
                 <div class="createCarpool">
                 <h2>Create Carpool</h2>
                 
-                <form method="POST" action="/carpool" enctype="multipart/form-data">  
+                <form method="POST" action="/carpool/create" enctype="multipart/form-data">  
                     @csrf 
-                    <label>City Departure</label>
-                    <select name="start_location_long">
-                        {{--@if ($data)  --}}                {{--  DISPLAYS NO ARRAY  --}}
-                            {{--@foreach ($data as $item)
-                                <option value="city">
-                                    City: {{ $item['city'] }}
-                                </option>
-                            @endforeach
-                        @endif --}}
-                        <option value="city">
-                        --
-                        </option>
-
-                    </select><br>
-
                     {{-- BONUS FEATURE --}}
                     {{-- <label>Distance</label>
                     <input type="text" name="distance" placeholder="km"><br> --}}
@@ -84,8 +75,17 @@
 
                     <label>Asked price</label>
                     <input type="text" name="price" placeholder="0€"><br>
+                    {{-- start location of carpool --}}
+                    <input type="hidden" name="start_location_latit" id="start_location_latit" value="{{old('start_location_latit')}}">
+                    <input type="hidden" name="start_location_long" id="start_location_long" value="{{old('start_location_long')}}">
+                    {{-- end location of carpool --}}
+                    <input type="hidden" name="end_location_latit" id="end_location_latit" value="{{old('end_location_latit')}}">
+                    <input type="hidden" name="end_location_long" id="end_location_long" value="{{old('end_location_long')}}">
                     {{-- Submit carpool --}}
                     <button type="submit">Create Carpool</button>
                 </form>
+                </div>
+                <span>Choose a location: </span>
+                <div id="map" style="height: 400px;">
                 </div>
             </x-layout>

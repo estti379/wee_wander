@@ -1,8 +1,6 @@
 @push('scripts')
-  
 <script src="{{ URL::asset('js/events/add-trail-button.js') }}"></script>
 @endpush
-
 
 <x-layout :pageTitle=$pageTitle>
     <div class="create_event_container">
