@@ -21,18 +21,18 @@ class EventsController extends Controller
            $query->where('organizer_id', $request->input('organizer'));
         }
 
-        if ($request->has('upcoming') && $request->has('upcoming') == true) {
+        if ($request->has('upcoming') && $request->input('upcoming') == "true") {
             $query->whereHas('adventures', function (Builder $query) {
                 $query->where('start_date', '>', new DateTime("now"));
             });
         }
         
         //Select the Events. Paginate is for pagination.
-        $event = $query->paginate(4);
+        $events = $query->paginate(4);
         
-        
+
         return view('events.events-list', [
-            'events' => $event,
+            'events' => $events,
             'pageTitle' => $pageTitle,
         ]);
     }

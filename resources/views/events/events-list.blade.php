@@ -8,7 +8,7 @@
       <h5 class="card-header">{{ $event->title}}</h5>
       <div class="card-body">
         <p class="card-text">Creator : {{ $event->organizer_id}}</p>
-        @foreach($event->adventures as $adventure)
+        @foreach($event->adventures->sortBy('start_date') as $adventure)
           <p class="card-text">Trail title : {{ $adventure->trail->name }}</p>
           <p class="card-text">Starting Time: {{ $adventure->start_date }}</p>
           <p class="card-text">Due Time: {{ $adventure->due_date }}</p>
@@ -30,6 +30,6 @@
      
     @endforeach
     {{-- For pagination --}}
-    {{ $events->links() }} 
+    {{ $events->withQueryString()->links() }} 
   
 </x-layout>
