@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href=" ">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/events"> Events list page</a>
@@ -54,8 +54,6 @@
   {{-- This is a alpha version. Just the skeleton --}}
   <main>
     {{ $slot }}
-    last created Car pool:
-    @yield('last_carpool')
 
   </main>
   
