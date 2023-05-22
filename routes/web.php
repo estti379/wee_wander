@@ -115,7 +115,7 @@ Route::get('/carpool', [CarpoolController::class, 'index']);
 
 // Create new CarPool
 Route::get('/carpool/create', [CarpoolController::class, 'create']);
-Route::post('/carpool', [CarpoolController::class, 'store']);
+Route::post('/carpool/create', [CarpoolController::class, 'store']);
 
 // Edit Carpool
 Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);

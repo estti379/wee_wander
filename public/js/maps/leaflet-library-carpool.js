@@ -1,4 +1,5 @@
 var map = L.map("map").setView([49.6116, 6.13], 13);
+var routingControl;
 
 var startPointMarker, endPointMarker;
 
@@ -48,10 +49,15 @@ map.on("click", function (event) {
         document.getElementById("start_location_latit").value = latitude;
         document.getElementById("start_location_long").value = longitude;
 
-        startPointMarker = L.marker([latitude, longitude], { icon: blueIcon })
+        startPointMarker = L.marker([latitude, longitude], {
+            icon: blueIcon,
+            draggable: false,
+        })
             .addTo(map)
             .bindPopup(popUpMessage) // Bind a popup
             .openPopup(); // Open the popup immediately
+
+        startPointMarker.dragging.disable();
 
         startPointMarker.on("click", function (event) {
             map.removeLayer(event.target);
@@ -69,17 +75,42 @@ map.on("click", function (event) {
         document.getElementById("end_location_latit").value = latitude;
         document.getElementById("end_location_long").value = longitude;
 
-        endPointMarker = L.marker([latitude, longitude], { icon: redIcon })
+        endPointMarker = L.marker([latitude, longitude], {
+            icon: redIcon,
+            draggable: false,
+        })
             .addTo(map)
             .bindPopup(popUpMessage) // Bind a popup
             .openPopup(); // Open the popup immediately
-
+        startPointMarker.dragging.disable();
         endPointMarker.on("click", function (event) {
             map.removeLayer(event.target);
             endPointMarker = null;
             document.getElementById("end_location_latit").value = "";
             document.getElementById("end_location_long").value = "";
         });
+
+        var waypoints = [
+            L.latLng(
+                startPointMarker.getLatLng().lat,
+                startPointMarker.getLatLng().lng
+            ),
+            L.latLng(
+                endPointMarker.getLatLng().lat,
+                endPointMarker.getLatLng().lng
+            ),
+        ];
+
+        if (routingControl) {
+            map.removeControl(routingControl);
+        }
+
+        routingControl = L.Routing.control({
+            waypoints: waypoints,
+            router: L.Routing.mapbox(
+                "pk.eyJ1IjoibXVyaWxvY29kZXIiLCJhIjoiY2xod2VrcHhlMGowODNncndrYTE2cjJqdCJ9.xHZa4qOpteQqnCYBhVJE0g"
+            ),
+        }).addTo(map);
     } else {
         L.popup()
             .setLatLng(event.latlng)
