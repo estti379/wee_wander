@@ -92,7 +92,7 @@ class CarpoolController extends Controller
         $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
         $carpoolForm->max_seats=request('max_seats');
-        $carpoolForm->bike_capacity=request('bike_capacity');
+        $carpoolForm->bike_capacity=request('bike_capacity')? 1 : 0;
         $carpoolForm->pets_allowed = request('pets_allowed') ? 1 : 0;
         $carpoolForm->luggage = request('luggage') ? 1 : 0;
         $carpoolForm->smokers_allowed = request('smokers_allowed') ? 1 : 0;
