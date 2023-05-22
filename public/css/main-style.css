@@ -7,3 +7,10 @@ border: 0;
 #body{
     background-image: linear-gradient(#177980, #0ebc89);
 }   
+
+.btn-primary {
+--bs-btn-bg: #177980!important;
+--bs-btn-border-color:#177980!important;
+--bs-btn-hover-bg: #0ebc89!important;
+--bs-btn-hover-border-color:#0ebc89 !important;
+}
