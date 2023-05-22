@@ -16,24 +16,26 @@ class CarpoolController extends Controller
     //Get and Show all carpool
     public function index()
     {
-        
         $shareRoadDetails=Route::all();
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails,'pageTitle'=>'WeeWander carpool-list']);
     }
-    
-     //Show single carpool
-   /* public function show($id)
-     {        
-        $shareroad_card=Route ::find($id); 
-        return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-detail']);
-     }*/
+
+    // Show single road detail
      public function show($id)
     {
     $carpool = Route::find($id);
     return view('carpool.singleroad', ['carpool' => $carpool,'pageTitle'=>'WeeWander carpool-detail']);
     }
-
-
+/*====================================================================*/
+    //This method select all events from the DB
+    /*public function carpoolCard(){
+       // $pageTitle = 'carpool-list ';
+        //Select the Events. Paginate is for pagination.
+        $carpoolPages= Route::all();
+        dd($carpoolPages);
+        return view('carpool.lists', ['carpool' => $carpoolPages]);
+    }*/
+/*====================================================================*/
      // Retrieve JSON FILE
      public function retrieveJson()
      {

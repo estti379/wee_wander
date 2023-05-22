@@ -12,7 +12,8 @@
                 <li><x-shareroad_card :element="$element"/></li>
             @endforeach
         @endif
-    
+       {{-- For pagination --}}
+   {{ $carpoolPages->links()}} 
 </x-layout>
 
 
