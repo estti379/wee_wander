@@ -18,10 +18,10 @@ class AdventureParticipantsFactory extends Factory
     public function definition(): array
     {
         $done = false;
-
+        $i = 0;
         do{
-            $adventure_id = rand(1, 2);
-            $participant_id = rand(1, 2);
+            $adventure_id = rand(1, 10);
+            $participant_id = rand(1, 10);
             $adventure = Adventure::find($adventure_id);
             if( isSet($adventure) ){
                 $participantList = Adventure::find($adventure_id)->participants->where("id", $participant_id);
@@ -31,9 +31,10 @@ class AdventureParticipantsFactory extends Factory
 
             
 
-            if( count($participantList) == 0 ){
+            if( count($participantList) == 0 ||  $i == 100 ){
                 $done = true;   
             }
+            $i++;
         } while(!$done);
         return [
             'adventure_id' => $adventure_id,

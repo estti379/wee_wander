@@ -19,7 +19,7 @@ class RouteParticipantsFactory extends Factory
     {
         
         $done = false;
-
+        $i = 0;
         do{
             $route_id = rand(1, 10);
             $participant_id = rand(1, 10);
@@ -32,9 +32,10 @@ class RouteParticipantsFactory extends Factory
 
             
 
-            if( count($participantList) == 0 ){
+            if( count($participantList) == 0 ||  $i == 100 ){
                 $done = true;   
             }
+            $i++;
         } while(!$done);
 
         return [

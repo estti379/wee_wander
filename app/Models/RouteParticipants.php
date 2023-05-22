@@ -14,4 +14,11 @@ class RouteParticipants extends Pivot
         'route_id',
         'participant_id',
     ];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'route_participants';
 }

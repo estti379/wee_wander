@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         Trail::factory(10)->create();
         Adventure::factory(10)->create();
         Route::factory(10)->create();
-        for ($i=0; $i < 4; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
             RouteParticipants::factory(1)->create();
         }
-        for ($i=0; $i < 4; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
             AdventureParticipants::factory(1)->create();
         }
         
