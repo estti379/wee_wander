@@ -8,12 +8,22 @@
                     @csrf 
                     <label>City Departure</label>
                     <select name="start_location_long">
-                        <option value="city">-
-                            {{-- Foreach city loop inside of this row --}}
-                        </option>  
+                        {{--@if ($data)  --}}                {{--  DISPLAYS NO ARRAY  --}}
+                            {{--@foreach ($data as $item)
+                                <option value="city">
+                                    City: {{ $item['city'] }}
+                                </option>
+                            @endforeach
+                        @endif --}}
+                        <option value="city">
+                        --
+                        </option>
+
                     </select><br>
-                    <label>Distance</label>
-                    <input type="text" name="distance" placeholder="km"><br>
+
+                    {{-- BONUS FEATURE --}}
+                    {{-- <label>Distance</label>
+                    <input type="text" name="distance" placeholder="km"><br> --}}
                     
                     <label>Adventure</label>
                     <select value="adventure">
@@ -39,12 +49,16 @@
                     </select><br>
             
                     <label>Bike Rack available</label>
-                    <select name="bike_capacity">
+                    <input type="radio" name="bike_capacity" value="yes">
+                    <input type="radio" name="bike_capacity" value="no"><br>
+
+                    {{--  BONUS F.T --}}
+                    {{-- <select name="bike_capacity">
                         <option value="false">0</option> 
                         <option value="1">1</option> 
                         <option value="2">2</option> 
                         <option value="3">3</option> 
-                    </select><br>
+                    </select><br>--}}
             
                     <label>Time</label>
                     <input type="Time" name="time" placeholder="Time"><br>

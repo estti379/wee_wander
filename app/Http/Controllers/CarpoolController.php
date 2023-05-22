@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Route;
 use App\Models\Adventure;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CarpoolController extends Controller
 
@@ -16,26 +17,55 @@ class CarpoolController extends Controller
     public function index()
     {
         $shareRoadDetails=Route::all();
-
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails,'pageTitle'=>'WeeWander carpool-list']);
     }
     
      //Show single carpool
-     public function show($id)
+   /* public function show($id)
      {        
         $shareroad_card=Route ::find($id); 
-        return view('carpool.single-road', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-list']);
-     }
+        return view('carpool.singleroad', ['carpool'=>$shareroad_card,'pageTitle'=>'WeeWander carpool-detail']);
+     }*/
+     public function show($id)
+    {
+    $carpool = Route::find($id);
+    return view('carpool.singleroad', ['carpool' => $carpool,'pageTitle'=>'WeeWander carpool-detail']);
+    }
 
-    // Create Form View
+
+     // Retrieve JSON FILE
+     public function retrieveJson()
+     {
+         $jsonData = Storage::disk('public')->get('storage/app/public/lu.json');
+         $data = json_decode($jsonData, true);
+         if (is_object($data)) {
+            $data = [$data];
+         return $data;
+
+
+         /*$jsonData = \App\Models\JsonData::all();
+
+        // Loop through the data and access the 'data' attribute
+        foreach ($jsonData as $item) {
+        $dataArray = $item->data;
+        // Access the JSON data as an associative array
+        }   
+            */
+     }
+    }
+//====================================================================================================================================
+     // Create Form View
     public function create()
     {
         if (!Auth::check()) {
             return redirect('/login')->with('message', 'You have to be logged in to create a Carpool!');
         }
+        //$data = $this->retrieveJson();
         $adventures = Adventure::all();
-        return view('carpool.create', ['adventures'=> $adventures,'pageTitle'=>'WeeWander carpool-create']);
+        return view('carpool.create', ['adventures' => $adventures,'pageTitle' => 'WeeWander carpool-create']); //'data' => $data
     }
+
+//====================================================================================================================================
     // Edit Form
     public function edit($id)
     {
@@ -46,22 +76,20 @@ class CarpoolController extends Controller
     // Pass the share road details to the view
         return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
     }
-
+    //====================================================================================================================================
+    // Store Form
     public function store(){
         $carpoolForm = new Route();
 
-        $carpoolForm->carowner_id=Auth::user()->id;                     // TO DO ADD Value request('id_carowner');
+        $carpoolForm->carowner_id=Auth::user()->id;       // TO DO ADD Value request('id_carowner');
         $carpoolForm->start_location_long=50;            // request('city');
         $carpoolForm->start_location_latit=49;            // request('city');
         $carpoolForm->end_location_long=50;                   //request('end_location_long');
         $carpoolForm->end_location_latit=51;  
-        //==============================================================================================
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
         $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
-        $carpoolForm->distance=request('distance');       
+        $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
-        //$dateTimeString = request('start_date').' '.request('time');
-        // $carpoolForm->start_date=DateTime::createFromFormat('d/m/Y, H:i', $dateTimeString);
         $carpoolForm->max_seats=request('max_seats');
         $carpoolForm->bike_capacity=request('bike_capacity');
         $carpoolForm->pets_allowed = request('pets_allowed') ? 1 : 0;
@@ -71,10 +99,11 @@ class CarpoolController extends Controller
         
         // Save the data to de DB
         $carpoolForm->save();
-        return redirect('/')->with('Carpool created successfully');
+        return redirect('/')->with('message','Carpool created successfully');
         // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
     }
 
+    //====================================================================================================================================
         // Update Form
         public function update(Request $request,$id){
             $carpoolUpdate =Route::find($id);
@@ -84,7 +113,7 @@ class CarpoolController extends Controller
             $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
             $carpoolUpdate->start_adventure_id=1;  //{{ $adventure->start_date }}                     
             $carpoolUpdate->end_adventure_id=1;  //{{ $adventure->end_date }}
-            $carpoolUpdate->distance=$request->input('distance');       
+            $carpoolUpdate->distance=1;   // BONUS FEATURE $request->input('distance');       
             $carpoolUpdate->start_date=$request->input('start_date');//.' '.request('time');
             $carpoolUpdate->max_seats=$request->input('max_seats');
             $carpoolUpdate->bike_capacity=$request->input('bike_capacity');
@@ -95,30 +124,36 @@ class CarpoolController extends Controller
             
             // Save the data to de DB
             $carpoolUpdate->save();
-            return redirect('/carpool')->with('Carpool edited successfully');
+            return redirect('/carpool')->with('message','Carpool edited successfully');
             // <strong style="color:green;"><p class="message">{{session('message')}}</p></strong>
         }
+//====================================================================================================================================
 
-        public function joinCarpool($id)
-        {
-            if (!Auth::check()) {
-                return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
-            }
-        
-            $carpool = Route::find($id);
-            $user = Auth::user();
-        
-            // Associate the user with the carpool
-            $carpool->participants()->attach($user);
-        
-            // Update the max_seat count for the joined user
-            $carpool->max_seat = $user->max_seat -1;
-            $carpool->save();
-        
-            return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
-        }
-        
-        
+public function joinCarpool($id)
+{
+    if (!Auth::check()) {
+        return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
+    }
+
+    $carpool = Route::find($id);
+    $user = Auth::user();
+    
+    // Check if the user is already associated with the carpool
+    if (!$carpool->participants()->where('participant_id', $user->id)->exists()) {
+        // Associate the user with the carpool
+        $carpool->participants()->attach($user);
+    }
+    
+    // Update the max_seat count for the joined user
+    $carpool->save();
+
+    return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
+}
+
+
+//====================================================================================================================================
+
+    
 } // end of the class
 //// Join Carpool
 /*public function join($id)

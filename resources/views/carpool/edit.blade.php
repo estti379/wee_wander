@@ -24,11 +24,20 @@
             <label for="start_location_latit">City Departure Latitude:</label>
             <input type="text" name="start_location_latit" value="{{ $element->start_location_latit }}">
         </div>
-
-        <div>
+<select name="start_location_long">
+    @if ($data)
+        @foreach ($data as $item)
+            <option value="{{ $item['lng'] }}">
+                City: {{ $item['city'] }}
+            </option>
+        @endforeach
+    @endif
+</select><br>
+                    {{-- BONUS FEATURE --}}
+        {{-- <div>
             <label for="distance">Distance:</label>
             <input type="text" name="distance" value="{{ $element->distance }}">
-        </div>
+        </div>--}}
         
         <div>
             <label for="end_location_long">Adventure Location:</label>
@@ -44,11 +53,17 @@
             <label for="max_seats">Seats available:</label>
             <input type="number" name="max_seats" value="{{ $element->max_seats }}">
         </div>
-        
-        <div>
+
+        <label for="bike_capacity">Luggage allowed:</label>
+            <select name="bike_capacity">
+                <option value="1" {{ $element->luggage ? 'selected' : '' }}>Yes</option>
+                <option value="0" {{ $element->luggage ? '' : 'selected' }}>No</option>
+            </select>
+        {{-- Bonus Feature --}}
+        {{-- <div>
             <label for="bike_capacity">Bike Rack available:</label>
             <input type="number" name="bike_capacity" value="{{ $element->bike_capacity }}">
-        </div>
+        </div> --}}
         
         <div>
             <label for="start_date">Date & Time:</label>
