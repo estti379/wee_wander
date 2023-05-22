@@ -1,6 +1,6 @@
 <x-layout  :pageTitle="$pageTitle">
 
-    <h2>Page of user: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
+    <h2>Profil page: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
     
     <div>
         <div>
