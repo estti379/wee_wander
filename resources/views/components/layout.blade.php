@@ -9,14 +9,12 @@
   
   {{-- css styles will be pushed into here --}}
   @stack('style')
-
   <link rel="stylesheet" href="/css/event_card_style.css">
   {{-- BOOTSTRAP CDN  --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>
   {{-- Leaflet.js LIVRARY TO MAP --}}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
 </head>
 <body>
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
@@ -63,8 +61,6 @@
 
     {{-- scripts will be pushed into here --}}
     @stack('scripts')
-  
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </body>
 </html>
 

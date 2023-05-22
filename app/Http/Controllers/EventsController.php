@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class EventsController extends Controller
 {
     //This method select all events from the DB
-    public function eventsCard(){
-        $pageTitle = 'Events Lista Page';
+    public function eventsCard(Request $request){
+        $pageTitle = 'WeeWander - Events List Page';
+        if ($request->has('organizer')) {
+           $query = Event::where('organizer_id', $request->input('organizer'));
+        } else {
+            $query = Event::all();
+        }
+        
+        $event = $query->get();
         //Select the Events. Paginate is for pagination.
-        $event = Event::paginate(4);
+        $event = $event->paginate(4);
+        
         return view('events.events-list', [
             'events' => $event,
             'pageTitle' => $pageTitle,
@@ -24,8 +32,8 @@ class EventsController extends Controller
 
     // Display event details - This should fetch with information from the DB
     public function eventDetails($id){
-        $pageTitle = 'Event Details';
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Event';
         $adventure = $event->adventures;
 
         return view('events.event-details',['adventure' => $adventure,
@@ -41,7 +49,7 @@ class EventsController extends Controller
             return redirect('/login')->with('message', 'You have to be logged in to create an event!');
         }
 
-        $pageTitle = 'Create a new event';
+        $pageTitle = 'WeeWander - Create a new event';
         $trails = Trail::all(); 
 
         return view('events.events-create', ['trails' => $trails,
@@ -50,44 +58,63 @@ class EventsController extends Controller
 
     //this method stores the information on view on the DB
     public function store(request $request){
-        
-        $formFields = $request->validate([
+        $validation = [
             'eventTitle' => 'required',
-            'trail' => 'required',
-            'start_time' => 'required',
-            'starting_date' => 'required',
-            'due_date' => 'required',
-            'end_time' => 'required',
+        ];
 
-        ]);
+        $done = false;
+        $i = 0;
+
+        while(!$done){
+            if( $request->has("trail__".($i+1))  ){
+                $i++;
+                $validation["trail__" . $i] = 'required';
+                $validation["start_time__" . $i] = "required";
+                $validation["starting_date__" . $i] = "required";
+                $validation["due_date__" . $i] = "required";
+                $validation["end_time__" . $i] = "required";
+            } else {
+                $done = true;
+            }
+        }
+        //dd($validation);
+        session(['nbNewTrails' => $i]);
+        $formFields = $request->validate($validation);
+        session()->pull('nbNewTrails', 'default');
 
         $event = Event::create([
-            'title' => $request->input('eventTitle'), //eventTitle is the name atr from input on create page
+            'title' => $formFields['eventTitle'], //eventTitle is the name atr from input on create page
             'organizer_id'=>Auth::id() //organizer_id will have the same id as the user that is logged in.
         ]);
 
-        //get date + hour and put it together
-        $startDate = $request->input('starting_date') . ' ' . $request->input('start_time');
-        $startDate = new DateTime($startDate);
 
-        $dueDate = $request->input('due_date') . ' ' . $request->input('end_time');
-        $dueDate = new DateTime($dueDate);
+        
+        for ($j=1; $j <= $i; $j++) {
+            //get date + hour and put it together
+            $startDate = $formFields['starting_date__'.$j] . ' ' . $formFields['start_time__'.$j];
+            $startDate = new DateTime($startDate);
 
-        $adventure = Adventure::create([
-            'trail_id' => $request->input('trail'),
-            'event_id' => $event->id,
-            'start_date' => $startDate,
-            'due_date' => $dueDate
-        ]);
+            $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
+            $dueDate = new DateTime($dueDate);
+
+            Adventure::create([
+                'trail_id' => $formFields['trail__'.$j],
+                'event_id' => $event->id,
+                'start_date' => $startDate,
+                'due_date' => $dueDate
+            ]);
+        }
+        
         return redirect('/events');
     }
 
     //Method to edit event.
     public function edit($id){
        
-        $pageTitle = 'Edit page';
         $trails = Trail::all();
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Edit';
+        
         
         return view('events.events-edit')->with(['event' => $event,
                                                 'trails' => $trails,
@@ -112,27 +139,63 @@ class EventsController extends Controller
             $validation['end_time_E' . $index] = 'required'; 
         }
 
-        $formFields = $request->validate($validation);
+        $done = false;
+        $i = 0;
 
-        $event = Event::find($id)
-            ->update([
-                'title' => $request->input('eventTitle'),
+        while(!$done){
+            if( $request->has("trail__".($i+1))  ){
+                $i++;
+                $validation["trail__" . $i] = 'required';
+                $validation["start_time__" . $i] = "required";
+                $validation["starting_date__" . $i] = "required";
+                $validation["due_date__" . $i] = "required";
+                $validation["end_time__" . $i] = "required";
+            } else {
+                $done = true;
+            }
+        }
+        
+        session(['nbNewTrails' => $i]);
+        $formFields = $request->validate($validation);
+        session()->pull('nbNewTrails', 'default');
+
+        $event = Event::find($id);
+        
+        $event->update([
+                'title' => $formFields['eventTitle'],
         ]);
 
-        foreach (Event::find($id)->adventures as $key => $adventure) {
+        foreach ($event->adventures as $adventure) {
             $index = $adventure->id;
             //put date + time in a format that DB accepts.
-            $startDate = $request->input('starting_date_E' . $index) . ' ' . $request->input('start_time_E' . $index);
+            $startDate = $formFields['starting_date_E' . $index] . ' ' . $formFields['start_time_E' . $index];
             $startDate = new DateTime($startDate);
-            $dueDate = $request->input('due_date_E' . $index) . ' ' . $request->input('end_time_E' . $index);
+            $dueDate = $formFields['due_date_E' . $index] . ' ' . $formFields['end_time_E' . $index];
             $dueDate = new DateTime($dueDate);
 
             $adventure->update([
-                'trail_id' => $request->input('trail_E' . $index),
+                'trail_id' => $formFields['trail_E' . $index],
                 'start_date' => $startDate,
                 'due_date' => $dueDate
-        ]);
-    }
+            ]);
+        }
+         
+        for ($j=1; $j <= $i; $j++) {
+            //get date + hour and put it together
+            $startDate = $formFields['starting_date__'.$j] . ' ' . $formFields['start_time__'.$j];
+            $startDate = new DateTime($startDate);
+
+            $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
+            $dueDate = new DateTime($dueDate);
+
+            Adventure::create([
+                'trail_id' => $formFields['trail__'.$j],
+                'event_id' => $event->id,
+                'start_date' => $startDate,
+                'due_date' => $dueDate
+            ]);
+        }
+
         return redirect('/events');
     }
 
@@ -147,17 +210,5 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
-
-
-    public function getTrail($id, $trailId){
-
-        $pageTitle = 'Trail Details';
-        $event = Event::find($id);
-        $adventures = $event->adventures;
-        return view('trails.trail-details', ['pageTitle' => $pageTitle,
-                                             'event' => $event,
-                                            'adventures' => $adventures,
-                                            'trialId' => $trailId]);
-    }
     
 }

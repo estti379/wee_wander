@@ -79,20 +79,20 @@ class CarpoolController extends Controller
     }
     //====================================================================================================================================
     // Store Form
-    public function store(){
+    public function store(Request $request){
         $carpoolForm = new Route();
 
         $carpoolForm->carowner_id=Auth::user()->id;       // TO DO ADD Value request('id_carowner');
-        $carpoolForm->start_location_long=50;            // request('city');
-        $carpoolForm->start_location_latit=49;            // request('city');
-        $carpoolForm->end_location_long=50;                   //request('end_location_long');
-        $carpoolForm->end_location_latit=51;  
+        $carpoolForm->start_location_long=request('start_location_long');            // request('city');
+        $carpoolForm->start_location_latit=request('start_location_latit');            // request('city');
+        $carpoolForm->end_location_long=request('end_location_long');                   //request('end_location_long');
+        $carpoolForm->end_location_latit=request('end_location_latit');  
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
         $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
         $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
         $carpoolForm->max_seats=request('max_seats');
-        $carpoolForm->bike_capacity=request('bike_capacity')? 1 : 0;
+        $carpoolForm->bike_capacity=request('bike_capacity') ? 1 : 0;
         $carpoolForm->pets_allowed = request('pets_allowed') ? 1 : 0;
         $carpoolForm->luggage = request('luggage') ? 1 : 0;
         $carpoolForm->smokers_allowed = request('smokers_allowed') ? 1 : 0;

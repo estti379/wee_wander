@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Trail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,4 +43,13 @@ class TrailController extends Controller
         return redirect('/events');
         }
 
-}
+        public function getTrail($trailId){
+
+            $pageTitle = 'WeeWander - Trail Details';
+            $trail = Trail::find($trailId);
+            return view('trails.trail-details', ['pageTitle' => $pageTitle,
+                                                 'trail' => $trail,
+                                                ],
+                                            );
+        }
+}   
