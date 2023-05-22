@@ -4,9 +4,6 @@ margin: 0;
 padding: 0;
 border: 0;
 }
-#body{
-    background-image: linear-gradient(#177980, #0ebc89);
-}   
 
 .btn-primary {
 --bs-btn-bg: #177980!important;
