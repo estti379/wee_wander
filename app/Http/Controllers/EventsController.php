@@ -24,8 +24,8 @@ class EventsController extends Controller
 
     // Display event details - This should fetch with information from the DB
     public function eventDetails($id){
-        $pageTitle = 'Event Details';
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Event';
         $adventure = $event->adventures;
 
         return view('events.event-details',['adventure' => $adventure,
@@ -41,7 +41,7 @@ class EventsController extends Controller
             return redirect('/login')->with('message', 'You have to be logged in to create an event!');
         }
 
-        $pageTitle = 'Create a new event';
+        $pageTitle = 'WeeWander - Create a new event';
         $trails = Trail::all(); 
 
         return view('events.events-create', ['trails' => $trails,
@@ -103,9 +103,10 @@ class EventsController extends Controller
     //Method to edit event.
     public function edit($id){
        
-        $pageTitle = 'Edit page';
         $trails = Trail::all();
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Edit';
+        
         
         return view('events.events-edit')->with(['event' => $event,
                                                 'trails' => $trails,
@@ -201,17 +202,5 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
-
-
-    public function getTrail($id, $trailId){
-
-        $pageTitle = 'Trail Details';
-        $event = Event::find($id);
-        $adventures = $event->adventures;
-        return view('trails.trail-details', ['pageTitle' => $pageTitle,
-                                             'event' => $event,
-                                            'adventures' => $adventures,
-                                            'trialId' => $trailId]);
-    }
     
 }
