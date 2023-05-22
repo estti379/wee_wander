@@ -19,28 +19,14 @@
 
 </head>
 <body>
-  {{-- Possible navbar --}}
-  <nav>
-    <ul>
-      <li><a href="/events"> Events list page</a></li>
-      {{-- <li><a href="/events/{{$id}}">Events Details</a></li> --}}
-      {{-- <li><a href="/events/{{$id}}/trail">Trail Details</a></li> --}}
-      <li><a href="/create-event">Create Event</a></li>
-      <li><a href="/carpool">Carpool Lists </a></li>
-      <li><a href="/carpool/create">Carpool Create </a></li>
-    </ul>
-    <div>
-        <x-nav-login/>
-    </div>
-  </nav>
-  {{------------------------------------------------------------------------------------------------------------------}}
+  {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="index"><img src="images\pictures\weewander-1.png" width="150px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -57,9 +43,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/carpool/create">Carpool Create</a>
           </li>
-          <li class="nav-item">
+          <div class="nav-item">
             <x-nav-login/>
-          </li>
+          </div>
         </ul>
       </div>
     </div>

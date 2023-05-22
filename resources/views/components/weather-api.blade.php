@@ -3,9 +3,10 @@
 {{-- Display weather information inside the component this takes information from app\view\components\weatherapi.php --}}
 <div class="weather-component">
     {{-- Just static info from the DB --}}
-    <h3>Forecast in this trail for today {{ now()->format('Y-m-d') }} </h3>
-    <p>Temperature Max : {{ $weatherData['daily']['temperature_2m_max']['0']}} &#8451;</p>
-    <p>Temperature Min : {{ $weatherData['daily']['temperature_2m_min']['0']}} &#8451;</p>
+    <div  class="card">
+    <h3 class="card-header">Forecast in this trail for today {{ now()->format('Y-m-d') }} </h3>
+    <p class="card-text">Temperature Max : {{ $weatherData['daily']['temperature_2m_max']['0']}} &#8451;</p>
+    <p class="card-text">Temperature Min : {{ $weatherData['daily']['temperature_2m_min']['0']}} &#8451;</p>
     {{-- Set time, time format and set the next hour time --}}
     @php
         $currentTime = \Carbon\Carbon::now();
@@ -85,4 +86,5 @@
     @else
         <p>Weather data for the next hour is not available.</p>
     @endif
+    </div>
 </div>
