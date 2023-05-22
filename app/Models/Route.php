@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Route extends Model
 {
     use HasFactory;
-
+    public $timestamps=false;
     /**
      * The attributes that are mass assignable.
      *
@@ -52,6 +52,7 @@ class Route extends Model
 
     public function participants(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'route_participants', 'route_id', 'participant_id');
+        return $this->belongsToMany(User::class, 'route_participants', 'route_id', 'participant_id')->using(RouteParticipants::class);
     }
+    //===================================
 }

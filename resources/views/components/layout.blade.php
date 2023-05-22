@@ -33,6 +33,9 @@
   {{-- This is a alpha version. Just the skeleton --}}
   <main>
     {{ $slot }}
+    last created Car pool:
+    @yield('last_carpool')
+
   </main>
   
   <footer>

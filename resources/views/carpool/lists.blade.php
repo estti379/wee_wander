@@ -2,7 +2,7 @@
 
 {{-- ====================  ShareRoad List ===================== --}}
 
-<x-layout :pageTitle=$pageTitle>
+<x-layout :pageTitle='$pageTitle'>
     <h2>Available carpools</h2>
     <ul>
         @if ($shareRoadDetails === null || count($shareRoadDetails) === 0)

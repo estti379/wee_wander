@@ -86,26 +86,49 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 //=============================================================
                     // ROUTES(CARPOOL) ROUTE
-// Route Show all carpool
+/*// Route Show all carpool
 Route::get('/carpool',[CarpoolController::class, 'index']);
 
 // Create new CarPool 
-Route::get('/carpool/create',[CarpoolController::class, 'create']);
+Route::post('/carpool/create',[CarpoolController::class, 'create']);
 
 //Edit Carpool
-Route::get('/carpool/{id}/edit', [CarpoolController::class, 'edit']);
-
-//Updating an event
-Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
 
 // Store CarPool 
-Route::post('/carpool', [CarpoolController::class, 'store']);
+Route::post('/carpool/store', [CarpoolController::class, 'store']);
+
+// Updating an Carpool
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
 // Route Show single carpool
-Route::get('/carpool/{id}', function ($id) {
-    return view('carpool.lists', [ 
-        'carpool'=>Carpool::find($id),
-    ]);
+Route::get('/carpool/singleroad',[CarpoolController::class, 'show']);*/
+
+//==================================================================
+
+
+// Show all carpool
+Route::get('/carpool', [CarpoolController::class, 'index']);
+
+// Create new CarPool
+Route::get('/carpool/create', [CarpoolController::class, 'create']);
+Route::post('/carpool/create', [CarpoolController::class, 'store']);
+
+// Edit Carpool
+Route::get('/carpool/edit/{id}', [CarpoolController::class, 'edit']);
+Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
+
+// Join the Carpool
+Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
+
+// Show single carpool
+//Route::get('/carpool{id}', [CarpoolController::class, 'show']);
+Route::get('/carpool/{id}', [CarpoolController::class, 'show']);
+
+
+// Testing implementation of map
+Route::get('/testing', function () {
+    return view('testing.testing');
 });
-
-
