@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class EventsController extends Controller
 {
     //This method select all events from the DB
-    public function eventsCard(){
-        $pageTitle = 'Events Lista Page';
+    public function eventsCard(Request $request){
+        $pageTitle = 'WeeWander - Events List Page';
+        if ($request->has('organizer')) {
+           $query = Event::where('organizer_id', $request->input('organizer'));
+        } else {
+            $query = Event::all();
+        }
+        
+        $event = $query->get();
         //Select the Events. Paginate is for pagination.
-        $event = Event::paginate(4);
+        $event = $event->paginate(4);
+        
         return view('events.events-list', [
             'events' => $event,
             'pageTitle' => $pageTitle,
