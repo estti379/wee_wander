@@ -4,11 +4,11 @@
 
 <x-layout :pageTitle=$pageTitle>
     <div class="create_event_container">
-        <h5> Create an Event</h5>
+        <h5> Create an Event <i class="fa-solid fa-person-hiking fa-bounce" style="color: #0ebc89;"></i></h5>
       {{-- Form to create a new user --}}
       <form action="/events" method="POST">
         @csrf
-        <span class="input-group-text">Title of the event : </span>
+        <span class="input-group-text">Title of the event  :</span>
         <input type="text" class="form-control"name="eventTitle"  value="{{old('eventTitle')}}"><br>
         @error('eventTitle')
             <span>{{$message}}</span>

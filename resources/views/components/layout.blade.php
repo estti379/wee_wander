@@ -59,18 +59,14 @@
   </main>
   
   <footer>
-    WeeWander Footer &copy;
     <ul>
-      <li><a href="">icon</li>
-        <li><a href="">icon</li>
-          <li><a href="">icon</li>
-            <li><a href="">icon</li>
+      <li><a href=""><i class="fa-brands fa-facebook" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-regular fa-envelope" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-github" style="color: #ffffff;"></i></li>
     </ul>
-
-
-  
-    <i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>
-
+    <p>WeeWander Footer &copy;</p>
   </footer>
 
     {{-- scripts will be pushed into here --}}
