@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body id="body">
+  <x-flash-message/>
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
   <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
     <div class="container-fluid">
@@ -55,7 +56,7 @@
   {{-- This is a alpha version. Just the skeleton --}}
   <main>
     {{ $slot }}
-
+  
   </main>
   
   <footer>
