@@ -13,12 +13,13 @@ let startPointMarkerLongElemValue = document.querySelector("#start_location_long
 let startPointMarkerLatitElemValue = document.querySelector("#start_location_latit").value;
 let endPointMarkerLongElemValue = document.querySelector("#end_location_long").value;
 let endPointMarkerLatitElemValue = document.querySelector("#end_location_latit").value;
-// Testing
-console.log('initial starting',startPointMarkerLongElemValue, startPointMarkerLatitElemValue)
-console.log('initial ending',endPointMarkerLongElemValue, endPointMarkerLatitElemValue)
+
+// Testing purposes
+// console.log('initial starting',startPointMarkerLongElemValue, startPointMarkerLatitElemValue)
+// console.log('initial ending',endPointMarkerLongElemValue, endPointMarkerLatitElemValue)
 
 
-// Set waypoints
+// Set waypoints with initial values of the hiddeninputs
 let waypoints = [
     (startingMark = L.latLng(
         startPointMarkerLatitElemValue,
@@ -39,9 +40,14 @@ let control = L.Routing.control({
     createMarker: function(i, wp, nWps) {
         // Create a new marker
         let marker = L.marker(wp.latLng, { draggable: true });
+        
+        // Add a popup to the marker - feedback to the user
+        let popupContent = (i === 0 ? "Starting Point" : "Ending Point");
+        marker.bindPopup(popupContent);
 
         // Check if it's the first waypoint (starting point)
         if (i === 0) {
+
             // Add a dragend event to the marker
             marker.on('dragend', function(event) {
                 // Get the new position of the marker
@@ -79,6 +85,13 @@ let control = L.Routing.control({
                 //console.log('New ending mark cordenates',endPointMarkerLatitElemValue, endPointMarkerLongElemValue)
             });
         }
+        //feedback message to the user
+        marker.on('mouseover', function(e) {
+            this.openPopup();
+        });
+        marker.on('mouseout', function(e) {
+            this.closePopup();
+        });
         return marker;
     }
 }).addTo(map).hide();
