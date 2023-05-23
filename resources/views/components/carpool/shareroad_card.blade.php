@@ -7,7 +7,7 @@
 {{--@section ('last_carpool')--}}
 @props(['element'])
 <div class="card">
-    <h5 class="card-header">This carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_adventure->start_date }} <i class="fa-solid fa-car-side  fa-lg fa-bounce" style="color: #ffffff;"></i></h5>
+    <h5 class="card-header">This carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_date }} <i class="fa-solid fa-car-side  fa-lg fa-bounce" style="color: #ffffff;"></i></h5>
     <div class="card-body">
         <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
         <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     

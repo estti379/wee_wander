@@ -14,6 +14,6 @@
                 <li><x-carpool.shareroad_card :element="$element"/></li>
             @endforeach
         @endif
-       {{-- For pagination --}}
-   {{--{{ $carpoolPages->links()}} --}}
+    {{-- For pagination --}}
+    {{ $shareRoadDetails->withQueryString()->links() }} 
 </x-layout>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\User;
 use App\Models\Route;
 use App\Models\Adventure;
@@ -9,14 +10,29 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class CarpoolController extends Controller
 
 {
     //Get and Show all carpool
-    public function index()
+    public function index(Request $request)
     {
-        $shareRoadDetails=Route::all();
+        //querry builder
+        $query = Route::query();
+        if ($request->has('day')) {
+            if($request->has('offset')) {
+                $timeOffset = $request->input('offset');;
+            } else {
+                $timeOffset = "-2 hour";
+            }
+            $dayInput = $request->input('day');
+            $query->whereBetween('start_date', [new DateTime($dayInput." ".$timeOffset), new DateTime($dayInput)]);
+        }
+        
+        //Select the Events. Paginate is for pagination.
+        $shareRoadDetails = $query->paginate(4);
+
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails,'pageTitle'=>'WeeWander carpool-list']);
     }
 

@@ -10,6 +10,7 @@
         <p class="card-text">Starting Time: {{ $adventure->start_date }}</p>
         <p class="card-text">Due Time: {{ $adventure->due_date }}</p>
         <x-events.join-button :adventure="$adventure"/>
+        <x-events.carpool-solutions :adventure="$adventure"/>
       @endforeach
           <hr>
       <a href="/events/{{ $event->id }}" class="btn btn-primary">Event Details</a>
