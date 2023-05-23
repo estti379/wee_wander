@@ -1,0 +1,13 @@
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+.btn-primary {
+--bs-btn-bg: #177980!important;
+--bs-btn-border-color:#177980!important;
+--bs-btn-hover-bg: #0ebc89!important;
+--bs-btn-hover-border-color:#0ebc89 !important;
+}

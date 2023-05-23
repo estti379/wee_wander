@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\Auth;
 class EventsController extends Controller
 {
     //This method select all events from the DB
-    public function eventsCard(){
-        $pageTitle = 'Events Lista Page';
+    public function eventsCard(Request $request){
+        $pageTitle = 'WeeWander - Events List Page';
+        if ($request->has('organizer')) {
+           $query = Event::where('organizer_id', $request->input('organizer'));
+        } else {
+            $query = Event::all();
+        }
+        
+        $event = $query->get();
         //Select the Events. Paginate is for pagination.
-        $event = Event::paginate(4);
+        $event = $event->paginate(4);
+        
         return view('events.events-list', [
             'events' => $event,
             'pageTitle' => $pageTitle,
@@ -24,8 +32,8 @@ class EventsController extends Controller
 
     // Display event details - This should fetch with information from the DB
     public function eventDetails($id){
-        $pageTitle = 'Event Details';
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Event';
         $adventure = $event->adventures;
 
         return view('events.event-details',['adventure' => $adventure,
@@ -41,7 +49,7 @@ class EventsController extends Controller
             return redirect('/login')->with('message', 'You have to be logged in to create an event!');
         }
 
-        $pageTitle = 'Create a new event';
+        $pageTitle = 'WeeWander - Create a new event';
         $trails = Trail::all(); 
 
         return view('events.events-create', ['trails' => $trails,
@@ -103,9 +111,10 @@ class EventsController extends Controller
     //Method to edit event.
     public function edit($id){
        
-        $pageTitle = 'Edit page';
         $trails = Trail::all();
         $event = Event::find($id);
+        $pageTitle = 'WeeWander - '. $event->title . ' Edit';
+        
         
         return view('events.events-edit')->with(['event' => $event,
                                                 'trails' => $trails,
@@ -201,17 +210,5 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
-
-
-    public function getTrail($id, $trailId){
-
-        $pageTitle = 'Trail Details';
-        $event = Event::find($id);
-        $adventures = $event->adventures;
-        return view('trails.trail-details', ['pageTitle' => $pageTitle,
-                                             'event' => $event,
-                                            'adventures' => $adventures,
-                                            'trialId' => $trailId]);
-    }
     
 }

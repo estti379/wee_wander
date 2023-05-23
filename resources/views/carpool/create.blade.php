@@ -14,6 +14,7 @@
 
             {{-- Create Carpool From --}}
             <x-layout :pageTitle=$pageTitle>
+                <h5> Create an Carpool</h5>
                 
                 <form method="POST" action="/carpool/create" enctype="multipart/form-data">  
                     @csrf 
