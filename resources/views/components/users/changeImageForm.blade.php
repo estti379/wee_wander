@@ -1,6 +1,6 @@
 @props(['userDetails'])
 @push('scripts')
-    <script src="{{ URL::asset('js/users/changeUserImage.js') }}"></script>
+    <script src="{{ URL::asset('/js/users/changeUserImage.js') }}"></script>
 @endpush
 
 @if ( !$errors->has("picture"))

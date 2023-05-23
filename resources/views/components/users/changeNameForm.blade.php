@@ -1,6 +1,6 @@
 @props(['userDetails'])
 @push('scripts')
-    <script src="{{ URL::asset('js/users/changeUserName.js') }}"></script>
+    <script src="{{ URL::asset('/js/users/changeUserName.js') }}"></script>
 @endpush
 
 @if ( !$errors->has("firstname") && !$errors->has("lastname"))

@@ -1,6 +1,6 @@
 @props(['userDetails'])
 @push('scripts')
-    <script src="{{ URL::asset('js/users/changeUserDetails.js') }}"></script>
+    <script src="{{ URL::asset('/js/users/changeUserDetails.js') }}"></script>
 @endpush
 
 <button id="changeDetailsBtn" class="btn btn-primary">Change Details</button>

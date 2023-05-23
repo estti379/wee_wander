@@ -1,6 +1,6 @@
 @props(['userDetails'])
 @push('scripts')
-    <script src="{{ URL::asset('js/users/changeUserBio.js') }}"></script>
+    <script src="{{ URL::asset('/js/users/changeUserBio.js') }}"></script>
 @endpush
 
 

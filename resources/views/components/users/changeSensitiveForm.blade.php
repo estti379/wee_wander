@@ -1,6 +1,6 @@
 @props(['userDetails'])
 @push('scripts')
-    <script src="{{ URL::asset('js/users/changeUserSensitive.js') }}"></script>
+    <script src="{{ URL::asset('/js/users/changeUserSensitive.js') }}"></script>
 @endpush
 
 @if ( !$errors->has("username") && !$errors->has("email") && !$errors->has("password") )
