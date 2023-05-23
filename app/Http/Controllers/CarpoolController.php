@@ -76,8 +76,10 @@ class CarpoolController extends Controller
         return redirect('/login')->with('message', 'You have to be logged in to edit the Carpool!');
     }
         $shareRoadDetails = Route::find($id);
+        $adventures = Adventure::all();
+        $pageTitle = 'Wee Wander - Edit Carpool';
     // Pass the share road details to the view
-        return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
+        return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit', 'adventures'=>$adventures, 'pageTitle' => $pageTitle]);
     }
     //====================================================================================================================================
     // Store Form
@@ -85,11 +87,9 @@ class CarpoolController extends Controller
         
         $formFields = $request->validate([
             'start_location_long' => 'required',
+            'start_location_latit' => 'required',
             'end_location_long' => 'required',
-            'bike_capacity' => 'required',
-            'pets_allowed' => 'required',
-            'luggage' => 'required',
-            'smokers_allowed' => 'required',
+            'end_location_latit' => 'required',
             'price' => 'required'
         ]);
 
@@ -120,9 +120,11 @@ class CarpoolController extends Controller
 
     //====================================================================================================================================
         // Update Form
-        public function update(Request $request,$id){
-            $carpoolUpdate =Route::find($id);
-            $carpoolUpdate->start_location_long=$request->input('start_location_long');            // request('city');
+        public function update(Request $request ,$id){
+            
+            $carpoolUpdate = Route::find($id);
+            
+            $carpoolUpdate->start_location_long=$request->input('start_location_long');          
             $carpoolUpdate->start_location_latit=$request->input('start_location_latit');
             $carpoolUpdate->end_location_long=$request->input('end_location_long');
             $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
@@ -153,13 +155,15 @@ public function joinCarpool($id)
     $carpool = Route::find($id);
     $user = Auth::user();
     
+    $alreadyJoined = $carpool->participants->where("id", $user->id)->count() > 0;
+
     // Check if the user is already associated with the carpool
-    if (!$carpool->participants()->where('participant_id', $user->id)->exists()) {
+    if($alreadyJoined){
+        return redirect()->back()->with('message', 'You are already part of this Carpool!');
+    } else {
         // Associate the user with the carpool
         $carpool->participants()->attach($user);
     }
-    
-    // Update the max_seat count for the joined user
     $carpool->save();
 
     return redirect("/carpool/".$id)->with('message', 'You have successfully joined the Carpool!');
@@ -168,25 +172,29 @@ public function joinCarpool($id)
 
 //====================================================================================================================================
 
-    
-} // end of the class
-//// Join Carpool
-/*public function join($id)
-{
-    if (!Auth::check()) {
-        return redirect('/login')->with('message', 'You have to be logged in to join a Carpool!');
+    // Withdraw from Carpool
+    public function withdrawCarpool($id)
+    {
+        if (!Auth::check()) {
+            return redirect('/login')->with('message', 'You have to be logged in to withdraw from a Carpool!');
+        }
+        
+        $carpool = Route::find($id);
+        $user = Auth::user();
+        
+        $alreadyJoined = $carpool->participants->where("id", $user->id)->count() > 0;
+
+        // Check if the user is already associated with the carpool
+        if( !$alreadyJoined ){
+            return redirect()->back()->with('message', 'You cannot withdraw from a Carppol you are not part off!!');
+        } else {
+            // Disassociate the user with the carpool
+            $carpool->participants()->detach($user);
+        }
+
+        $carpool->save();
+        
+        return redirect("/carpool/".$id)->with('message', 'You have successfully withdraw from the Carpool!');
     }
-    
-    $carpool = Route::find($id);
-    
-    if ($carpool->available_seats <= 0) {
-        return redirect('/')->with('message', 'No available seats in the Carpool');
-    }
-    
-    $carpool->participants()->attach(Auth::user()->id);
-    $carpool->available_seats -= 1;
-    $carpool->save();
-    
-    return redirect('/')->with('message', 'You have joined the Carpool successfully');
-}
-}*/
+
+}// end of the class

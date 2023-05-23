@@ -11,11 +11,7 @@
             <div class="col-md-8">
               <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long"/>
             </div>
-          {{-- Button --}}
-          <form action="/event/join/{{ $event->id }}" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-primary">Join Event</button>
-          </form>
+            <x-events.join-button :adventure="$adventure"/>
           <a href="/trail/{{$adventure->trail->id}}" class="btn btn-primary">Trail Details</a>
           <a href="/events"  class="btn btn-primary">Back</a>
         </div>
