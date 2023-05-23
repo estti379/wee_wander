@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DateTime;
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Trail;
 use App\Models\Adventure;
@@ -269,6 +270,25 @@ class EventsController extends Controller
         $adventure->save();
         
         return redirect("/events/".$adventure->event->id)->with('message', 'You have successfully withdraw from the Adventure!');
+    }
+
+
+    //====================================================================================================================================
+
+    // Withdraw from an Adventure
+    public function listAdventureParticipants($id)
+    {
+        $adventure = Adventure::find($id);
+        $pageTitle = 'WeeWander - Adventure participants';
+        $participants = User::whereHas('participatingInAdventures',  function($query) use ($id){
+                $query->where('adventure_id', $id);
+            })
+            ->get();
+        return view('events.adventureParticipants', [
+            'adventure' => $adventure,
+            'pageTitle' => $pageTitle,
+            'participants' => $participants,
+        ]);
     }
 
     

@@ -72,6 +72,9 @@ Route::post('/adventure/join/{id}', [EventsController::class, 'joinAdventure']);
 // Withdraw from the Adventure
 Route::post('/adventure/withdraw/{id}', [EventsController::class, 'withdrawAdventure']);
 
+// Show list of participants for adventure
+Route::get('/adventure/participants/{id}', [EventsController::class, 'listAdventureParticipants']);
+
 //=============================================================
 
 /*
