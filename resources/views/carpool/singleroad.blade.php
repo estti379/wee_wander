@@ -4,7 +4,7 @@
 <div class="card">
        <h5 class="card-header"> Carpool Detail</h5>
        <div class="card-body">
-              <p class="card-text">Drivers name: <a href="/profile"><strong>{{ $carpool->carowner->username}}</strong></a></p>
+              <p class="card-text">Drivers name: <a href="/profile/{{$carpool->username}}"><strong>{{$carpool->carowner->firstname}} {{ $carpool->carowner->lastname}}</strong></a></p>
               <p >Seats available: <strong>{{ $carpool->max_seats}}</strong></p>
               <p >Bike Rack available: <?php echo $carpool['bike_capacity'] ? 'Yes' : 'No'; ?></p>  {{--{{ $element->bike_capacity }}--}}
               <p >Date & Time Departure: {{ $carpool->start_date }}</p>

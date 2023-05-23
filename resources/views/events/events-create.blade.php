@@ -3,9 +3,10 @@
 @endpush
 
 <x-layout :pageTitle=$pageTitle>
-    <div class="create_event_container">
-        <h5> Create an Event <i class="fa-solid fa-person-hiking fa-bounce" style="color: #0ebc89;"></i></h5>
+    <div class="card">
+        <h5 class="card-header"> Create an Event <i class="fa-solid fa-person-hiking fa-bounce fa-lg" style="color: #ffffff;"></i></h5>
       {{-- Form to create a new user --}}
+      <div class="card-body">
       <form action="/events" method="POST">
         @csrf
         <span class="input-group-text">Title of the event  :</span>
@@ -71,6 +72,7 @@
         <input type="submit" class="btn btn-primary" name="" value="Create Event">
         <a href="/events" class="btn btn-primary">Cancel</a>
       </form>
+    </div>
 
       
 
