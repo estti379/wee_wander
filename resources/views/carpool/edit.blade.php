@@ -19,6 +19,7 @@
         <span>Edit your starting and an your ending point of your carpool by dragging</span>
         <div id="map" style="height: 400px; width;"></div>
         <form method="POST" action="/carpool/{{ $element->id }}" enctype="multipart/form-data">
+
             @csrf
             @method('PUT')
 
@@ -30,6 +31,7 @@
                 value="{{ $element->end_location_latit }}">
             <input type="hidden" id="end_location_long" name="end_location_long"
                 value="{{ $element->end_location_long }}">
+
 
             <select class="form-select" aria-label="Default select example" value="adventure">
                 @foreach ($adventures as $adventure)

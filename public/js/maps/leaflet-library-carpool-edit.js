@@ -1,6 +1,5 @@
+// MAP
 let map = L.map("map").setView([49.6116, 6.13], 13);
-
-let startPointMarker, endPointMarker;
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -8,45 +7,81 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 18,
 }).addTo(map);
 
-startPointMarkerLong = document.querySelector("#start_location_long").value;
-startPointMarkerLatit = document.querySelector("#start_location_latit").value;
-endPointMarkerLong = document.querySelector("#end_location_long").value;
-endPointMarkerLatit = document.querySelector("#end_location_latit").value;
 
-startPointMarker = L.marker([startPointMarkerLatit, startPointMarkerLong], {
-    draggable: true,
-});
+// Get values from hidden input
+let startPointMarkerLongElemValue = document.querySelector("#start_location_long").value;
+let startPointMarkerLatitElemValue = document.querySelector("#start_location_latit").value;
+let endPointMarkerLongElemValue = document.querySelector("#end_location_long").value;
+let endPointMarkerLatitElemValue = document.querySelector("#end_location_latit").value;
+// Testing
+console.log('initial starting',startPointMarkerLongElemValue, startPointMarkerLatitElemValue)
+console.log('initial ending',endPointMarkerLongElemValue, endPointMarkerLatitElemValue)
 
-endPointMarker = L.marker([endPointMarkerLatit, endPointMarkerLong], {
-    draggable: true,
-});
 
-startPointMarker
-    .on("dragend", function (e) {
-        let newLatLng = startPointMarker.getLatLng();
-        startPointMarkerLatit = newLatLng.lat;
-        startPointMarkerLong = newLatLng.lng;
-    })
-    .addTo(map);
-
-endPointMarker
-    .on("dragend", function (e) {
-        let newLatLng = endPointMarker.getLatLng();
-        endPointMarkerLatit = newLatLng.lat;
-        endPointMarkerLong = newLatLng.lng;
-    })
-    .addTo(map);
-
+// Set waypoints
 let waypoints = [
-    L.latLng(startPointMarkerLatit, startPointMarkerLong),
-    L.latLng(endPointMarkerLatit, endPointMarkerLong),
+    (startingMark = L.latLng(
+        startPointMarkerLatitElemValue,
+        startPointMarkerLongElemValue
+    )),
+    (endingMark = L.latLng(
+        endPointMarkerLatitElemValue,
+        endPointMarkerLongElemValue
+    )),
 ];
 
-L.Routing.control({
+// Set routing
+let control = L.Routing.control({
     waypoints: waypoints,
     routeWhileDragging: true,
     draggableWaypoints: true,
     lineOptions: { addWaypoints: false },
-})
-    .addTo(map)
-    .hide();
+    createMarker: function(i, wp, nWps) {
+        // Create a new marker
+        let marker = L.marker(wp.latLng, { draggable: true });
+
+        // Check if it's the first waypoint (starting point)
+        if (i === 0) {
+            // Add a dragend event to the marker
+            marker.on('dragend', function(event) {
+                // Get the new position of the marker
+                let newPosition = event.target.getLatLng();
+                let newLat = newPosition.lat;
+                let newLng = newPosition.lng;
+
+                // Testing
+                //console.log('Starting marker moved to: Lat ', newLat, ', Lng ', newLng);
+
+                // Update the hidden inputs
+                document.querySelector("#start_location_latit").value = newLat;
+                document.querySelector("#start_location_long").value = newLng;
+                // Testing
+                //console.log('New starting mark coordenates',startPointMarkerLatitElemValue, startPointMarkerLongElemValue)
+
+            });
+        }
+        // Check if it's the last waypoint (ending point)
+        else if (i === nWps - 1) {
+            // Add a dragend event to the marker
+            marker.on('dragend', function(event) {
+                // Get the new position of the marker
+                let newPosition = event.target.getLatLng();
+                let newLat = newPosition.lat;
+                let newLng = newPosition.lng;
+
+                // Testing Purposes
+                //console.log('Ending marker moved to: Lat ', newLat, ', Lng ', newLng);
+
+                // Update the hidden inputs
+                document.querySelector("#end_location_latit").value = newLat;
+                document.querySelector("#end_location_long").value = newLng;
+                //testing
+                //console.log('New ending mark cordenates',endPointMarkerLatitElemValue, endPointMarkerLongElemValue)
+            });
+        }
+        return marker;
+    }
+}).addTo(map).hide();
+
+
+
