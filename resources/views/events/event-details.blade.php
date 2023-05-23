@@ -1,6 +1,5 @@
 {{-- EVENT DETAILS PAGE --}}
 <x-layout :pageTitle=$pageTitle>
-
   <div  class="card">
     <h5 class="card-header" class="card text-center">Event detail</h5>
     <div class="card-body">
@@ -30,5 +29,5 @@
     
   </div>
 </div>
-  </div>
+</div>
 </x-layout>
