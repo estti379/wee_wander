@@ -59,7 +59,7 @@ class EventsController extends Controller
     //this method stores the information on view on the DB
     public function store(request $request){
         $validation = [
-            'eventTitle' => 'required',
+            'eventTitle' => 'required'
         ];
 
         $done = false;

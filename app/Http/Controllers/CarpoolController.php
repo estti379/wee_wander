@@ -80,6 +80,18 @@ class CarpoolController extends Controller
     //====================================================================================================================================
     // Store Form
     public function store(Request $request){
+        
+        $formFields = $request->validate([
+            'start_location_long' => 'required',
+            'end_location_long' => 'required',
+            'bike_capacity' => 'required',
+            'pets_allowed' => 'required',
+            'luggage' => 'required',
+            'smokers_allowed' => 'required',
+            'price' => 'required'
+        ]);
+
+
         $carpoolForm = new Route();
 
         $carpoolForm->carowner_id=Auth::user()->id;       // TO DO ADD Value request('id_carowner');

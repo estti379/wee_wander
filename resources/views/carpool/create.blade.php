@@ -77,11 +77,40 @@
                     {{-- end location of carpool --}}
                     <input type="hidden" name="end_location_latit" id="end_location_latit" value="{{old('end_location_latit')}}">
                     <input type="hidden" name="end_location_long" id="end_location_long" value="{{old('end_location_long')}}">
+                    
+                    {{-- ERRORS --}}
+                    @php
+                    $mapStartMessage = "You need to choose a Starting Location on the map";
+                    $mapEndMessage = "You need to choose an Ending Location on the map";
+                    @endphp
+                    @error('start_location_long')
+                    <p>{{$mapStartMessage}}</p>
+                    @enderror
+                    @error('end_location_long')
+                        <p>{{$mapEndMessage}}</p>
+                    @enderror
+                    @error('bike_capacity')
+                        <p>{{$message}}</p>
+                    @enderror
+                    @error('pets_allowed')
+                        <p>{{$message}}</p>
+                    @enderror
+                    @error('luggage')
+                        <p>{{$message}}</p>
+                    @enderror
+                    @error('smokers_allowed')
+                        <p>{{$message}}</p>
+                    @enderror
+                    @error('price')
+                        <p>{{$message}}</p>
+                    @enderror
+
                     {{-- Submit carpool --}}
                     <button type="submit" class="btn btn-primary">Create Carpool</button>
                     <a href="/carpool" class="btn btn-primary">Cancel</a>
                 </form>
                 </div>
+                <button class="btn btn-primary" id="define-route">Define route</button>
                 <span>Choose a location: </span>
                 <div id="map" style="height: 400px;">
                 </div>
