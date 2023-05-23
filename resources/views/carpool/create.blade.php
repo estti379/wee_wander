@@ -104,7 +104,6 @@
                     @enderror
 
                     <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Choose a location : </span>
-                    
                     {{-- Map --}}
                     <div id="map" style="height: 400px;">
                     </div>
