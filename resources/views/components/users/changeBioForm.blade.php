@@ -4,7 +4,7 @@
 @endpush
 
 
-<p id="descriptionParagraph">{{$userDetails->description}}</p>
+
 <button id="changeBioBtn" class="btn btn-primary">Change Bio</button>
 
 

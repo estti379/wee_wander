@@ -27,6 +27,7 @@
     </div>
     <hr>
     <h4>Bio:</h4>
+    <p id="descriptionParagraph">{{$userDetails->description}}</p>
     @if ($isOwner)
         <x-users.changeBioForm :userDetails="$userDetails"/>
     @endif

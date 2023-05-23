@@ -24,13 +24,13 @@
             <span>{{$message}}</span>
         @enderror
         <br>
-        <label class="input-group-text" for="password">New Last Name:</label>
+        <label class="input-group-text" for="password">New Password:</label>
         <input type="password" class="form-control" name="password" placeholder="password">
         @error('password')
             <span>{{$message}}</span>
         @enderror
         <br>
-        <label class="input-group-text" for="password_confirmation">New Last Name:</label>
+        <label class="input-group-text" for="password_confirmation">Repeat Password:</label>
         <input type="password" class="form-control" name="password_confirmation" placeholder="password">
         @error('password_confirmation')
             <span>{{$message}}</span>
