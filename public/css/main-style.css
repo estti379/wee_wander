@@ -1,0 +1,55 @@
+/*=========================== Main =================================*/
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+body,ul{
+    list-style: none;
+}
+
+.btn-primary {
+--bs-btn-bg: #177980!important;
+--bs-btn-border-color:#177980!important;
+--bs-btn-hover-bg: #0ebc89!important;
+--bs-btn-hover-border-color:#0ebc89 !important;
+}
+
+#navbar{
+    background-color: #1779807c !important; 
+    justify-content: space-between !important;
+}
+footer{
+background-color: #1779807c; 
+
+}
+footer ul {
+    width: 40%;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+}
+.card-header{
+    background-color: #177980 !important;
+    color: white !important;
+}
+.card-body{
+    background-color: #f7dc5741 !important;
+}
+/*========================================================*/
+
+.heading{
+    width: 100%;
+    height: 500px;
+    background-image: url('../images/pictures/Mullerthal.png');
+    background-color: #177980;
+    margin: auto;
+    color: white;
+    text-align: center;
+    display: grid;
+    align-content: center;
+}
+
+

@@ -1,8 +1,9 @@
-var map = L.map("map").setView([49.6116, 6.13], 13);
+let map = L.map("map").setView([49.6116, 6.13], 13);
+let routingControl;
 
-var startPointMarker, endPointMarker;
+let startPointMarker, endPointMarker;
 
-var redIcon = new L.Icon({
+let redIcon = new L.Icon({
     iconUrl:
         "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
     shadowUrl:
@@ -13,7 +14,7 @@ var redIcon = new L.Icon({
     shadowSize: [41, 41],
 });
 
-var blueIcon = new L.Icon({
+let blueIcon = new L.Icon({
     iconUrl:
         "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
     shadowUrl:
@@ -32,11 +33,11 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 map.on("click", function (event) {
     // Coordinates value
-    var latitude = event.latlng.lat;
-    var longitude = event.latlng.lng;
+    let latitude = event.latlng.lat;
+    let longitude = event.latlng.lng;
 
     // Popup for the marker
-    var popUpMessage;
+    let popUpMessage;
 
     if (!startPointMarker) {
         popUpMessage =
@@ -48,10 +49,15 @@ map.on("click", function (event) {
         document.getElementById("start_location_latit").value = latitude;
         document.getElementById("start_location_long").value = longitude;
 
-        startPointMarker = L.marker([latitude, longitude], { icon: blueIcon })
+        startPointMarker = L.marker([latitude, longitude], {
+            icon: blueIcon,
+            draggable: false,
+        })
             .addTo(map)
             .bindPopup(popUpMessage) // Bind a popup
             .openPopup(); // Open the popup immediately
+
+        startPointMarker.dragging.disable();
 
         startPointMarker.on("click", function (event) {
             map.removeLayer(event.target);
@@ -69,11 +75,14 @@ map.on("click", function (event) {
         document.getElementById("end_location_latit").value = latitude;
         document.getElementById("end_location_long").value = longitude;
 
-        endPointMarker = L.marker([latitude, longitude], { icon: redIcon })
+        endPointMarker = L.marker([latitude, longitude], {
+            icon: redIcon,
+            draggable: false,
+        })
             .addTo(map)
             .bindPopup(popUpMessage) // Bind a popup
             .openPopup(); // Open the popup immediately
-
+        startPointMarker.dragging.disable();
         endPointMarker.on("click", function (event) {
             map.removeLayer(event.target);
             endPointMarker = null;
@@ -87,3 +96,42 @@ map.on("click", function (event) {
             .openOn(map);
     }
 });
+
+function resetRoute() {
+    console.log(routingControl);
+    // map.removeControl(routingControl);
+    routingControl.spliceWaypoints(0, 2);
+
+    startPointMarker.remove();
+    startPointMarker = null;
+    endPointMarker.remove();
+    endPointMarker = null;
+    document.getElementById("start_location_latit").value = "";
+    document.getElementById("start_location_long").value = "";
+    document.getElementById("end_location_latit").value = "";
+    document.getElementById("end_location_long").value = "";
+}
+document.querySelector("#define-route").addEventListener("click", setRoute);
+function setRoute() {
+    let waypoints = [
+        L.latLng(
+            startPointMarker.getLatLng().lat,
+            startPointMarker.getLatLng().lng
+        ),
+        L.latLng(
+            endPointMarker.getLatLng().lat,
+            endPointMarker.getLatLng().lng
+        ),
+    ];
+
+    L.Routing.control({
+        waypoints: waypoints,
+        draggableWaypoints: false,
+    })
+        .addTo(map)
+        .hide();
+
+    startPointMarker.remove();
+
+    endPointMarker.remove();
+}
