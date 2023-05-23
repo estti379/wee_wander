@@ -16,25 +16,23 @@
 
             {{-- Create Carpool From --}}
             <x-layout :pageTitle=$pageTitle>
-                <h5>Create an Carpool <i class="fa-solid fa-car-side fa-bounce" style="color: #0ebc89;"></i></h5>
-                
-                <form method="POST" action="/carpool/create" enctype="multipart/form-data">  
-                    @csrf 
-                    {{-- BONUS FEATURE --}}
-                    {{-- <label>Distance</label>
-                    <input type="text" name="distance" placeholder="km"><br> --}}
-                    
-                   <label class="input-group-text"><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Adventure</label>
-                    <select class="form-select" aria-label="Default select example" value="adventure">
-                        @foreach($adventures as $adventure)
-                            <option value="{{ $adventure->trail_id }}">
-                                Trail: {{ $adventure->trail->name }} | Start Date: {{ $adventure->start_date }}
-                            </option>
-                        @endforeach
+                <div class="card">
+                    <h5 class="card-header">Create an Carpool <i class="fa-solid fa-car-side fa-bounce" style="color: #ffffff;"></i></h5>
+                    <div class="card-body">
+                    <form method="POST" action="/carpool/create" enctype="multipart/form-data">  
+                        @csrf 
+                        {{-- BONUS FEATURE --}}
+                        {{-- <label>Distance</label>
+                        <input type="text" name="distance" placeholder="km"><br> --}}    
+                    <label class="input-group-text"><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Adventure</label>
+                        <select class="form-select" aria-label="Default select example" value="adventure">
+                            @foreach($adventures as $adventure)
+                                <option value="{{ $adventure->trail_id }}">
+                                    Trail: {{ $adventure->trail->name }} | Start Date: {{ $adventure->start_date }}
+                                </option>
+                            @endforeach
                         </select> <br>
                     {{-- To Add id_start_adventure  Variable--}}
-
-            
                     <label class="input-group-text">Date</label>
                     <input class="input-group-text" type="date" name="start_date" placeholder="Date"><br>
                     <label class="input-group-text">Time</label>
@@ -58,7 +56,6 @@
                         <option value="2">2</option> 
                         <option value="3">3</option> 
                     </select><br>--}}
-            
             
                     <label><i class="fa-solid fa-paw" style="color: #0ebc89;"></i> Pets allowed</label>
                     <input class="form-check-input" type="checkbox" name="pets_allowed"><br>
@@ -106,13 +103,17 @@
                         <p>{{$message}}</p>
                     @enderror
 
+                    <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Choose a location : </span>
+                    
+                    {{-- Map --}}
+                    <div id="map" style="height: 400px;">
+                    </div>
                     {{-- Submit carpool --}}
+                    <button class="btn btn-primary" id="define-route">Validate route</button>
                     <button type="submit" class="btn btn-primary">Create Carpool</button>
                     <a href="/carpool" class="btn btn-primary">Cancel</a>
                 </form>
-                </div>
-                <button class="btn btn-primary" id="define-route">Define route</button>
-                <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Choose a location : </span>
-                <div id="map" style="height: 400px;">
-                </div>
+            </div>
+        </div>
+            </div>
             </x-layout>
