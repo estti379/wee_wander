@@ -13,9 +13,7 @@
         <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p> 
         <p>Seats available: <strong><x-carpool.seat-counter :element="$element"/></strong></p>
         <p><strong>Asked price :  {{ $element->price }}€</strong></p>
-
-        
-        <a href="#"class="btn btn-primary">Driver info</a><a href="/carpool/{{$element->id}}" class="btn btn-primary">Carpool Details</a>
+        <a href="/users/{{$element->carowner->id}}"class="btn btn-primary">Driver info</a><a href="/carpool/{{$element->id}}" class="btn btn-primary">Carpool Details</a>
        
         {{--==TO TRANSFERT TO SINGLE ROAD==--}}
         {{--==============================--}}
@@ -34,14 +32,7 @@
             @endif
                 
             <div>
-                <!--========================= Check if the user is logged in and not the car owner =========================-->
-                @if (Auth::check() && Auth::user() ->id!= $element->carowner->id )
-                    <!-- ========================= Button to join the carpool =========================-->
-                    <form action="/carpool/join/{{ $element->id }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Join Carpool</button>
-                    </form>
-                @endif
+                <x-carpool.join-button :element="$element"/>
             </div>
         </div>
 </div> 

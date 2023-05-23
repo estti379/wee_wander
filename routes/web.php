@@ -54,6 +54,15 @@ Route::get('/create-trail', [TrailController::class, 'create']);
 // store trail
 Route::post('/trails', [TrailController::class, 'store']);
 
+//===============================================================
+//Adventure
+// Join the Adventure
+Route::post('/adventure/join/{id}', [EventsController::class, 'joinAdventure']);
+
+// Withdraw from the Adventure
+Route::post('/adventure/withdraw/{id}', [EventsController::class, 'withdrawAdventure']);
+
+
 //=============================================================
 //Testing implementation of map
 Route::get('/testing', function(){
@@ -123,6 +132,9 @@ Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
 
 // Join the Carpool
 Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
+
+// Withdraw the Carpool
+Route::post('/carpool/withdraw/{id}', [CarpoolController::class, 'withdrawCarpool']);
 
 // Show single carpool
 Route::get('/carpool/{id}', [CarpoolController::class, 'show']);
