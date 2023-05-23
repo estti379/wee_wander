@@ -124,6 +124,9 @@ Route::put('/carpool/{id}', [CarpoolController::class, 'update']);
 // Join the Carpool
 Route::post('/carpool/join/{id}', [CarpoolController::class, 'joinCarpool']);
 
+// Withdraw the Carpool
+Route::post('/carpool/withdraw/{id}', [CarpoolController::class, 'withdrawCarpool']);
+
 // Show single carpool
 Route::get('/carpool/{id}', [CarpoolController::class, 'show']);
 
