@@ -14,6 +14,7 @@
 
             {{-- Create Carpool From --}}
             <x-layout :pageTitle=$pageTitle>
+                <h5>Create an Carpool <i class="fa-solid fa-car-side fa-bounce" style="color: #0ebc89;"></i></h5>
                 
                 <form method="POST" action="/carpool/create" enctype="multipart/form-data">  
                     @csrf 
@@ -21,7 +22,7 @@
                     {{-- <label>Distance</label>
                     <input type="text" name="distance" placeholder="km"><br> --}}
                     
-                    <label class="input-group-text">Adventure</label>
+                   <label class="input-group-text"><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Adventure</label>
                     <select class="form-select" aria-label="Default select example" value="adventure">
                         @foreach($adventures as $adventure)
                             <option value="{{ $adventure->trail_id }}">
@@ -37,7 +38,7 @@
                     <label class="input-group-text">Time</label>
                     <input class="input-group-text" type="Time" name="time" placeholder="Time"><br>
             
-                    <label>Free seats</label>
+                    <label>Free seats <i class="fa-solid fa-chair" style="color:  #0ebc89;"></i></label>
                     <select class="form-select" aria-label="Default select example" name="max_seats">
                         <option value="1">1</option> 
                         <option value="2">2</option> 
@@ -45,7 +46,7 @@
                         <option value="4">4</option>  
                     </select><br>
             
-                    <label>Bike Rack available</label>
+                    <label><i class="fa-solid fa-bicycle" style="color:  #0ebc89;"></i>Bike Rack available</label>
                     <input class="form-check-input" type="checkbox" name="bike_capacity" value="yes"><br>
 
                     {{--  BONUS F.T --}}
@@ -57,17 +58,17 @@
                     </select><br>--}}
             
             
-                    <label>Pets allowed</label>
+                    <label><i class="fa-solid fa-paw" style="color: #0ebc89;"></i> Pets allowed</label>
                     <input class="form-check-input" type="checkbox" name="pets_allowed"><br>
                 
             
-                    <label>Luggage allowed</label>
+                    <label><i class="fa-solid fa-suitcase" style="color:  #0ebc89;"></i> Luggage allowed</label>
                     <input class="form-check-input" type="checkbox" name="luggage" value="yes"><br>
             
-                    <label>Smokers allowed</label>
+                    <label> <i class="fa-solid fa-smoking" style="color:  #0ebc89;"></i>Smokers allowed</label>
                     <input class="form-check-input" type="checkbox" name="smokers_allowed" value="yes"><br>
 
-                    <label>Asked price</label>
+                    <label><i class="fa-solid fa-hand-holding-dollar" style="color:  #0ebc89;"></i>Asked price</label>
                     <input type="text" name="price" placeholder="0€"><br>
                     {{-- start location of carpool --}}
                     <input type="hidden" name="start_location_latit" id="start_location_latit" value="{{old('start_location_latit')}}">
@@ -80,7 +81,7 @@
                     <a href="/carpool" class="btn btn-primary">Cancel</a>
                 </form>
                 </div>
-                <span>Choose a location: </span>
+                <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Choose a location : </span>
                 <div id="map" style="height: 400px;">
                 </div>
             </x-layout>

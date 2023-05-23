@@ -18,13 +18,14 @@
             <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long"/>
           </div>
           </div>
+          <a href="/trail/{{$adventure->trail->id}}" class="btn btn-primary">Trail Details</a>
       @endforeach
     </ul>
  
   <div class="card-footer text-body-secondary">
     <p>HERE GOES CARPOOL SOLUTIONS FOR THIS TRIAL</p><br>
     <a href="/carpool/create" class="btn btn-primary">Create a carpool!</a>     
-    <a href="/events/{{$event->id}}/trail/{{$adventure->trail->id}}" class="btn btn-primary">Trail Details</a>
+    
     <a href="/events"  class="btn btn-primary">Back</a>
     
   </div>

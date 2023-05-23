@@ -23,6 +23,7 @@ class TrailFactory extends Factory
             'distance' => rand(500, 2000),
             'location_long' => $long,
             'location_latit' => $lati,
+            'gpx_gdid' => '',
         ];
     }
 }

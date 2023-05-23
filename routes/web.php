@@ -41,13 +41,13 @@ Route::get('/events/edit/{id}/', [EventsController::class, 'edit']);
 //Updating an event
 Route::put('/events/{id}', [EventsController::class, 'update']);
 
-//Specific trail information
-Route::get('/events/{id}/trail/{trailId}', [EventsController::class, 'getTrail']);
-
 //Deleting an event
 Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 //=============================================================
 //TRAILS
+
+//Specific trail information
+Route::get('/trail/{trailId}', [TrailController::class, 'getTrail']);
 
 // create trail
 Route::get('/create-trail', [TrailController::class, 'create']);

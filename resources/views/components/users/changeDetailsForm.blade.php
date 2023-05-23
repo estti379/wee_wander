@@ -3,7 +3,7 @@
     <script src="{{ URL::asset('js/users/changeUserDetails.js') }}"></script>
 @endpush
 
-<button id="changeDetailsBtn">Change Details</button>
+<button id="changeDetailsBtn" class="btn btn-primary">Change Details</button>
 
 <div id="changeDetailsFormContainer">
     
@@ -11,7 +11,7 @@
         @csrf
         @method('PUT')
         <label for="car_owned">Do you own a car?</label>
-        <select name="car_owned">
+        <select class="form-select" name="car_owned">
             <option value="yes"
                 @if ($userDetails->car_owned == "yes")
                     selected
@@ -31,7 +31,7 @@
         <br>
 
         <label for="driver_license">Do you own a driving license?</label>
-        <select name="driver_license">
+        <select class="form-select" name="driver_license">
             <option value="yes"
                 @if ($userDetails->driver_license == "yes")
                     selected
@@ -49,7 +49,7 @@
             >Hide</option>
         </select>
         <br>
-        <input type="submit" value="Save Details">
+        <input type="submit" value="Save Details" class="btn btn-primary">
     </form>
 
 </div>

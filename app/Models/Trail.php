@@ -20,7 +20,8 @@ class Trail extends Model
         'name',
         'distance',
         'location_long',
-        'location_latit'
+        'location_latit',
+        'gpx_gdid'
     ];
 
     public function adventures(): HasMany
