@@ -13,7 +13,7 @@
             @endforeach
         @endif
        {{-- For pagination --}}
-   {{ $carpoolPages->links()}} 
+   {{--{{ $carpoolPages->links()}} --}}
 </x-layout>
 
 

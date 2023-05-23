@@ -1,6 +1,6 @@
 <x-layout  :pageTitle="$pageTitle">
 
-    <h2>Profil page: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
+    <h2><i class="fa-solid fa-user" style="color: #0ebc89;"> </i>Profile: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
     
     <div>
         <div>
