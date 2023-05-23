@@ -5,11 +5,11 @@
     @foreach ($events as $event)
     <div class="card"> 
       {{-- {{dd($event)}} --}}
-      <h5 class="card-header">{{ $event->title}}</h5>
+      <h5 class="card-header"><a href="/events/{{ $event->id }}">{{ $event->title}}</a></h5>
       <div class="card-body">
-        <p class="card-text">Creator : {{ $event->organizer_id}}</p>
+        <p class="card-text">Organizer name : {{ $event->organizer_id}}</p>
         @foreach($event->adventures->sortBy('start_date') as $adventure)
-          <p class="card-text">Trail title : {{ $adventure->trail->name }}</p>
+          <p class="card-text">Trail title : <a href="/trail/{{$adventure->trail->id}}">{{ $adventure->trail->name }}</a></p>
           <p class="card-text">Starting Time: {{ $adventure->start_date }}</p>
           <p class="card-text">Due Time: {{ $adventure->due_date }}</p>
         @endforeach
@@ -19,13 +19,18 @@
         <!-- Button to edit event -->
         <a href="events/edit/{{ $event->id }}" class="btn btn-primary">Edit/Delete Event</a>
         @endif
+        {{-- button to join the event --}}
+        <form action="/event/join/{{ $event->id }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-primary">Join Event</button>
+      </form>
       </div>
-      <div class="card-footer text-body-secondary">
+     
         @if (Auth::check())
-        Logged in user ID: {{ Auth::user()->id }} 
-        Event organizer ID: {{ $event->organizer_id }}
+      {{ Auth::user()->id }} 
+      {{ $event->organizer_id }}
         @endif
-      </div>
+   
     </div> 
      
     @endforeach

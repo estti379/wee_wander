@@ -33,7 +33,7 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/events"> Events list page</a>
+            <a class="nav-link" href="/events"> Events list</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/create-event">Create Event</a>
@@ -60,11 +60,10 @@
   
   <footer>
     <ul>
-      <li><a href=""><i class="fa-brands fa-facebook" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-regular fa-envelope" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-github" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-facebook fa-xl" style="color: #ffffff; "></i></li>
+      <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-github fa-xl" style="color: #ffffff;"></i></li>
     </ul>
     <p>WeeWander Footer &copy;</p>
   </footer>
