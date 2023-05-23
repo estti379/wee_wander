@@ -54,6 +54,15 @@ Route::get('/create-trail', [TrailController::class, 'create']);
 // store trail
 Route::post('/trails', [TrailController::class, 'store']);
 
+//===============================================================
+//Adventure
+// Join the Adventure
+Route::post('/adventure/join/{id}', [EventsController::class, 'joinAdventure']);
+
+// Withdraw from the Adventure
+Route::post('/adventure/withdraw/{id}', [EventsController::class, 'withdrawAdventure']);
+
+
 //=============================================================
 //Testing implementation of map
 Route::get('/testing', function(){
