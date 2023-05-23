@@ -4,28 +4,30 @@
     {{-- informations being retrieved by the eventsCard() method in controllers --}}
     @foreach ($events as $event)
     <div class="card"> 
-      {{-- {{dd($event)}} --}}
-      <h5 class="card-header">{{ $event->title}}</h5>
+      <h5 class="card-header"><a href="/events/{{ $event->id }}">{{ $event->title}}</a></h5>
       <div class="card-body">
-        <p class="card-text">Creator : {{ $event->organizer_id}}</p>
+        <p class="card-text">Organizer name : <a href="/profile/{{ $event->username}}">{{$event->organizer->firstname}} {{$event->organizer->lastname}}</a></p>
         @foreach($event->adventures->sortBy('start_date') as $adventure)
-          <p class="card-text">Trail title : {{ $adventure->trail->name }}</p>
+            <hr>
+          <p class="card-text">Trail title : <a href="/trail/{{$adventure->trail->id}}">{{ $adventure->trail->name }}</a></p>
           <p class="card-text">Starting Time: {{ $adventure->start_date }}</p>
           <p class="card-text">Due Time: {{ $adventure->due_date }}</p>
+          <x-events.join-button :adventure="$adventure"/>
         @endforeach
+            <hr>
         <a href="/events/{{ $event->id }}" class="btn btn-primary">Event Details</a>
         {{-- If statment to edit button just allowed when user logged in --}}
         @if (Auth::check() && Auth::user()->id == $event->organizer_id)  
-        <!-- Button to edit event -->
-        <a href="events/edit/{{ $event->id }}" class="btn btn-primary">Edit/Delete Event</a>
+          <!-- Button to edit event -->
+          <a href="events/edit/{{ $event->id }}" class="btn btn-primary">Edit/Delete Event</a>
         @endif
       </div>
-      <div class="card-footer text-body-secondary">
+     
         @if (Auth::check())
-        Logged in user ID: {{ Auth::user()->id }} 
-        Event organizer ID: {{ $event->organizer_id }}
+      Login ID {{ Auth::user()->id }} 
+      Event ID{{ $event->organizer_id }}
         @endif
-      </div>
+   
     </div> 
      
     @endforeach

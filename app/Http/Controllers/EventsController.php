@@ -218,5 +218,58 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
+
+    // Join an adventure as a participant
+    public function joinAdventure($id)
+{
+    if (!Auth::check()) {
+        return redirect('/login')->with('message', 'You have to be logged in to join an Adventure!');
+    }
+
+    $adventure = Adventure::find($id);
+    $user = Auth::user();
+    
+    $alreadyJoined = $adventure->participants->where("id", $user->id)->count() > 0;
+
+    // Check if the user is already associated with the adventure
+    if($alreadyJoined){
+        return redirect()->back()->with('message', 'You are already part of this Adventure!');
+    } else {
+        // Associate the user with the adventure
+        $adventure->participants()->attach($user);
+    }
+    $adventure->save();
+
+    return redirect("/events/".$adventure->event->id)->with('message', 'You have successfully joined the Adventure!');
+}
+
+
+//====================================================================================================================================
+
+    // Withdraw from an Adventure
+    public function withdrawAdventure($id)
+    {
+        if (!Auth::check()) {
+            return redirect('/login')->with('message', 'You have to be logged in to withdraw from a Adventure!');
+        }
+        
+        $adventure = Adventure::find($id);
+        $user = Auth::user();
+        
+        $alreadyJoined = $adventure->participants->where("id", $user->id)->count() > 0;
+
+        // Check if the user is already associated with the carpool
+        if( !$alreadyJoined ){
+            return redirect()->back()->with('message', 'You cannot withdraw from a Adventure you are not part off!!');
+        } else {
+            // Disassociate the user with the carpool
+            $adventure->participants()->detach($user);
+        }
+
+        $adventure->save();
+        
+        return redirect("/events/".$adventure->event->id)->with('message', 'You have successfully withdraw from the Adventure!');
+    }
+
     
 }

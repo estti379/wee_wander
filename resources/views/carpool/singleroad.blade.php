@@ -35,16 +35,9 @@
             @if (Auth::check() && Auth::user()->id == $carpool->carowner->id)
                 <a href="/carpool/edit/{{ $carpool->id }}" class="btn btn-primary">Edit</a>
             @endif
-            <div>
-                <!--========================= Check if the user is logged in and not the car owner =========================-->
-                @if (Auth::check() && Auth::user()->id != $carpool->carowner->id)
-                    <!-- ========================= Button to join the carpool =========================-->
-                    <form action="/carpool/join/{{ $carpool->id }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Join Carpool</button>
-                    </form>
-                @endif
-            </div>
-        </div>
-    </div>
+              <div>
+                    <x-carpool.join-button :element="$carpool"/>
+              </div>
+       </div>
+</div>
 </x-layout>
