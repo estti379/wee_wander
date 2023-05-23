@@ -4,7 +4,7 @@
         $sessionUser = Auth::user()
     @endphp
     <span>Hello {{$sessionUser->firstname}} {{$sessionUser->lastname}}</span>
-    <a href="/profile">Show profile</a>
+    <a href="/profile">profile <i class="fa-solid fa-user" style="color: #f5f5f5;"></i></a>
     <a href="/logout">Logout</a>
 @else
     <a href="/login">Sign in</a>

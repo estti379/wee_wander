@@ -5,7 +5,7 @@
 
 
 <p id="descriptionParagraph">{{$userDetails->description}}</p>
-<button id="changeBioBtn">Change Bio</button>
+<button id="changeBioBtn" class="btn btn-primary">Change Bio</button>
 
 
 <div id="changeBioFormContainer">
@@ -13,10 +13,11 @@
     <form id="changeBioForm" method="POST" action="/users/updateBio">
         @csrf
         @method('PUT')
-        <textarea id="description2" name="description2" placeholder="Enter Bio here...">{{$userDetails->description}}</textarea>
-        <textarea name="description" placeholder="Enter Bio here...">{{$userDetails->description}}</textarea>
-
+        <div class="mb-3">
+        <textarea class="form-control" rows="3" id="description2" name="description2" placeholder="Enter Bio here...">{{$userDetails->description}}</textarea>
+        <textarea class="form-control" rows="3" name="description" placeholder="Enter Bio here..." >{{$userDetails->description}}</textarea>
+        </div>
         <br>
-        <input type="submit" value="Save Bio">
+        <input type="submit" value="Save Bio" class="btn btn-primary">
     </form>
 </div>

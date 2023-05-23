@@ -3,7 +3,7 @@
 {{-- ====================  ShareRoad List ===================== --}}
 
 <x-layout :pageTitle='$pageTitle'>
-    <h2 class="card-header">Available carpools</h2>
+    <h5 class="card-header">Available carpools</h5>
     
         @if ($shareRoadDetails === null || count($shareRoadDetails) === 0)
             <li>empty</li>
@@ -12,7 +12,8 @@
                 <li><x-shareroad_card :element="$element"/></li>
             @endforeach
         @endif
-    
+       {{-- For pagination --}}
+   {{--{{ $carpoolPages->links()}} --}}
 </x-layout>
 
 

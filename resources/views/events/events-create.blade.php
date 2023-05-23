@@ -4,11 +4,12 @@
 
 <x-layout :pageTitle=$pageTitle>
     <div class="create_event_container">
+        <h5> Create an Event <i class="fa-solid fa-person-hiking fa-bounce" style="color: #0ebc89;"></i></h5>
       {{-- Form to create a new user --}}
       <form action="/events" method="POST">
         @csrf
-        <span>Title of the event : </span>
-        <input type="text" name="eventTitle"  value="{{old('eventTitle')}}"><br>
+        <span class="input-group-text">Title of the event  :</span>
+        <input type="text" class="form-control"name="eventTitle"  value="{{old('eventTitle')}}"><br>
         @error('eventTitle')
             <span>{{$message}}</span>
         @enderror
@@ -24,8 +25,8 @@
             
             <div id="__{{$i}}">
                 <hr>
-                <label for="trail__{{$i}}">Select your trail : </label>
-                <select name="trail__{{$i}}" >
+                <label class="input-group-text" for="trail__{{$i}}">Select your trail : </label>
+                <select class="form-select" name="trail__{{$i}}" >
                 <option value="">Select a trail</option>
                 @foreach ($trails as $trail)
                     <option value="{{ $trail->id }}"
@@ -39,18 +40,18 @@
                     <span>{{$message}}</span>
                 @enderror
                 <br>
-                <label for="starting_date__{{$i}}">Starting date : </label>
-                <input type="date" name="starting_date__{{$i}}"  value="{{old('starting_date__'.$i)}}">
-                <label for="start_time__{{$i}}">Starting Hour:</label>
-                <input type="time" name="start_time__{{$i}}"  value="{{old('start_time__'.$i)}}">
+                <label class="input-group-text" for="starting_date__{{$i}}">Starting date : </label>
+                <input type="date" class="input-group-text" name="starting_date__{{$i}}"  value="{{old('starting_date__'.$i)}}">
+                <label class="input-group-text" for="start_time__{{$i}}">Starting Hour:</label>
+                <input type="time" class="input-group-text" name="start_time__{{$i}}"  value="{{old('start_time__'.$i)}}">
                 @error('starting_date__'.$i)
                     <span>{{$message}}</span>
                 @enderror
                 <br>
-                <label for="due_date__{{$i}}">Due date : </label>
-                <input type="date" name="due_date__{{$i}}"  value="{{old('due_date__'.$i)}}">
-                <label for="end_time__{{$i}}">End Hour:</label>
-                <input type="time" name="end_time__{{$i}}"  value="{{old('end_time__'.$i)}}">
+                <label class="input-group-text"for="due_date__{{$i}}">Due date : </label>
+                <input type="date" class="input-group-text" name="due_date__{{$i}}"  value="{{old('due_date__'.$i)}}">
+                <label class="input-group-text" for="end_time__{{$i}}">End Hour:</label>
+                <input type="time" class="input-group-text" name="end_time__{{$i}}"  value="{{old('end_time__'.$i)}}">
                 @error('due_date__'.$i)
                     <span>{{$message}}</span>
                 @enderror
@@ -60,13 +61,15 @@
             @endfor
         
         </div>
-        <hr>
-        <button id="another-trail-button" name="__{{$newTrails+1}}">Add another trail</button>
+        
+        <button class="btn btn-primary" id="another-trail-button" name="__{{$newTrails+1}}">Add another trail</button>
         <br>
         @php
             session()->pull('nbNewTrails', 'default');
         @endphp
-        <input type="submit" name="" value="Create Event">
+        <hr>
+        <input type="submit" class="btn btn-primary" name="" value="Create Event">
+        <a href="/events" class="btn btn-primary">Cancel</a>
       </form>
 
       
