@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body id="body">
+  <x-flash-message/>
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
   <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
     <div class="container-fluid">
@@ -33,7 +34,7 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/events"> Events list page</a>
+            <a class="nav-link" href="/events"> Events list</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/create-event">Create Event</a>
@@ -55,16 +56,15 @@
   {{-- This is a alpha version. Just the skeleton --}}
   <main>
     {{ $slot }}
-
+  
   </main>
   
   <footer>
     <ul>
-      <li><a href=""><i class="fa-brands fa-facebook" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-regular fa-envelope" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i></li>
-      <li><a href=""><i class="fa-brands fa-github" style="color: #ffffff;"></i></li>
+      <li><a href="https://www.visitluxembourg.com/fr/explorer-le-luxembourg/nature-outdoor"><i class="fa-regular fa-clipboard fa-xl" style="color: #ffffff;"></i></i></li>
+      <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href="https://github.com/estti379/wee_wander"><i class="fa-brands fa-github fa-xl"style="color: #ffffff;"></i></li>
     </ul>
     <p>WeeWander Footer &copy;</p>
   </footer>
