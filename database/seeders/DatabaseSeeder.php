@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             AdventureParticipants::factory(1)->create();
         }
         
-        //create specific user test user
+       /* //create specific user test user
         DB::table('users')->insert([
             'username' => 'test',
             'password' => password_hash("password", PASSWORD_DEFAULT),
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'description' => fake()->text(100),
             'car_owned' => "hidden",
             'driver_license' => "hidden",
-        ]);
+        ]); */
     }
 
 
