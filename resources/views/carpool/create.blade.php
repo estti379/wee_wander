@@ -1,5 +1,7 @@
 @push('style')
     <link rel="stylesheet" href="\css\carpool_card_style.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
 @endpush
 @push('scripts')
 {{-- Import leaflet library --}}
