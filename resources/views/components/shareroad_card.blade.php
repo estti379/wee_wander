@@ -11,7 +11,7 @@
         <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
         <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     
         <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p> 
-        <p>Seats available: <strong>{{ $element->max_seats}}</strong></p>
+        <p>Seats available: <strong><x-carpool.seat-counter :element="$element"/></strong></p>
         <p><strong>Asked price :  {{ $element->price }}</strong></p>
         <a href="#"class="btn btn-primary">Driver info</a><a href="/carpool/{{$element->id}}" class="btn btn-primary">Carpool Details</a>
        
