@@ -76,8 +76,10 @@ class CarpoolController extends Controller
         return redirect('/login')->with('message', 'You have to be logged in to edit the Carpool!');
     }
         $shareRoadDetails = Route::find($id);
+        $adventures = Adventure::all();
+        $pageTitle = 'Wee Wander - Edit Carpool';
     // Pass the share road details to the view
-        return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit']);
+        return view('carpool.edit', ['element' => $shareRoadDetails,'pageTitle'=>'WeeWander - edit', 'adventures'=>$adventures, 'pageTitle' => $pageTitle]);
     }
     //====================================================================================================================================
     // Store Form
@@ -85,11 +87,9 @@ class CarpoolController extends Controller
         
         $formFields = $request->validate([
             'start_location_long' => 'required',
+            'start_location_latit' => 'required',
             'end_location_long' => 'required',
-            'bike_capacity' => 'required',
-            'pets_allowed' => 'required',
-            'luggage' => 'required',
-            'smokers_allowed' => 'required',
+            'end_location_latit' => 'required',
             'price' => 'required'
         ]);
 
@@ -120,9 +120,11 @@ class CarpoolController extends Controller
 
     //====================================================================================================================================
         // Update Form
-        public function update(Request $request,$id){
-            $carpoolUpdate =Route::find($id);
-            $carpoolUpdate->start_location_long=$request->input('start_location_long');            // request('city');
+        public function update(Request $request ,$id){
+            
+            $carpoolUpdate = Route::find($id);
+            
+            $carpoolUpdate->start_location_long=$request->input('start_location_long');          
             $carpoolUpdate->start_location_latit=$request->input('start_location_latit');
             $carpoolUpdate->end_location_long=$request->input('end_location_long');
             $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
