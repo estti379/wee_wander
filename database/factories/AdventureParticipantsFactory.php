@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Adventure;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,11 +18,13 @@ class AdventureParticipantsFactory extends Factory
      */
     public function definition(): array
     {
+        $maxUsers = count(User::all());
+        $maxAdventures = count(Adventure::all());
         $done = false;
         $i = 0;
         do{
-            $adventure_id = rand(1, 10);
-            $participant_id = rand(1, 10);
+            $adventure_id = rand(1, $maxAdventures);
+            $participant_id = rand(1, $maxUsers);
             $adventure = Adventure::find($adventure_id);
             if( isSet($adventure) ){
                 $participantList = Adventure::find($adventure_id)->participants->where("id", $participant_id);
@@ -36,6 +39,10 @@ class AdventureParticipantsFactory extends Factory
             }
             $i++;
         } while(!$done);
+        if($i == 101){
+            $adventure_id = null;
+            $participant_id == null;
+        }
         return [
             'adventure_id' => $adventure_id,
             'participant_id' => $participant_id,
