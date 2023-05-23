@@ -15,7 +15,18 @@
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
-    last created Car pool: not integred yet
-    @yield('last_carpool')
+    <div>
+        Last created Carpool:
+        <br>
+        <x-carpool.shareroad_card :element="$latestCarpool"/>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        Last created event:
+        <br>
+        <x-events.condensed-card :event="$latestEvent"/>
+    </div>
 
 </x-layout>

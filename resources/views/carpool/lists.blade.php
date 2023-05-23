@@ -1,6 +1,6 @@
 @pushOnce('style')
     <link rel="stylesheet" href="{{ URL::asset('/css/carpool_card_style.css') }}">
-@endpush
+@endpushOnce
 
 {{-- ====================  ShareRoad List ===================== --}}
 

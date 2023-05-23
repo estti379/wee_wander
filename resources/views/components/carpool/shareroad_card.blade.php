@@ -1,6 +1,6 @@
 @pushOnce('style')
     <link rel="stylesheet" href="{{ URL::asset('/css/carpool_card_style.css') }}">
-@endpush
+@endpushOnce
 
 
 {{--================== SHARE ROAD CARD ==========================--}}
@@ -37,7 +37,6 @@
             </div>
         </div>
 </div> 
-{{--@endsection ('last_carpool')--}}
 
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Models\Route as Carpool;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -18,11 +19,20 @@ use App\Http\Controllers\CarpoolController;
 |
 */
 //=============================================================
-//EVENT MNGMT
+// Index page
 Route::get('/', function () {
-    return view('index', ["pageTitle"=>"WeeWander - Home"]);
+    $latestCarpool = Carpool::latest()->first();
+    $latestEvent = Event::latest()->wherehas("adventures")->first();
+    return view('index', [
+        "pageTitle" => "WeeWander - Home",
+        "latestCarpool" => $latestCarpool,
+        "latestEvent" => $latestEvent,
+    ]);
 });
 
+
+
+//EVENT MNGMT
 //List all events
 Route::get('/events', [EventsController::class, 'eventsCard']);
 
@@ -61,13 +71,6 @@ Route::post('/adventure/join/{id}', [EventsController::class, 'joinAdventure']);
 
 // Withdraw from the Adventure
 Route::post('/adventure/withdraw/{id}', [EventsController::class, 'withdrawAdventure']);
-
-
-//=============================================================
-//Testing implementation of map
-Route::get('/testing', function(){
-    return view('testing.testing');
-});
 
 //=============================================================
 
