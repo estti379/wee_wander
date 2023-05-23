@@ -39,5 +39,8 @@
                     <x-carpool.join-button :element="$carpool"/>
               </div>
        </div>
+        <div>
+            <x-carpool.participants-list :carpool="$carpool"/>
+        </div>
 </div>
 </x-layout>
