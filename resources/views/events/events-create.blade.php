@@ -22,8 +22,6 @@
         @endphp
         <div id="new-trail-inputs">
             @for ($i = 0; $i <= $newTrails; $i++)
-                
-            
             <div id="__{{$i}}">
                 <hr>
                 <label class="input-group-text" for="trail__{{$i}}">Select your trail : </label>

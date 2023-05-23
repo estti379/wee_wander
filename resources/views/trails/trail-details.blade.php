@@ -11,6 +11,10 @@
         @endif
         {{-- {{$trail->gpx_gdid}} --}}
         <iframe src="https://gpx.studio/?state=%7B%22ids%22:%5B%22{{ $trail->gpx_gdid }}%22%5D%7D&embed&distance" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+        {{-- TO FIX LINK TO EVENT DETAIL --}}
+        <a href="/events/" class="btn btn-primary">back</a>
       </div>
+      
 </div>
 </x-layout>
