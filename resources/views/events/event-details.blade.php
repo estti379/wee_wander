@@ -4,9 +4,7 @@
   <div  class="card" >
     <h5 class="card-header" class="card text-center"><a href="/trail/{{$adventure->trail->id}}">Event detail</a></h5>
     <div class="card-body" >
-      <p >Event Id : {{ $event->id}}</p>
-      <h2 class="card-title">{{ $event->title}}</h2> {{-- Event Title --}}
-      <p>Adventure ID - {{ $adventure->id }}</p>
+      <h2 class="card-title">{{ $event->title}}</h2> {{-- Event Title --}}  
       <p>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</p>
       <p>Starting Time: {{ $adventure->start_date }}</p>
       <div class="col-md-8">

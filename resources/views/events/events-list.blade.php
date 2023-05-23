@@ -16,19 +16,19 @@
         <a href="/events/{{ $event->id }}" class="btn btn-primary">Event Details</a>
         {{-- If statment to edit button just allowed when user logged in --}}
         @if (Auth::check() && Auth::user()->id == $event->organizer_id)  
-        <!-- Button to edit event -->
-        <a href="events/edit/{{ $event->id }}" class="btn btn-primary">Edit/Delete Event</a>
+          <!-- Button to edit event -->
+          <a href="events/edit/{{ $event->id }}" class="btn btn-primary">Edit/Delete Event</a>
         @endif
-        {{-- button to join the event --}}
-        <form action="/event/join/{{ $event->id }}" method="POST">
-          @csrf
-          <button type="submit" class="btn btn-primary">Join Event</button>
-      </form>
+          {{-- button to join the event --}}
+          <form action="/event/join/{{ $event->id }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary">Join Event</button>
+          </form>
       </div>
      
         @if (Auth::check())
-      {{ Auth::user()->id }} 
-      {{ $event->organizer_id }}
+      Login ID {{ Auth::user()->id }} 
+      Event ID{{ $event->organizer_id }}
         @endif
    
     </div> 
