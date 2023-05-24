@@ -1,5 +1,5 @@
 <x-layout :pageTitle=$pageTitle>
-  <h5 class=text-center >Events List</h5>
+  <h5 class="card-header">Events List</h5>
   
     {{-- informations being retrieved by the eventsCard() method in controllers --}}
     @foreach ($events as $event)
