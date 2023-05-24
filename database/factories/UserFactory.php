@@ -46,7 +46,7 @@ class UserFactory extends Factory
 
         return [
             'username' => fake()->userName(),
-            'password' => password_hash('password',  PASSWORD_DEFAULT),
+            'password' => '$10$8S2oU9XGtvKV1y6yQaa2MulsZ3dhQMBn5Y.8HFWJi1f2kUwj6MNNu',// password //password_hash('password',  PASSWORD_DEFAULT),
             'email' => fake()->unique()->safeEmail(),
             'firstname' => $firstname,
             'lastname' => $lastname,

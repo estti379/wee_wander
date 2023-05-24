@@ -51,7 +51,7 @@ class Route extends Model
 
     public function participants(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'route_participants', 'route_id', 'participant_id')->using(RouteParticipants::class);
+        return $this->belongsToMany(User::class, 'route_participants', 'route_id', 'participant_id')->using(RouteParticipants::class)->withTimestamps();
     }
     //===================================
 }
