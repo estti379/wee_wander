@@ -63,8 +63,8 @@
                 </select>
             </div>
 
-            <label for="bike_capacity">Luggage allowed:</label>
-            <select name="bike_capacity">
+            <label for="luggage">Luggage allowed:</label>
+            <select name="luggage">
                 <option value="1" {{ $element->luggage ? 'selected' : '' }}>Yes</option>
                 <option value="0" {{ $element->luggage ? '' : 'selected' }}>No</option>
             </select>
@@ -78,7 +78,7 @@
             </div>
             <div>
                 <label for="price">Asked price</label>
-                <input type="text" name="price" placeholder="0€"><br>
+                <input type="text" name="price" placeholder="0€" value="{{ old('price', $element->price) }}">
             </div>
             <button type="submit">update</button>
         </form>

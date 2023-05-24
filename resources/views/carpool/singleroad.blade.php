@@ -16,9 +16,9 @@
         <div class="card-body">
             <p class="card-text">username: <strong>{{ $carpool->carowner->username }}</strong></p>
             <p>Seats available: <strong>{{ $carpool->max_seats }}</strong></p>
-            <p>Bike Rack available: <?php echo $carpool['bike_capacity'] ? 'Yes' : 'No'; ?></p> {{-- {{ $element->bike_capacity }} --}}
+            <p>Bike Rack available: <?php echo $carpool['bike_capacity'] ? 'Yes' : 'No'; ?></p>
             <p>Date & Time Departure: {{ $carpool->start_date }}</p>
-            <p>Luggage allowed: <?php echo $carpool['lugage'] ? 'Yes' : 'No'; ?></p>
+            <p>Luggage allowed: <?php echo $carpool['luggage'] ? 'Yes' : 'No'; ?></p>
             <p>Dog allowed: <?php echo $carpool['pets_allowed'] ? 'Yes' : 'No'; ?></p>
             <p>Smokers allowed: <?php echo $carpool['smokers_allowed'] ? 'Yes' : 'No'; ?></p>
             <p><strong>Asked price : {{ $carpool->price }}</strong></p>
@@ -35,12 +35,12 @@
             @if (Auth::check() && Auth::user()->id == $carpool->carowner->id)
                 <a href="/carpool/edit/{{ $carpool->id }}" class="btn btn-primary">Edit</a>
             @endif
-              <div>
-                    <x-carpool.join-button :element="$carpool"/>
-              </div>
-       </div>
-        <div>
-            <x-carpool.participants-list :carpool="$carpool"/>
+            <div>
+                <x-carpool.join-button :element="$carpool" />
+            </div>
         </div>
-</div>
+        <div>
+            <x-carpool.participants-list :carpool="$carpool" />
+        </div>
+    </div>
 </x-layout>
