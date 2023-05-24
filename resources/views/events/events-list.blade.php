@@ -11,5 +11,7 @@
   </div>
     {{-- For pagination --}}
     {{ $events->withQueryString()->links() }} 
+    <div class="comments">
+    </div>
   
 </x-layout>

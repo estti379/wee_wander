@@ -68,20 +68,18 @@
   {{-- This is a alpha version. Just the skeleton --}}
   <main id="layout">
     {{ $slot }}
-
-    </main>
-
-    <footer>
-        <ul>
-            <li><a href="https://www.visitluxembourg.com/fr/explorer-le-luxembourg/nature-outdoor"><i
-                        class="fa-regular fa-clipboard fa-xl" style="color: #ffffff;"></i></i></li>
-            <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
-            <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
-            <li><a href="https://github.com/estti379/wee_wander"><i
-                        class="fa-brands fa-github fa-xl"style="color: #ffffff;"></i></li>
-        </ul>
-        <p>WeeWander Footer &copy;</p>
-    </footer>
+  
+  </main>
+  
+  <footer>
+    <ul>
+      <li><a href="https://www.visitluxembourg.com/fr/explorer-le-luxembourg/nature-outdoor"><i class="fa-regular fa-clipboard fa-xl" style="color: #ffffff;"></i></i></li>
+      <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href="https://github.com/estti379/wee_wander"><i class="fa-brands fa-github fa-xl"style="color: #ffffff;"></i></li>
+    </ul>
+    <p>WeeWander Footer &copy;</p>
+  </footer>
 
     {{-- scripts will be pushed into here --}}
     @stack('scripts')
