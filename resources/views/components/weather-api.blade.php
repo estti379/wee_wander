@@ -5,6 +5,9 @@
 <div class="weather-component">
     {{-- Just static info from the DB --}}
     <div class="card mb-3" style="max-width: 540px;">
+        @if ($weatherData == null)
+            <p>We are not able to display information now</p>
+        @else
         @php
             $adventureDateTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $adventureDate);
             $adventureDateFormat = $adventureDateTime->format('d-m-Y');
@@ -123,4 +126,6 @@
             </div>
         </div>
     </div>
+    @endif
+        
 </div>
