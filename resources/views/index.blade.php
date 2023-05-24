@@ -5,7 +5,7 @@
     <!--========================== Heading ==============================-->
     <div class="heading">
         <div id="title">
-            <h1><strong> Welcome to WeeWANDER</strong></h1>
+            <h1><strong> Welcome to <span>Wee</span>WANDER</strong></h1>
             <p>Website for hiking /trekking enthusiast who wants do discover luxemburgish beautifully nature.</p>  
         </div> 
     </div>

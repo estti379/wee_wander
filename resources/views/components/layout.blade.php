@@ -20,11 +20,11 @@
   {{-- Google Font Title--}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Kaushan+Script&family=Lato:wght@300&family=Mukta:wght@300&display=swap" rel="stylesheet">  
  {{-- Google Font Content--}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ysabeau&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Mukta:wght@300&display=swap" rel="stylesheet">
     {{-- Leaflet.js LIVRARY TO MAP --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
