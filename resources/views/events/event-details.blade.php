@@ -1,10 +1,10 @@
 {{-- EVENT DETAILS PAGE --}}
 <x-layout :pageTitle=$pageTitle>
     @foreach ($event->adventures as $adventure)
+    <div class="card-body">
         <h5 class="card-header" class="card text-center"><a href="/events/{{ $adventure->trail->id }}">
                 {{ $adventure->trail->name }}</a>
         </h5>
-        <div class="card-body">
             <h2 class="card-title">{{ $event->title }}</h2> {{-- Event Title --}}
             <p>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</p>
             <p>Adventure Organizer: <a href="/profile/{{ $event->username }}">{{ $event->organizer->firstname }}
@@ -27,6 +27,6 @@
           <a href="/carpool/create" class="btn btn-primary">Create a carpool</a>     
         </div> --}}
     </div>
-    </div>
+    
 
 </x-layout>

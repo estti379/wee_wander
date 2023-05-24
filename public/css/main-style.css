@@ -25,7 +25,7 @@ ul {
 }
 #layout a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #177980
 }
 a {
     text-decoration: none;
@@ -176,6 +176,7 @@ footer ul {
     display: flex;
     justify-content: space-between;
 }
+/* === Cards === */
 .card-header {
     background-color: #5ac9a7 !important;
     padding: 10px !important;
@@ -183,6 +184,15 @@ footer ul {
 }
 .card-body {
     background-color: #ffffff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+}
+.card-title{
+    color: #17797F !important;
+    text-align: center;
+}
+
+span.page-link {
+    border-color: #0ebc89;
 }
 /*========================================================*/
 

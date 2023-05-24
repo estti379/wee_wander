@@ -6,14 +6,15 @@
 {{-- ================== SHARE ROAD CARD ========================== --}}
 {{-- @section('last_carpool') --}}
 @props(['element'])
-
-<h5 class="card-header" class="card text-center"> This carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_date }}</h5>
 <div class="card-body">
+<h5 class="card-header" class="card text-center"> This carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_date }}</h5>
+
     <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
     <p>Adventure Name: {{ $element->start_adventure->trail->name }} </p>                     
     <p>Adventure Location: {{ $element->end_location_long }},{{ $element->end_location_latit }}</p> 
     <p>Seats available: <strong><x-carpool.seat-counter :element="$element"/></strong></p>
     <p><strong>Asked price :  {{ $element->price }}€</strong></p>
+    <hr>
     <a href="/users/{{$element->carowner->id}}"class="btn btn-primary">Driver info</a><a href="/carpool/{{$element->id}}" class="btn btn-primary">Carpool Details</a>
     
     {{--==TO TRANSFERT TO SINGLE ROAD==--}}

@@ -6,7 +6,7 @@
 
 <x-layout :pageTitle='$pageTitle'>
     <div class="card">
-        <h5 class="card-header">Available carpools</h5>
+        <h5 class="card-title">Available carpools</h5>
     
         @if ($shareRoadDetails === null || count($shareRoadDetails) === 0)
             <li>empty</li>
