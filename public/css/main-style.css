@@ -225,10 +225,12 @@ footer ul {
 #index-card-container .card {
     flex: 1;
     /* You might want to add some padding or margin for visual spacing between cards */
-    margin: 10px;
+    /*margin: auto;*/
+    min-width: 80%;
     /* If you want the content to take full height, this can be used */
     display: flex;
     flex-direction: column;
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    }
 
 /**************************** Responsive Break point ***************************************/
