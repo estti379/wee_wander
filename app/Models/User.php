@@ -67,12 +67,12 @@ class User extends Authenticatable
 
     public function participatingInRoutes(): BelongsToMany
     {
-        return $this->belongsToMany(Route::class, 'route_participants', 'participant_id', 'route_id');
+        return $this->belongsToMany(Route::class, 'route_participants', 'participant_id', 'route_id')->withTimestamps();
     }
 
     public function participatingInAdventures(): BelongsToMany
     {
-        return $this->belongsToMany(Adventure::class, 'adventure_participants', 'participant_id', 'adventure_id');
+        return $this->belongsToMany(Adventure::class, 'adventure_participants', 'participant_id', 'adventure_id')->withTimestamps();
     }
     
     

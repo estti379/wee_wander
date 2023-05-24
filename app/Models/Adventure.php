@@ -47,7 +47,7 @@ class Adventure extends Model
 
     public function participants(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'adventure_participants', 'adventure_id', 'participant_id');
+        return $this->belongsToMany(User::class, 'adventure_participants', 'adventure_id', 'participant_id')->withTimestamps();
     }
 
 
