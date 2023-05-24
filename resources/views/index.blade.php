@@ -1,5 +1,5 @@
 <x-layout :pageTitle="$pageTitle">
-    
+
     <!--========================== Heading ==============================-->
     <div class="heading">
         <h1><strong> Welcome to WeeWANDER</strong></h1>
@@ -9,16 +9,19 @@
     @yield('publicity')
     <div>
         <h2>We Wander </h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea voluptatum reiciendis tempore odit unde beatae.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet assumenda distinctio sequi beatae soluta reprehenderit.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos animi explicabo dolorum tempore pariatur consequatur fuga voluptas. 
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea voluptatum reiciendis tempore odit unde beatae.
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet assumenda distinctio sequi beatae soluta
+            reprehenderit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos animi explicabo dolorum tempore pariatur
+            consequatur fuga voluptas.
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
     <div>
         Last created Carpool:
         <br>
-        <x-carpool.shareroad_card :element="$latestCarpool"/>
+        <x-carpool.shareroad_card :element="$latestCarpool" />
     </div>
     <br>
     <hr>
@@ -26,7 +29,7 @@
     <div>
         Last created event:
         <br>
-        <x-events.condensed-card :event="$latestEvent"/>
+        <x-events.condensed-card :event="$latestEvent" />
     </div>
 
 </x-layout>
