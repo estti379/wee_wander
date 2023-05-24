@@ -10,14 +10,18 @@ class WeatherApi extends Component
 {   
     public $lat;
     public $long;
+    public $startdate;
+    public $trailname;
     
     /**
      * Create a new component instance.
      */
-    public function __construct($lat, $long)
+    public function __construct($lat, $long, $startdate, $trailname )
     {
         $this->lat = $lat;
         $this->long = $long;
+        $this->startdate = $startdate;
+        $this->trailname = $trailname;
     }
 
     /**
@@ -26,8 +30,12 @@ class WeatherApi extends Component
     public function render(): View|Closure|string
     {
     $weatherData = $this->getWeather();
-    
-    return view('components.weather-api', ['weatherData' => $weatherData]);
+    $adventureDate = $this->startdate;
+    $trailname = $this->trailname;
+
+    return view('components.weather-api', ['weatherData' => $weatherData,
+                                            'adventureDate' => $adventureDate,
+                                            'trailName' => $trailname]);
     }
 
 
@@ -36,7 +44,7 @@ class WeatherApi extends Component
     
     public function getWeather(){
         
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=" . $this->lat . "&longitude=" . $this->long . "&hourly=temperature_2m,precipitation_probability&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&forecast_days=1&timezone=Europe%2FLondon";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=" . $this->lat . "&longitude=" . $this->long . "&hourly=temperature_2m,precipitation_probability&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&forecast_days=16&timezone=Europe%2FLondon";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -50,8 +58,8 @@ class WeatherApi extends Component
         
         return $weatherData; 
     }
+
 }
-    
 
 
 

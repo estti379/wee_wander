@@ -44,6 +44,9 @@
                 <label for="start_date">Date & Time:</label>
                 <input type="datetime-local" name="start_date"
                     value="{{ date('Y-m-d\TH:i', strtotime($element->start_date)) }}">
+                @error('start_date')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
             <div>
                 <label for="max_seats">Seats available:</label>
@@ -63,8 +66,8 @@
                 </select>
             </div>
 
-            <label for="bike_capacity">Luggage allowed:</label>
-            <select name="bike_capacity">
+            <label for="luggage">Luggage allowed:</label>
+            <select name="luggage">
                 <option value="1" {{ $element->luggage ? 'selected' : '' }}>Yes</option>
                 <option value="0" {{ $element->luggage ? '' : 'selected' }}>No</option>
             </select>
@@ -78,7 +81,10 @@
             </div>
             <div>
                 <label for="price">Asked price</label>
-                <input type="text" name="price" placeholder="0€"><br>
+                <input type="text" name="price" placeholder="0€" value="{{ old('price', $element->price) }}">
+                @error('price')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
             <button type="submit">update</button>
         </form>

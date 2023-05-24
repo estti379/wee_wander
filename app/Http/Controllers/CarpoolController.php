@@ -137,7 +137,10 @@ class CarpoolController extends Controller
     //====================================================================================================================================
         // Update Form
         public function update(Request $request ,$id){
-            
+            $request->validate([
+                'start_date' => 'required',
+                'price' => 'required|numeric',
+            ]);
             $carpoolUpdate = Route::find($id);
             
             $carpoolUpdate->start_location_long=$request->input('start_location_long');          
@@ -149,7 +152,7 @@ class CarpoolController extends Controller
             $carpoolUpdate->distance=1;   // BONUS FEATURE $request->input('distance');       
             $carpoolUpdate->start_date=$request->input('start_date');//.' '.request('time');
             $carpoolUpdate->max_seats=$request->input('max_seats');
-            $carpoolUpdate->bike_capacity=$request->input('bike_capacity');
+            $carpoolUpdate->bike_capacity=$request->input('bike_capacity')? 1 : 0;
             $carpoolUpdate->pets_allowed=$request->input('pets_allowed') ? 1 : 0;
             $carpoolUpdate->luggage=$request->input('luggage') ? 1 : 0;
             $carpoolUpdate->smokers_allowed=$request->input('smokers_allowed') ? 1 : 0;
