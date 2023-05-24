@@ -14,19 +14,19 @@
 
 {{-- Create Carpool From --}}
 <x-layout :pageTitle=$pageTitle>
-    <h5>Create an Carpool</h5>
-
-    <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i> Choose Route</span><br>
-    <span>Choose a starting and an ending point to your carpool</span>
-    <button class="btn btn-primary" id="define-route">Define route</button>
+    <div class="card">
+    <h5 class="card-header">Create an Carpool <i class="fa-solid fa-car-side  fa-lg fa-bounce" style="color: #ffffff;"></i></h5>
+    <div class="card-body">
+    <span>Choose a starting <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> and an ending point <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> to your carpool :</span>
     <div id="map" style="height: 400px; width;"></div>
+    <button class="btn btn-primary" id="define-route">Define route</button>
     <form method="POST" action="/carpool/create" enctype="multipart/form-data">
         @csrf
         {{-- BONUS FEATURE --}}
         {{-- <label>Distance</label>
                     <input type="text" name="distance" placeholder="km"><br> --}}
-        <label class="input-group-text"><i class="fa-solid fa-location-dot fa-beat"
-                style="color: #0ebc89;"></i>Adventure</label>
+        <label class="input-group-text">Adventure<i class="fa-solid fa-location-dot fa-beat"
+            style="color: #0ebc89;"></i></label>
         <select class="form-select" aria-label="Default select example" value="adventure">
             @foreach ($adventures as $adventure)
                 <option value="{{ $adventure->trail_id }}">
@@ -73,4 +73,6 @@
             </div>
         </div>
             </div>
+        </div>
+    </div>
             </x-layout>
