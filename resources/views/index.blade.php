@@ -21,7 +21,7 @@
     <hr>
     <div class="card" id="index-card-container">
         <div class="card">
-    <p> Last created Carpool:</p>
+        Last created Carpool:
         <br>
         <x-carpool.shareroad_card :element="$latestCarpool" />
         </div>
