@@ -12,19 +12,19 @@
                     <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long" :startdate="$adventure->start_date" :trailname="$adventure->trail->name" />
               </div>
           <a href="/trail/{{$adventure->trail->id}}" class="btn btn-primary">Trail Details</a>
-        </div>
+        
         <x-events.join-button :adventure="$adventure"/>
         <x-events.participants-number-link :adventure="$adventure"/>
         <x-events.carpool-solutions :adventure="$adventure"/>
             @endforeach
             <a href="/events"  class="btn btn-primary">Back</a>
       {{-- Carpool Link --}}
-      <div class="card-footer text-body-secondary">
+      {{--<div class="card-footer text-body-secondary">
           <p>HERE GOES CARPOOL SOLUTIONS FOR THIS TRIAL</p><br>
           <a href="/carpool/lists" class="btn btn-primary">Carpool list</a>   
           <a href="/carpool/create" class="btn btn-primary">Create a carpool</a>     
-        </div>
+        </div>--}}
     </div>
-    </div>
-
+  </div>
+  
 </x-layout>
