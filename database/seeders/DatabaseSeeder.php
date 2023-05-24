@@ -21,30 +21,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        Event::factory(10)->create();
-        Trail::factory(10)->create();
-        Adventure::factory(10)->create();
-        Route::factory(10)->create();
-        for ($i=0; $i < 30; $i++) { 
-            RouteParticipants::factory(1)->create();
-        }
-        for ($i=0; $i < 30; $i++) { 
-            AdventureParticipants::factory(1)->create();
-        }
-        
-       /* //create specific user test user
-        DB::table('users')->insert([
-            'username' => 'test',
-            'password' => password_hash("password", PASSWORD_DEFAULT),
-            'email' => fake()->unique()->safeEmail(),
-            'firstname' => fake()->firstName(),
-            'lastname' => fake()->lastName(),
-            'picture' => fake()->imageUrl($width=200, $height=200),
-            'description' => fake()->text(100),
-            'car_owned' => "hidden",
-            'driver_license' => "hidden",
-        ]); */
+
+        $this->call(UserSeeder::class, false, ['count' => 200]);
+        $this->call(EventSeeder::class, false, ['count' => 200]);
+        $this->call(TrailSeeder::class);
+        $this->call(AdventureSeeder::class, false, ['count' => 200]);
+        $this->call(RouteSeeder::class, false, ['count' => 200]);
     }
 
 
