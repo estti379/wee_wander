@@ -7,6 +7,7 @@
 {{-- @section('last_carpool') --}}
 @props(['element'])
 <div class="card-body">
+
 <h5 class="card-header" class="card text-center"> This carpool drives to {{ $element->start_adventure->trail->name }} on the {{ $element->start_date }}</h5>
 
     <p>City Departure: {{ $element->start_location_long }},{{ $element->start_location_latit }}</p>  
@@ -32,5 +33,6 @@
     <div>
         <x-carpool.join-button :element="$element" />
     </div>
+
 </div>
 

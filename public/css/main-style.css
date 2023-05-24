@@ -182,15 +182,20 @@ footer ul {
     padding: 10px !important;
     color: white !important;
 }
-.card-body {
+
+div.card-body{
     background-color: #ffffff !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    text-align: center;
 }
 .card-title{
     color: #17797F !important;
     text-align: center;
 }
-
+.card-box{
+    max-width: 600px;
+    margin-bottom: 10px;
+}
 span.page-link {
     border-color: #0ebc89;
 }
