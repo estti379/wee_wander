@@ -18,15 +18,13 @@
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
-    <div>
-       <p> Last created Carpool:</p>
+    <div class="card">
+    <p> Last created Carpool:</p>
         <br>
         <x-carpool.shareroad_card :element="$latestCarpool" />
     </div>
-    <br>
-    <hr>
-    <br>
-    <div>
+
+    <div class="card">
         Last created event:
         <br>
         <x-events.condensed-card :event="$latestEvent" />
