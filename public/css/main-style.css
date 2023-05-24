@@ -21,7 +21,7 @@ ul {
     list-style: none;
 }
 #layout {
-    margin-top: 85px;
+    margin-top: 75px;
 }
 #layout a {
     text-decoration: none;
@@ -60,15 +60,7 @@ a {
     color: white !important;
 }
 /* ====  Navbar  === */
-.navbar > .container-fluid {
-    background-color: #5ac9a7 !important;
-    justify-content: space-between !important;
-    box-shadow: 0px 10px rgba(0, 0, 0, 0.349);
-    margin-top: 84px;
-    position: fixed;
-    height: 100px;
-    z-index: 1;
-}
+
 .navbar-expand-lg .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
@@ -86,10 +78,17 @@ a {
     background-color: #5ac9a7 !important;
     justify-content: space-between !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-    margin-top: 84px;
+    margin-top: 74px;
     position: fixed;
-    height: 100px;
+    height: 90px;
+    border-bottom: solid 9px #17797F;
+    border-top: solid 9px #5ac9a7;
     z-index: 99;
+}
+
+.navbar-brand img {
+    width: 145px;
+    margin-top: 73px;
 }
 
 li.nav-item {
@@ -126,13 +125,21 @@ div.nav-item a {
     position: relative;
     overflow: hidden;
     display: inline-block;
+    font-size: 14px;
 }
 
 i.fa-solid.fa-user.fa-xl {
     position: absolute;
     left: 6px;
-    bottom: 14px;
-    font-size: 15px;
+    bottom: 13px;
+    font-size: 12px;
+}
+
+i.fa-solid.fa-right-from-bracket {
+    position: absolute;
+    left: 6px;
+    bottom: 8px;
+    font-size: 12px;
 }
 
 /* ====  Footer === */
@@ -191,18 +198,25 @@ footer ul {
     text-align: center;
     display: grid;
     align-content: center;
+    overflow: hidden;
 }
 .heading h1 {
     /*font-size: 75px;*/
-    font-family: 'Kaushan Script', cursive;
 }
+
+.heading h1 span {
+    font-family: 'Kaushan Script', cursive;
+    padding-right: 5px;
+}
+
 #title {
-    background-color: #1779808a;
-    border-radius: 30px 30px 30px 30px;
-    width: 550px;
-    padding: 10px;
+    background-color: rgba(0,0,0,.4);
+    width: 100%;
+    padding: 8% 0px;
     margin: auto;
 }
+
+
 
 /** 
 /Index Page Cards
