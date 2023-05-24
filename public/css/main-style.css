@@ -7,13 +7,13 @@
 }
 #body {
     background: #177980;
-    font-family: Ysabeau, Arial;
+    font-family: 'Mukta', sans-serif;
 }
 #body h2,
 h3,
 h4,
 h5 {
-    font-family: Ysabeau, Arial;
+    font-family: 'Mukta', sans-serif;
     color: white;
 }
 body,
@@ -76,8 +76,8 @@ a {
 }
 .navbar-expand-lg .navbar-nav .nav-link {
     color: white;
-    /*font-size: 20px;*/
-    font-family: Ysabeau, Arial;
+    font-size: 16px;
+    font-family: 'Mukta', sans-serif;
 }
 .navbar-expand-lg .navbar-nav .nav-link:hover {
     text-decoration: underline;
@@ -112,17 +112,29 @@ div.nav-item a, div.nav-item span {
     color: #FFF;
     text-decoration: none;
     vertical-align: middle;
-    display: inline-block;
     margin: 3px 3px;
+}
+
+div.nav-item span {
+    display: block;
 }
 
 div.nav-item a {
     background-color: #177980;
-    padding: 3px 25px;
+    padding: 3px 12px 3px 25px;
     border-radius: 3px;
     position: relative;
     overflow: hidden;
+    display: inline-block;
 }
+
+i.fa-solid.fa-user.fa-xl {
+    position: absolute;
+    left: 6px;
+    bottom: 14px;
+    font-size: 15px;
+}
+
 /* ====  Footer === */
 footer {
     position: absolute;
@@ -182,7 +194,7 @@ footer ul {
 }
 .heading h1 {
     /*font-size: 75px;*/
-    font-family: Dancing Script, cursive;
+    font-family: 'Kaushan Script', cursive;
 }
 #title {
     background-color: #1779808a;
