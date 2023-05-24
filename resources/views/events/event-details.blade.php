@@ -7,9 +7,9 @@
         <div class="card-body">
             <h2 class="card-title">{{ $event->title }}</h2> {{-- Event Title --}}
             <p>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</p>
-            <p>Trail Organizer: <a href="/profile/{{ $event->username }}">{{ $event->organizer->firstname }}
+            <p>Adventure Organizer: <a href="/profile/{{ $event->username }}">{{ $event->organizer->firstname }}
                     {{ $event->organizer->lastname }}</a></p>
-            <p>Starting Time: {{ $adventure->start_date }}</p>
+            <p>Starting date : {{ $adventure->start_date }}</p>
             <div class="col-md-8">
                 <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long" :startdate="$adventure->start_date" :trailname="$adventure->trail->name" />
             </div>
