@@ -43,7 +43,8 @@ body,ul{
 .card{
     margin: 10px auto;
     max-width: 90%;
-    background-color: #e36c5e;
+    padding: 20px;
+
 }
 .card-header{
     text-align: center;

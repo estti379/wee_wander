@@ -10,7 +10,6 @@
     <hr>
     @yield('publicity')
     <div class="card">
-
         <h1>Wee Wander</h1><span>description:<span>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea voluptatum reiciendis tempore odit unde beatae.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet assumenda distinctio sequi beatae soluta reprehenderit.</p>
@@ -19,12 +18,12 @@
     </div>
     <hr>
     <div class="card">
+        <div class="card">
     <p> Last created Carpool:</p>
         <br>
         <x-carpool.shareroad_card :element="$latestCarpool" />
-    </div>
-
-    <div class="card">
+        </div>
+        <div class="card">
         Last created event:
         <br>
         <x-events.condensed-card :event="$latestEvent" />
