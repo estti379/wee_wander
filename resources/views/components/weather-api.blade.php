@@ -5,8 +5,6 @@
 <div class="weather-component">
     {{-- Just static info from the DB --}}
     <div class="card mb-3" style="max-width: 540px;">
-        <hr>
-
         @php
             $adventureDateTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $adventureDate);
             $adventureDateFormat = $adventureDateTime->format('d-m-Y');
@@ -22,13 +20,11 @@
                 <p>Average Precipitation Probability for adventure date:
                     {{ $weatherData['hourly']['precipitation_probability'][$adventureIndex] }} %</p>
             @else
-                <p>Average Precipitation Probability for this adventure is not available yet.</p>
+                <p> Precipitation Probability for the date of this adventure is not available yet. </p>
             @endif
         @else
-            <p>There is no weather available for this date yet</p>
+            <p>There is no weather data available for this date yet. &#x1F61E;</p>
         @endif
-        <hr>
-
         <h3 class="card-header">Forecast now for {{ $trailName }}{{-- now()->format('Y-m-d') --}} </h3>
         <div class="row g-0">
             <div class="col-md-4">
