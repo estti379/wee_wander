@@ -30,8 +30,8 @@
 </head>
 
 <body id="body">
-    <x-flash-message />
-    {{-- -------------------------------------------------- NAVBAR ------------------------------------------------------------ --}}
+  <x-flash-message/>
+  {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"
@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link"  href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/events"> Events list</a>
