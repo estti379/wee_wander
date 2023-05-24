@@ -1,5 +1,7 @@
+@push('style')
+    <link rel="stylesheet" href="/css/main-style.css">
+@endpush
 <x-layout :pageTitle="$pageTitle">
-
     <!--========================== Heading ==============================-->
     <div class="heading">
         <div id="title">
@@ -17,7 +19,7 @@
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
-    <div class="card">
+    <div class="card" id="index-card-container">
         <div class="card">
     <p> Last created Carpool:</p>
         <br>

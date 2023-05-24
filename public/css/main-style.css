@@ -1,29 +1,33 @@
 /*=========================== Main =================================*/
-*{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-border: 0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
-#body{
-    background:#177980;
-     font-family: Ysabeau,Arial;
+#body {
+    background: #177980;
+    font-family: Ysabeau, Arial;
 }
-#body h2,h3,h4,h5{
-    font-family: Ysabeau,Arial;
+#body h2,
+h3,
+h4,
+h5 {
+    font-family: Ysabeau, Arial;
     color: white;
 }
-body,ul{
+body,
+ul {
     list-style: none;
-} 
-#layout{
+}
+#layout {
     margin-top: 85px;
 }
-#layout a{
+#layout a {
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
- a{
+a {
     text-decoration: none;
 }
 /* Weather icons*/
@@ -33,32 +37,31 @@ body,ul{
 }
 /*=== Button ===*/
 .btn-primary {
-    --bs-btn-bg: #177980!important;
-    --bs-btn-border-color:#177980!important;
-    --bs-btn-hover-bg: #0ebc89!important;
-    --bs-btn-hover-border-color:#0ebc89 !important;
+    --bs-btn-bg: #177980 !important;
+    --bs-btn-border-color: #177980 !important;
+    --bs-btn-hover-bg: #0ebc89 !important;
+    --bs-btn-hover-border-color: #0ebc89 !important;
     color: white !important ;
-    margin: 10px!important;
+    margin: 10px !important;
 }
-.card{
+.card {
     margin: 10px auto;
     max-width: 90%;
     padding: 20px;
-
 }
-.card-header{
+.card-header {
     text-align: center;
 }
-.card-header a{
+.card-header a {
     color: white !important;
 }
 
-.card-title>a{
-    color: white!important;
+.card-title > a {
+    color: white !important;
 }
 /* ====  Navbar  === */
-.navbar > .container-fluid{
-    background-color: #5ac9a7!important; 
+.navbar > .container-fluid {
+    background-color: #5ac9a7 !important;
     justify-content: space-between !important;
     box-shadow: 0px 10px rgba(0, 0, 0, 0.349);
     margin-top: 84px;
@@ -72,43 +75,43 @@ body,ul{
     justify-content: space-between;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
-    color:white;
+    color: white;
     /*font-size: 20px;*/
-    font-family: Ysabeau,Arial;
+    font-family: Ysabeau, Arial;
 }
-.navbar-expand-lg .navbar-nav .nav-link:hover{
+.navbar-expand-lg .navbar-nav .nav-link:hover {
     text-decoration: underline;
 }
 /* ====  Footer === */
-footer{
-position:absolute;
-bottom: -10;
-width: 100%;
-display: flex;
-justify-content:center;
-align-items:center ;
-background-color: #5ac9a7; 
+footer {
+    position: absolute;
+    bottom: -10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5ac9a7;
 }
 footer ul {
     width: 40%;
-    margin:auto;
+    margin: auto;
     display: flex;
     justify-content: space-between;
 }
-.card-header{
-    background-color:  #5ac9a7 !important;
+.card-header {
+    background-color: #5ac9a7 !important;
     padding: 10px !important;
     color: white !important;
 }
-.card-body{
+.card-body {
     background-color: #ffffff !important;
 }
 /*========================================================*/
 
-.heading{
+.heading {
     width: 100%;
     height: 300px;
-    background-image: url('../images/pictures/Mullerthal.png' );
+    background-image: url("../images/pictures/Mullerthal.png");
     background-size: cover;
     background-color: #177980;
     margin: auto;
@@ -118,11 +121,11 @@ footer ul {
     display: grid;
     align-content: center;
 }
-.heading h1{
+.heading h1 {
     /*font-size: 75px;*/
     font-family: Dancing Script, cursive;
 }
-#title{
+#title {
     background-color: #1779808a;
     border-radius: 30px 30px 30px 30px;
     width: 550px;
@@ -130,7 +133,17 @@ footer ul {
     margin: auto;
 }
 
+/** 
+/Index Page Cards
+**/
+
+#index-card-container .card {
+    flex: 1;
+    /* You might want to add some padding or margin for visual spacing between cards */
+    margin: 10px;
+    /* If you want the content to take full height, this can be used */
+    display: flex;
+    flex-direction: column;
+}
+
 /**************************** Responsive Break point ***************************************/
-
-
-

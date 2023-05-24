@@ -47,6 +47,7 @@ class TrailController extends Controller
 
             $pageTitle = 'WeeWander - Trail Details';
             $trail = Trail::find($trailId);
+            
             return view('trails.trail-details', ['pageTitle' => $pageTitle,
                                                  'trail' => $trail,
                                                 ],
