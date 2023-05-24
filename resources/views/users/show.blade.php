@@ -1,7 +1,8 @@
 <x-layout  :pageTitle="$pageTitle">
-
-    <h2><i class="fa-solid fa-user" style="color: #0ebc89;"> </i>Profile: {{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
-    
+    <div class="card">
+<h5 class="card-header">Profil</h5>
+<div class="card-body">
+<h2 >{{$userDetails->firstname}} {{$userDetails->lastname}}</h2>
     <div>
         <div>
             <img src={{$userDetails->picture}}>
@@ -38,4 +39,14 @@
         <x-users.changeDetailsForm :userDetails="$userDetails"/>
     @endif
     <hr>
+<div>
+    <a href=""><h5>Created event</h5></a>
+    
+    <a href=""><h5>Participed events</h5></a>
+    
+    <a href=""><h5>Created carpool</h5></a>
+    
+    <a href=""><h5>Participed carpools</h5></a>
+</div>
+</div>
 </x-layout>

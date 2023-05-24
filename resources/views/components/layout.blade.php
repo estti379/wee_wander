@@ -17,13 +17,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {{-- Google Font Title--}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+ {{-- Google Font Content--}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ysabeau&display=swap" rel="stylesheet">
     {{-- Leaflet.js LIVRARY TO MAP --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 
 <body id="body">
-    <x-flash-message />
-    {{-- -------------------------------------------------- NAVBAR ------------------------------------------------------------ --}}
+  <x-flash-message/>
+  {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"
@@ -35,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link"  href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/events"> Events list</a>
@@ -55,25 +63,23 @@
                 </div>
             </div>
         </div>
-    </nav>
-    {{-- -------------------------------------------------------------------------------------------------------------- --}}
-    {{-- This is a alpha version. Just the skeleton --}}
-    <main>
-        {{ $slot }}
-
-    </main>
-
-    <footer>
-        <ul>
-            <li><a href="https://www.visitluxembourg.com/fr/explorer-le-luxembourg/nature-outdoor"><i
-                        class="fa-regular fa-clipboard fa-xl" style="color: #ffffff;"></i></i></li>
-            <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
-            <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
-            <li><a href="https://github.com/estti379/wee_wander"><i
-                        class="fa-brands fa-github fa-xl"style="color: #ffffff;"></i></li>
-        </ul>
-        <p>WeeWander Footer &copy;</p>
-    </footer>
+  </nav>
+  {{------------------------------------------------------------------------------------------------------------------}}
+  {{-- This is a alpha version. Just the skeleton --}}
+  <main id="layout">
+    {{ $slot }}
+  
+  </main>
+  
+  <footer>
+    <ul>
+      <li><a href="https://www.visitluxembourg.com/fr/explorer-le-luxembourg/nature-outdoor"><i class="fa-regular fa-clipboard fa-xl" style="color: #ffffff;"></i></i></li>
+      <li><a href=""><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href=""><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></li>
+      <li><a href="https://github.com/estti379/wee_wander"><i class="fa-brands fa-github fa-xl"style="color: #ffffff;"></i></li>
+    </ul>
+    <p>WeeWander Footer &copy;</p>
+  </footer>
 
     {{-- scripts will be pushed into here --}}
     @stack('scripts')

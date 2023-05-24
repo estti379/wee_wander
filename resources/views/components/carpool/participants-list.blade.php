@@ -8,7 +8,7 @@
         })
         ->get();
 @endphp
-<h5>Other Riders:</h5>
+<h5>Other Riders: <i class="fa-solid fa-people-group fa-lg" style="color:#0ebc89;"></i></h5>
 <ul>
 @foreach ($participants as $user)
     <li>

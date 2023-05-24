@@ -12,7 +12,7 @@
     <p>There are no other participants for this adventure.</p>
 @else
     <p>
-        There are {{$participants}} participants for this adventure.
-        <a href="/adventure/participants/{{$adventurelId}}">Show List</a>
+        There are {{$participants}} participants for this adventure. Click here to see ->
+        <a href="/adventure/participants/{{$adventurelId}}"><i class="fa-solid fa-people-group fa-bounce fa-lg" style="color: #0ebc89"></i></a>
     </p>
 @endif
