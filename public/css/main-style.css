@@ -7,10 +7,11 @@ border: 0;
 }
 #body{
     background:#177980;
-    height: 100vh;
+     font-family: Ysabeau,sans-serif;
 }
-#body p,h1,h2,h4,h5{
+#body p,h1,h2,h3,h4,h5{
     font-family: Ysabeau,sans-serif;
+    color: white;
 }
 body,ul{
     list-style: none;
@@ -39,10 +40,16 @@ body,ul{
     color: white !important ;
 }
 .card{
-    max-width: 80%;
-    background-color: #e6dcaa !important;
-    margin: auto;
+    margin: 10px auto;
+    background-color: #e36c5e;
 }
+.card-header{
+    text-align: center;
+}
+.card-header a{
+    color: white !important;
+}
+
 .card-title>a{
     color: white!important;
 }
@@ -63,7 +70,7 @@ body,ul{
 }
 .navbar-expand-lg .navbar-nav .nav-link {
     color:white;
-    font-size: 20px;
+    /*font-size: 20px;*/
     font-family: Ysabeau,sans-serif;
 }
 .navbar-expand-lg .navbar-nav .nav-link:hover{
@@ -90,26 +97,26 @@ footer ul {
     color: white !important;
 }
 .card-body{
-    background-color: #fff6cb !important;
+    background-color: #ffffff !important;
 }
 /*========================================================*/
 
 .heading{
     width: 100%;
-    height: 500px;
+    height: 300px;
     background-image: url('../images/pictures/Mullerthal.png' );
     background-size: cover;
     background-color: #177980;
     margin: auto;
     font-family: lobster,sans-serif;
-    font-size: 25px;
+    /*font-size: 1rem;*/
     color: white;
     text-align: center;
     display: grid;
     align-content: center;
 }
 .heading>h1{
-    font-size: 75px;
+    /*font-size: 75px;*/
 }
 
 
