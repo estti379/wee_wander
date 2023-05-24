@@ -3,7 +3,7 @@
     <!--========================== Heading ==============================-->
     <div class="heading">
         <h1><strong> Welcome to WeeWANDER</strong></h1>
-        <p>Website for hiking /trekking enthusiast who wants do discover luxemburgish beautifully nature.</p>
+        <p>Website for hiking /trekking enthusiast who wants do discover luxemburgish beautifully nature.</p>   
     </div>
     <hr>
     @yield('publicity')

@@ -14,7 +14,7 @@
 
 {{-- Create Carpool From --}}
 <x-layout :pageTitle=$pageTitle>
-    <h5>Create an Carpool <i class="fa-solid fa-car-side fa-bounce" style="color: #0ebc89;"></i></h5>
+    <h5>Create an Carpool</h5>
 
     <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i> Choose Route</span><br>
     <span>Choose a starting and an ending point to your carpool</span>

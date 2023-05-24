@@ -5,25 +5,45 @@ margin: 0;
 padding: 0;
 border: 0;
 }
-
+body p,h1,h5{
+    font-family: Ysabeau,sans-serif;
+}
 body,ul{
     list-style: none;
 } 
-a{
+#layout{
+    margin-top: 110px;
+}
+#layout a{
+    text-decoration: none;
+    color: black;
+}
+ a{
     text-decoration: none;
 }
-
 .btn-primary {
---bs-btn-bg: #177980!important;
---bs-btn-border-color:#177980!important;
---bs-btn-hover-bg: #0ebc89!important;
---bs-btn-hover-border-color:#0ebc89 !important;
+    --bs-btn-bg: #177980!important;
+    --bs-btn-border-color:#177980!important;
+    --bs-btn-hover-bg: #0ebc89!important;
+    --bs-btn-hover-border-color:#0ebc89 !important;
+    color: white !important ;
+}
+/* ====  Navbar  === */
+.navbar > .container-fluid{
+    background-color: #5ac9a7!important; 
+    justify-content: space-between !important;
+    box-shadow: 0px 10px rgba(0, 0, 0, 0.349);
+    margin-top: 84px;
+    position: fixed;
+    height: 100px;
+    z-index: 1;
+}
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: space-between;
 }
 
-#navbar{
-    background-color: #1779807c !important; 
-    justify-content: space-between !important;
-}
 footer{
 background-color: #1779807c; 
 
@@ -46,14 +66,19 @@ footer ul {
 .heading{
     width: 100%;
     height: 500px;
-    background-image: url('../images/pictures/Mullerthal.png');
+    background-image: url('../images/pictures/Mullerthal.png' );
     background-size: cover;
     background-color: #177980;
     margin: auto;
+    font-family: lobster,sans-serif;
+    font-size: 25px;
     color: white;
     text-align: center;
     display: grid;
     align-content: center;
+}
+.heading>h1{
+    font-size: 75px;
 }
 
 
