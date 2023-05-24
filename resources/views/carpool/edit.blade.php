@@ -44,6 +44,9 @@
                 <label for="start_date">Date & Time:</label>
                 <input type="datetime-local" name="start_date"
                     value="{{ date('Y-m-d\TH:i', strtotime($element->start_date)) }}">
+                @error('start_date')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
             <div>
                 <label for="max_seats">Seats available:</label>
@@ -79,6 +82,9 @@
             <div>
                 <label for="price">Asked price</label>
                 <input type="text" name="price" placeholder="0€" value="{{ old('price', $element->price) }}">
+                @error('price')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
             <button type="submit">update</button>
         </form>
