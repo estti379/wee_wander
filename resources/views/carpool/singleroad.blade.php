@@ -14,7 +14,7 @@
     <div class="card">
         <h5 class="card-header"> Carpool Detail</h5>
         <div class="card-body">
-            <p class="card-text">username: <strong>{{ $carpool->carowner->username }}</strong></p>
+            <p class="card-text">username: <strong><a href="/users/{{$carpool->carowner->id}}">{{ $carpool->carowner->firstname }} {{ $carpool->carowner->lastname }}</a></strong></p>
             <p>Seats available: <strong><x-carpool.seat-counter :element="$carpool"/></strong></p>
             <p>Bike Rack available: <?php echo $carpool['bike_capacity'] ? 'Yes' : 'No'; ?></p>
             <p>Date & Time Departure: {{ $carpool->start_date }}</p>
