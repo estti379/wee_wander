@@ -30,6 +30,11 @@ ul {
 a {
     text-decoration: none;
 }
+ul.pagination{
+   display: flex;
+   justify-content: center;
+
+}
 /* Weather icons*/
 .weather-icon {
     width: 100%;
