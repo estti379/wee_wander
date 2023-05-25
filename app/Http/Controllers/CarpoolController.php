@@ -29,6 +29,23 @@ class CarpoolController extends Controller
             $dayInput = $request->input('day');
             $query->whereBetween('start_date', [new DateTime($dayInput." ".$timeOffset), new DateTime($dayInput)]);
         }
+        //show only events where given user is carowner
+        if ($request->has('carowner')) {
+            $query->where('carowner_id', $request->input('carowner'));
+        }
+        //show only events where given user is a rider
+        if ($request->has('rider')) {
+            $riderId = $request->input('rider');
+            $query->whereHas('participants', function (Builder $query) use ($riderId) {
+                $query->where("id", $riderId);
+            });
+        }
+
+        //By default, show only carpools in the future, unless old = true
+        if (!$request->has('old') || ($request->has('old') && $request->input('old') != "true") ) {
+                $query->where('start_date', '>', new DateTime("now"));
+        }
+
         
         //Select the Events. Paginate is for pagination.
         $shareRoadDetails = $query->paginate(4);
