@@ -132,9 +132,8 @@ ul.pagination {
     height: 60px;
 }
 
-.nav-right .nav-item {
-    display: flex;
-    justify-content: flex-end;
+.nav-right .nav-item{
+
     align-items: center;
     width: 70%;
     height: 60px;
