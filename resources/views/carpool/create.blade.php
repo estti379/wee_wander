@@ -62,11 +62,7 @@
 
                 <label><i class="fa-solid fa-bicycle" style="color:  #0ebc89;"></i>Bike Rack available</label>
                 <input class="form-check-input" type="checkbox" name="bike_capacity" value="yes"><br>
-
-                <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i>Choose a location :
-                </span>
-                {{-- Map --}}
-                <div id="map" style="height: 400px;">
+                
                 </div>
                 <button type="submit" class="btn btn-primary">Create Carpool</button>
                 <a href="/carpool" class="btn btn-primary">Cancel</a>

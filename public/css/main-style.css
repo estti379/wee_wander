@@ -21,7 +21,7 @@ ul {
     list-style: none;
 }
 #layout {
-    margin-top: 75px;
+    margin-top: 120px;
 }
 #layout a {
     text-decoration: none;
@@ -86,35 +86,88 @@ ul.pagination{
 }
 /* ====  Navbar  === */
 
-.navbar-expand-lg .navbar-collapse {
+#navbar{
+    position: fixed;
+    width:100%;
+    top: 0;
+    z-index: 99;
+    height: 110px;
+    padding-top: 0;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    text-decoration: underline;
+}
+
+.navbar > .container-fluid {
+    display: flex;
+    background-color: #5ac9a7 !important;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    height: 120px;
+    border-bottom: solid 9px #17797F;
+    border-top: solid 0px #5ac9a7;
+}
+
+.navbar-brand img {
+    width: 120px;
+    position: relative;
+    top:20px;
+    right:-20px;
+}
+
+.navbar .nav-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width:60%;
+    height:60px
+}
+
+.nav-right .nav-item{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+    height:60px;
+}
+
+.nav-right .nav-item div{
+    padding-right: 10px;
+}
+
+.nav-item, .nav-item>p{
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+.wrap{
+    white-space: normal;
+}
+
+
+.navbar-collapse {
+    position: fixed;
+    top:120px;
+    right:0px;
     display: flex;
     flex-basis: auto;
     justify-content: space-between;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: #17797F;
+    border-top: solid 4px #5ac9a7;
+    border-bottom: solid 4px #5ac9a7;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.349);
 }
-.navbar-expand-lg .navbar-nav .nav-link {
+
+.navbar-nav .nav-link {
     color: white;
     font-size: 16px;
     font-family: 'Mukta', sans-serif;
 }
-.navbar-expand-lg .navbar-nav .nav-link:hover {
-    text-decoration: underline;
-}
-.navbar > .container-fluid {
-    background-color: #5ac9a7 !important;
-    justify-content: space-between !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-    margin-top: 74px;
-    position: fixed;
-    height: 90px;
-    border-bottom: solid 9px #17797F;
-    border-top: solid 9px #5ac9a7;
-    z-index: 99;
-}
 
-.navbar-brand img {
-    width: 145px;
-    margin-top: 73px;
-}
 
 li.nav-item {
     padding: 0 30px;
@@ -139,8 +192,9 @@ div.nav-item a, div.nav-item span {
     margin: 3px 3px;
 }
 
-div.nav-item span {
-    display: block;
+div.nav-item p {
+    display: flex;
+    vertical-align: middle;
 }
 
 div.nav-item a {
@@ -165,7 +219,7 @@ i.fa-solid.fa-right-from-bracket {
     left: 6px;
     bottom: 8px;
     font-size: 12px;
-}
+} 
 
 /* ====  Footer === */
 footer {
@@ -262,7 +316,7 @@ span.page-link {
 /Index Page Cards
 **/
 
-#index-card-container .card {
+.card-list .card {
     flex: 1;
     /* You might want to add some padding or margin for visual spacing between cards */
     /*margin: auto;*/
@@ -274,45 +328,65 @@ span.page-link {
     }
 
 /**************************** Responsive Break point (mobile)***************************************/
-@media screen and (max-width: 480px){ 
-    ul.navbar{
-        display: none;
-    }
-    .navbar-expand-lg .navbar-nav .nav-link {
-        display: none;
-    }
-    div.nav-item span {
-        visibility: hidden;
-    }
-    .navbar-brand img{
-        width: 30%;
-        margin-top: 0;
-    }
-    footer ul {
-        width: 100%;
-    }
 
-}
 
 
 /**************************** Responsive Break point (Tablet) ***************************************/
-@media screen and (min-width: 481px ) and (max-width: 768px){
+@media screen and (min-width: 992px){
 
-    div.nav-item span {
-        display:block;
+    .navbar-collapse {
+        position: static;
+        display: flex;
+        flex-basis: auto;
+        justify-content: space-between;
+        padding: 0px;
+        padding-top: 0px;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
     }
+
     .navbar-brand img {
         width: 100px;
-        margin-top: -55px;
+        position: static;
+        padding-top: 10px;
+    }
+
+    li.nav-item {
+        padding: 0 20px;
     }
 
 }
 
 /**************************** Responsive Break point (Desk) ***************************************/
-@media screen and (max-width: 1200px){
+@media screen and (min-width: 1200px){
     
-    div.nav-item span {
-        display: block!important;
+    li.nav-item {
+        padding: 0 30px;
+    }
+
+    div.card-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        flex: 2;
+        min-width: 80%;
+    }
+
+    .card-list .card-body, .card-list .card{
+        min-width: 30%;
+        max-width: 40%;
+        
+    }
+    .card-list .card{
+        align-items: center;
+        
+    }
+    .card-list .card .card-body{
+        min-width: 90%;
+        max-width: 90%;
+        
     }
 
 }
