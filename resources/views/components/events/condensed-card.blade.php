@@ -3,7 +3,7 @@
 
 <h5 class="card-header"><a href="/events/{{ $event->id }}">{{ $event->title }}</a></h5>
 <div class="card-body">
-    <p class="card-text">Event organized by : <strong><a href="/profile/{{ $event->username }}">{{ $event->organizer->firstname }}
+    <p class="card-text">Event organized by : <strong><a href="/users/{{ $event->organizer->id }}">{{ $event->organizer->firstname }}
             {{ $event->organizer->lastname }}</a></p></strong>
     @foreach ($event->adventures->sortBy('start_date') as $adventure)
         
