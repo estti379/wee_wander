@@ -9,7 +9,8 @@
     </div>
     <hr>
     <div class="card" id="intro">
-        <h1><span>Wee Wander</span> makes wonder</h1><span><strong>description:</strong><span>
+        <h1><span>Wee Wander </span> makes wonder</h1><span><strong>description:</strong><span>
+
         <p>Welcome to Wee Wander, the ultimate platform for hiking, trekking, and mountain bike enthusiasts who want to experience the beauty of Luxembourg's nature firsthand. "Wee" means "way" in Luxembourgish, reflecting our dedication to exploring the stunning landscapes this country has to offer.
             At Wee Wander, we believe in connecting individuals with Luxembourg's natural wonders. Our website serves as a hub for like-minded adventurers to come together, create thrilling events, and embark on unforgettable journeys through the country's breathtaking landscapes.</p>
         <p>Whether you're captivated by the lush green forests, mesmerized by the picturesque valleys, or enchanted by the hidden trails, Wee Wander is your portal to immersing yourself in Luxembourg's natural splendor. Join our vibrant community of outdoor enthusiasts and uncover the hidden gems that await you.
