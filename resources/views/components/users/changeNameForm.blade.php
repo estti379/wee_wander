@@ -13,13 +13,13 @@
         @csrf
         @method('PUT')
         <div class="input-group">
-        <label for="firstname" class="input-group-text">New First Name:</label>
+        <label for="firstname" >New First Name:</label>
         <input type="text" class="form-control" name="firstname" placeholder="First Name" value={{old('firstname', $userDetails->firstname)}}>
         @error('firstname')
             <span>{{$message}}</span>
         @enderror
         <br>
-        <label for="lastname" class="input-group-text">New Last Name:</label>
+        <label for="lastname" >New Last Name:</label>
         <input type="text" class="form-control" name="lastname" placeholder="Last Name" value={{old('lastname', $userDetails->lastname)}}>
         @error('lastname')
             <span>{{$message}}</span>

@@ -13,7 +13,7 @@
 
 <x-layout :pageTitle=$pageTitle>
     <div class="card">
-    </div class="card-box">
+    <div class="card-box">
         <h5 class="card-header"> Carpool Edit</h5>
         <div class="card-body">
         <h2>Edit the carpool that drives to {{ $element->start_adventure->trail->name }} <br> on
@@ -99,6 +99,5 @@
         </form>
     </div>
     </div>
-</div>
 </div>
 </x-layout>
