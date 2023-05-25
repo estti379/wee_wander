@@ -137,6 +137,9 @@ class EventsController extends Controller
 
             $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
 
             Adventure::create([
                 'trail_id' => $formFields['trail__'.$j],
@@ -213,6 +216,10 @@ class EventsController extends Controller
             $startDate = new DateTime($startDate);
             $dueDate = $formFields['due_date_E' . $index] . ' ' . $formFields['end_time_E' . $index];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
+
 
             $adventure->update([
                 'trail_id' => $formFields['trail_E' . $index],
@@ -228,6 +235,10 @@ class EventsController extends Controller
 
             $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
+
 
             Adventure::create([
                 'trail_id' => $formFields['trail__'.$j],
