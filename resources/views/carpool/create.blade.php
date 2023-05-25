@@ -79,7 +79,3 @@
     </div>
     </div>
 </x-layout>
-
-@if (count( $errors->all() ) >0 )
-    {{dd($errors);}}
-@endif
