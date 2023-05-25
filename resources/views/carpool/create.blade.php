@@ -22,7 +22,7 @@
                 <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> to your carpool :</span>
             <div id="map" style="height: 400px; width;"></div>
             <button class="btn btn-primary" id="define-route">Define route</button>
-            <form method="POST" action="/carpool/create" enctype="multipart/form-data">
+            <form method="POST" action="/carpool/store" enctype="multipart/form-data">
                 @csrf
                 {{-- start location of carpool --}}
                 <input type="hidden" name="start_location_latit" id="start_location_latit"
@@ -50,6 +50,10 @@
                 <label class="input-group-text">Time</label>
                 <input class="input-group-text" type="Time" name="time" placeholder="Time"><br>
 
+
+                <label for="max_seats">Seats available:</label>
+                <input type="number" name="max_seats"><br>
+
                 <label><i class="fa-solid fa-paw" style="color: #0ebc89;"></i> Pets allowed</label>
                 <input class="form-check-input" type="checkbox" name="pets_allowed"><br>
 
@@ -62,7 +66,9 @@
 
                 <label><i class="fa-solid fa-bicycle" style="color:  #0ebc89;"></i>Bike Rack available</label>
                 <input class="form-check-input" type="checkbox" name="bike_capacity" value="yes"><br>
-                
+
+                <label for="price">Asked price</label>
+                <input type="text" name="price" placeholder="0€" value="{{ old('price') }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Create Carpool</button>
                 <a href="/carpool" class="btn btn-primary">Cancel</a>
@@ -73,3 +79,7 @@
     </div>
     </div>
 </x-layout>
+
+@if (count( $errors->all() ) >0 )
+    {{dd($errors);}}
+@endif

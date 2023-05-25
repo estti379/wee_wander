@@ -1,6 +1,6 @@
 @props(['adventure'])
 @php
-    $timeOffset = "-24 hour";
+    $timeOffset = "-5 hour";
     $solutions = DB::table("routes")->whereBetween('start_date', [new DateTime($adventure->start_date." ".$timeOffset), new DateTime($adventure->start_date)])
         ->count();
 @endphp

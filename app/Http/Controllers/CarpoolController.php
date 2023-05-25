@@ -123,7 +123,8 @@ class CarpoolController extends Controller
             'start_location_latit' => 'required',
             'end_location_long' => 'required',
             'end_location_latit' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'max_seats' => 'required'
         ]);
 
 
