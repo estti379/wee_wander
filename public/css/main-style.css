@@ -35,7 +35,7 @@ ul.pagination{
    justify-content: center;
 
 }
-/* === Flash-message === */
+/* === Flash & Error message === */
 #message{
     background-color: #00ff5e;
     color: #ffffff;
@@ -45,7 +45,11 @@ ul.pagination{
     padding: 10px!important;
     padding-bottom: 1px!important;
     text-align: center;
-    
+}
+
+.card-body form p{
+    color: red;
+    font-weight: bolder;
 }
 /* Weather icons*/
 .weather-icon {
@@ -277,7 +281,7 @@ span.page-link {
         visibility: hidden;
     }
     .navbar-brand img{
-        width: 60px;
+        width: 30%;
         margin-top: 0;
     }
     footer ul {
@@ -292,6 +296,10 @@ span.page-link {
 
     div.nav-item span {
         display:block;
+    }
+    .navbar-brand img {
+        width: 100px;
+        margin-top: -55px;
     }
 
 }
