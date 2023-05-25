@@ -7,13 +7,13 @@
 }
 #body {
     background: #177980;
-    font-family: 'Mukta', sans-serif;
+    font-family: "Mukta", sans-serif;
 }
 #body h2,
 h3,
 h4,
 h5 {
-    font-family: 'Mukta', sans-serif;
+    font-family: "Mukta", sans-serif;
     color: white;
 }
 body,
@@ -25,33 +25,32 @@ ul {
 }
 #layout a {
     text-decoration: none;
-    color: #177980
+    color: #177980;
 }
 a {
     text-decoration: none;
 }
-ul.pagination{
-   display: flex;
-   justify-content: center;
-
+ul.pagination {
+    display: flex;
+    justify-content: center;
 }
 /* === Flash & Error message === */
-#message{
+#message {
     background-color: #00ff5e;
     color: #ffffff;
     font-weight: bold;
 }
-.alert{
-    color: #FFF!important;
+.alert {
+    color: #fff !important;
     text-align: center;
 }
 .py-3 {
-    padding: 10px!important;
-    padding-bottom: 1px!important;
+    padding: 10px !important;
+    padding-bottom: 1px !important;
     text-align: center;
 }
 
-.card-body form p{
+.card-body form p {
     color: red;
     font-weight: bolder;
 }
@@ -86,9 +85,9 @@ ul.pagination{
 }
 /* ====  Navbar  === */
 
-#navbar{
+#navbar {
     position: fixed;
-    width:100%;
+    width: 100%;
     top: 0;
     z-index: 99;
     height: 110px;
@@ -106,57 +105,57 @@ ul.pagination{
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
     height: 120px;
-    border-bottom: solid 9px #17797F;
+    border-bottom: solid 9px #17797f;
     border-top: solid 0px #5ac9a7;
 }
 
 .navbar-brand img {
     width: 120px;
     position: relative;
-    top:20px;
-    right:-20px;
+    top: 20px;
+    right: -20px;
 }
 
-.navbar .nav-right{
+.navbar .nav-right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width:60%;
-    height:60px
+    width: 60%;
+    height: 60px;
 }
 
-.nav-right .nav-item{
+.nav-right .nav-item {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 70%;
-    height:60px;
+    height: 60px;
 }
 
-.nav-right .nav-item div{
+.nav-right .nav-item div {
     padding-right: 10px;
 }
 
-.nav-item, .nav-item>p{
+.nav-item,
+.nav-item > p {
     white-space: nowrap;
     padding-right: 5px;
 }
 
-.wrap{
+.wrap {
     white-space: normal;
 }
 
-
 .navbar-collapse {
     position: fixed;
-    top:120px;
-    right:0px;
+    top: 120px;
+    right: 0px;
     display: flex;
     flex-basis: auto;
     justify-content: space-between;
     padding: 10px;
     padding-top: 20px;
-    background-color: #17797F;
+    background-color: #17797f;
     border-top: solid 4px #5ac9a7;
     border-bottom: solid 4px #5ac9a7;
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.349);
@@ -165,9 +164,8 @@ ul.pagination{
 .navbar-nav .nav-link {
     color: white;
     font-size: 16px;
-    font-family: 'Mukta', sans-serif;
+    font-family: "Mukta", sans-serif;
 }
-
 
 li.nav-item {
     padding: 0 30px;
@@ -185,8 +183,9 @@ div.nav-item {
     display: table;
 }
 
-div.nav-item a, div.nav-item span {
-    color: #FFF;
+div.nav-item a,
+div.nav-item span {
+    color: #fff;
     text-decoration: none;
     vertical-align: middle;
     margin: 3px 3px;
@@ -219,7 +218,7 @@ i.fa-solid.fa-right-from-bracket {
     left: 6px;
     bottom: 8px;
     font-size: 12px;
-} 
+}
 
 /* ====  Footer === */
 footer {
@@ -262,16 +261,16 @@ footer ul {
     color: white !important;
 }
 
-div.card-body{
+div.card-body {
     background-color: #ffffff !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
     text-align: center;
 }
-.card-title{
-    color: #17797F !important;
+.card-title {
+    color: #17797f !important;
     text-align: center;
 }
-.card-box{
+.card-box {
     max-width: 600px;
     margin-bottom: 10px;
 }
@@ -299,18 +298,16 @@ span.page-link {
 }
 
 .heading h1 span {
-    font-family: 'Kaushan Script', cursive;
+    font-family: "Kaushan Script", cursive;
     padding-right: 5px;
 }
 
 #title {
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
     padding: 8% 0px;
     margin: auto;
 }
-
-
 
 /** 
 /Index Page Cards
@@ -325,15 +322,12 @@ span.page-link {
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-    }
+}
 
 /**************************** Responsive Break point (mobile)***************************************/
 
-
-
 /**************************** Responsive Break point (Tablet) ***************************************/
-@media screen and (min-width: 992px){
-
+@media screen and (min-width: 992px) {
     .navbar-collapse {
         position: static;
         display: flex;
@@ -356,16 +350,7 @@ span.page-link {
         padding: 0 20px;
     }
 
-}
-
-/**************************** Responsive Break point (Desk) ***************************************/
-@media screen and (min-width: 1200px){
-    
-    li.nav-item {
-        padding: 0 30px;
-    }
-
-    div.card-list{
+    div.card-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -373,27 +358,56 @@ span.page-link {
         min-width: 80%;
     }
 
-    .card-list .card-body, .card-list .card{
+    .card-list .card-body,
+    .card-list .card {
         min-width: 30%;
         max-width: 40%;
-        
     }
 
-    .card-list .card-body{
-        flex:1;
-        flex-basis: 33%;
-        
+    .card-list .card-body {
+        flex: 1;
+        flex-basis: 40%;
     }
 
-    .card-list .card{
+    .card-list .card {
         align-items: center;
-        
     }
-    .card-list .card .card-body{
+    .card-list .card .card-body {
         min-width: 90%;
         max-width: 90%;
-        
     }
-
 }
 
+/**************************** Responsive Break point (Desk) ***************************************/
+@media screen and (min-width: 1200px) {
+    li.nav-item {
+        padding: 0 30px;
+    }
+
+    div.card-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        min-width: 80%;
+    }
+
+    .card-list .card-body,
+    .card-list .card {
+        min-width: 30%;
+        max-width: 40%;
+    }
+
+    .card-list .card-body {
+        flex: 1;
+        flex-basis: 33%;
+    }
+
+    .card-list .card {
+        align-items: center;
+    }
+    .card-list .card .card-body {
+        min-width: 90%;
+        max-width: 90%;
+    }
+}
