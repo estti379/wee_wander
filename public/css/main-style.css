@@ -16,6 +16,14 @@ h5 {
     font-family: 'Mukta', sans-serif;
     color: white;
 }
+#intro{
+    padding: 50px
+}
+#intro h1 span{
+    color:#17797F;
+    font-family: 'Kaushan Script', cursive;
+
+}
 body,
 ul {
     list-style: none;
