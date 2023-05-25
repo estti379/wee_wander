@@ -83,7 +83,7 @@ ul.pagination{
 /* ====  Navbar  === */
 
 .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
+    display: flex;
     flex-basis: auto;
     justify-content: space-between;
 }
