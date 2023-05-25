@@ -248,4 +248,27 @@ span.page-link {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
     }
 
-/**************************** Responsive Break point ***************************************/
+/**************************** Responsive Break point (mobile)***************************************/
+@media screen and (max-width: 480px){ 
+    ul.navbar{
+        display: none;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        display: none;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+
+    }
+    .navbar-expand-lg .navbar-nav .nav-link span{
+        display: none;
+    }
+    .navbar-brand img{
+        width: 60px;
+        margin-top: 0;
+    }
+    footer ul {
+        width: 100%;
+    }
+}
+
+
