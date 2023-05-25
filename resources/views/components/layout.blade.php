@@ -66,10 +66,10 @@
   </nav>
   {{------------------------------------------------------------------------------------------------------------------}}
   {{-- This is a alpha version. Just the skeleton --}}
-  <x-flash-message/>
+  
   <main id="layout">
     {{ $slot }}
-  
+    <x-flash-message/>
   </main>
   
   <footer>
