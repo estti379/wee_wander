@@ -97,7 +97,6 @@ ul.pagination {
 }
 
 /* ====  Navbar  === */
-
 #navbar {
     position: fixed;
     width: 100%;
@@ -243,6 +242,7 @@ footer {
     align-items: center;
     background-color: #5ac9a7;
 }
+
 footer p {
     width: 100%;
     position: absolute;
@@ -301,7 +301,6 @@ span.page-link {
     background-size: cover;
     background-color: #177980;
     margin: auto;
-    /*font-size: 1rem;*/
     color: white;
     text-align: center;
     display: grid;
@@ -425,6 +424,8 @@ span.page-link {
         min-width: 90%;
         max-width: 90%;
     }
+    div.last{flex-direction: row;
+    }
     #create{
         columns: 2!important;
     }
@@ -434,8 +435,6 @@ span.page-link {
     .lastentry{
         columns: 2!important;
     }
-    div.last{
-justify-content: center!important;
-    }
+   
 
 }
