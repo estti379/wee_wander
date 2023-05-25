@@ -370,7 +370,6 @@ span.page-link {
         flex-wrap: wrap;
         justify-content: space-around;
         flex-direction: row;
-        flex: 2;
         min-width: 80%;
     }
 
@@ -379,6 +378,13 @@ span.page-link {
         max-width: 40%;
         
     }
+
+    .card-list .card-body{
+        flex:1;
+        flex-basis: 33%;
+        
+    }
+
     .card-list .card{
         align-items: center;
         

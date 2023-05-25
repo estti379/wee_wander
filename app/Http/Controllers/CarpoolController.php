@@ -48,7 +48,7 @@ class CarpoolController extends Controller
 
         
         //Select the Events. Paginate is for pagination.
-        $shareRoadDetails = $query->paginate(4);
+        $shareRoadDetails = $query->paginate(9);
 
         return view('carpool.lists', ['shareRoadDetails'=>$shareRoadDetails,'pageTitle'=>'WeeWander carpool-list']);
     }
