@@ -61,7 +61,7 @@ class EventsController extends Controller
         }
         
         //Select the Events. Paginate is for pagination.
-        $events = $query->paginate(4);
+        $events = $query->paginate(9);
         
 
         return view('events.events-list', [
