@@ -91,6 +91,11 @@ ul.pagination {
 .card-title > a {
     color: white !important;
 }
+/* === Input === */
+.form-control{
+    max-width: 40%;
+}
+
 /* ====  Navbar  === */
 
 #navbar {
@@ -108,6 +113,7 @@ ul.pagination {
 
 .navbar > .container-fluid {
     display: flex;
+    z-index: 99;
     background-color: #5ac9a7 !important;
     justify-content: space-between;
     align-items: center;
@@ -271,16 +277,17 @@ footer ul {
 div.card-body {
     background-color: #ffffff !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-    text-align: center;
 }
 .card-title {
     color: #17797f !important;
     text-align: center;
 }
-.card-box {
-    max-width: 600px;
+.card-box{
+    width: 90%;
     margin-bottom: 10px;
+    margin: auto;
 }
+
 span.page-link {
     border-color: #0ebc89;
 }
@@ -329,7 +336,10 @@ span.page-link {
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-}
+    }
+    .card .card-box{
+        justify-content: center;
+    }
 
 /**************************** Responsive Break point (mobile)***************************************/
 
@@ -417,4 +427,17 @@ span.page-link {
         min-width: 90%;
         max-width: 90%;
     }
+    #create{
+        columns: 2!important;
+    }
+    .input-create{
+        columns: 2!important;
+    }
+    .lastentry{
+        columns: 2!important;
+    }
+    div.last{
+justify-content: center!important;
+    }
+
 }
