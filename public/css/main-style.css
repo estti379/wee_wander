@@ -35,6 +35,18 @@ ul.pagination{
    justify-content: center;
 
 }
+/* === Flash-message === */
+#message{
+    background-color: #00ff5e;
+    color: #ffffff;
+    font-weight: bold;
+}
+.py-3 {
+    padding: 10px!important;
+    padding-bottom: 1px!important;
+    text-align: center;
+    
+}
 /* Weather icons*/
 .weather-icon {
     width: 100%;
@@ -262,7 +274,7 @@ span.page-link {
         display: none;
     }
     div.nav-item span {
-        display: hidden;
+        visibility: hidden;
     }
     .navbar-brand img{
         width: 60px;
@@ -275,6 +287,21 @@ span.page-link {
 }
 
 
-/**************************** Responsive Break point (Tablet)***************************************/
+/**************************** Responsive Break point (Tablet) ***************************************/
+@media screen and (min-width: 481px ) and (max-width: 768px){
 
+    div.nav-item span {
+        display:block;
+    }
+
+}
+
+/**************************** Responsive Break point (Desk) ***************************************/
+@media screen and (max-width: 1200px){
+    
+    div.nav-item span {
+        display: block!important;
+    }
+
+}
 

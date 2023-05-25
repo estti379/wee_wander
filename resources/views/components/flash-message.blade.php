@@ -3,7 +3,7 @@
     bg-laravel px-48 py-3 "
     x-data={show:true} 
     x-init="setTimeout(() => show=false, 3000)" 
-    x-show="show"
+    x-show="show" id="message"
     >
     {{--
         x-data={show:true}  : when triggered it will put this to TRUE
