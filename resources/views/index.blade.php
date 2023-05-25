@@ -19,7 +19,7 @@
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
-    <div class="card" id="index-card-container">
+    <div class="card card-list">
         <div class="card">
         Last created Carpool:
         <br>

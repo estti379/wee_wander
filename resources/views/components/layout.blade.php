@@ -34,16 +34,12 @@
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"
-                    width="100px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"></a>
+            
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-            <a class="nav-link"  href="/">Home</a>
+                        <a class="nav-link"  href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/events"> Events list</a>
@@ -57,10 +53,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/carpool/create">Carpool Create</a>
                     </li>
-                </ul>
-                <div class="nav-item">
+                </ul>    
+            </div>
+            
+            <div class="nav-right">
+                <div class="nav-item ">
                     <x-nav-login />
                 </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </div>
   </nav>
@@ -68,8 +71,8 @@
   {{-- This is a alpha version. Just the skeleton --}}
   
   <main id="layout">
-    {{ $slot }}
     <x-flash-message/>
+    {{ $slot }}
   </main>
   
   <footer>
