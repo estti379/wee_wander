@@ -41,6 +41,10 @@ ul.pagination{
     color: #ffffff;
     font-weight: bold;
 }
+.alert{
+    color: #FFF!important;
+    text-align: center;
+}
 .py-3 {
     padding: 10px!important;
     padding-bottom: 1px!important;
