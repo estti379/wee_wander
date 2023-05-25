@@ -256,11 +256,8 @@ span.page-link {
     .navbar-expand-lg .navbar-nav .nav-link {
         display: none;
     }
-    .navbar-expand-lg .navbar-nav .nav-link {
-
-    }
-    .navbar-expand-lg .navbar-nav .nav-link span{
-        display: none;
+    div.nav-item span {
+        display: hidden;
     }
     .navbar-brand img{
         width: 60px;
@@ -269,6 +266,10 @@ span.page-link {
     footer ul {
         width: 100%;
     }
+
 }
+
+
+/**************************** Responsive Break point (Tablet)***************************************/
 
 
