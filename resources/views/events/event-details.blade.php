@@ -1,16 +1,19 @@
 {{-- EVENT DETAILS PAGE --}}
 <x-layout :pageTitle=$pageTitle>
     @foreach ($event->adventures as $adventure)
+    <div class="card">
+    
+        <h5 class="card-title">Event Details</h5>
+        <div class="card-body">
         <h5 class="card-header" class="card text-center"><a href="/events/{{ $adventure->trail->id }}">
                 {{ $adventure->trail->name }}</a>
         </h5>
-        <div class="card-body">
-            <h2 class="card-title">{{ $event->title }}</h2> {{-- Event Title --}}
+            <h2 >{{ $event->title }}</h2> {{-- Event Title --}}
             <p>Trail title : {{ $adventure->trail->name }} Trail ID : </strong>{{ $adventure->trail->id }}</p>
             <p>Adventure Organizer: <a href="/profile/{{ $event->username }}">{{ $event->organizer->firstname }}
                     {{ $event->organizer->lastname }}</a></p>
             <p>Starting date : {{ $adventure->start_date }}</p>
-            <div class="col-md-8">
+            <div class="col-md-8 ">
                 <x-weather-api :lat="$adventure->trail->location_latit" :long="$adventure->trail->location_long" :startdate="$adventure->start_date" :trailname="$adventure->trail->name" />
             </div>
             <a href="/trail/{{ $adventure->trail->id }}" class="btn btn-primary">Trail Details</a>
@@ -28,5 +31,6 @@
         </div> --}}
     </div>
     </div>
+    
 
 </x-layout>

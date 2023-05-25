@@ -18,10 +18,42 @@ class EventsController extends Controller
 
         //querry builder
         $query = Event::query();
+        //show only events where given user is organizer
         if ($request->has('organizer')) {
-           $query->where('organizer_id', $request->input('organizer'));
+            $query->where('organizer_id', $request->input('organizer'));
         }
 
+        //By default, show only events in the future, unless old = true
+        if (!$request->has('old') || ($request->has('old') && $request->input('old') != "true") ) {
+            if (!$request->has('empty') || ($request->has('empty') && $request->input('empty') != "true") ) {
+                $query->whereHas('adventures', function (Builder $query) {
+                        $query->where('start_date', '>', new DateTime("now"));
+                });
+            } else {
+                $query->wheredoesnthave('adventures')
+                    ->orwhereHas('adventures', function (Builder $query) {
+                        $query->where('start_date', '>', new DateTime("now"));
+                    });
+            }
+            
+        }
+
+        //show only events where given user participates in at least one adventure
+        if ($request->has('participant')) {
+            $trekkerId = $request->input('participant');
+            $query->whereHas('adventures', function (Builder $query) use ($trekkerId) {
+                $query->whereHas('participants', function (Builder $query) use ($trekkerId) {
+                    $query->where("id", $trekkerId);
+                });
+            });
+        }
+
+        //By default, show only events with at least one adventure , unless empty = true
+        if (!$request->has('empty') || ($request->has('empty') && $request->input('empty') != "true") ) {
+            $query->whereHas('adventures'); 
+        }
+
+        //show only events happening in the future
         if ($request->has('upcoming') && $request->input('upcoming') == "true") {
             $query->whereHas('adventures', function (Builder $query) {
                 $query->where('start_date', '>', new DateTime("now"));
@@ -29,7 +61,7 @@ class EventsController extends Controller
         }
         
         //Select the Events. Paginate is for pagination.
-        $events = $query->paginate(4);
+        $events = $query->paginate(9);
         
 
         return view('events.events-list', [
@@ -105,6 +137,9 @@ class EventsController extends Controller
 
             $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
 
             Adventure::create([
                 'trail_id' => $formFields['trail__'.$j],
@@ -181,6 +216,10 @@ class EventsController extends Controller
             $startDate = new DateTime($startDate);
             $dueDate = $formFields['due_date_E' . $index] . ' ' . $formFields['end_time_E' . $index];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
+
 
             $adventure->update([
                 'trail_id' => $formFields['trail_E' . $index],
@@ -196,6 +235,10 @@ class EventsController extends Controller
 
             $dueDate = $formFields['due_date__'.$j] . ' ' . $formFields['end_time__'.$j];
             $dueDate = new DateTime($dueDate);
+            if($startDate < $dueDate){
+                $dueDate = clone $startDate;
+            }
+
 
             Adventure::create([
                 'trail_id' => $formFields['trail__'.$j],

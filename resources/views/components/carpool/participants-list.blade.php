@@ -15,4 +15,4 @@
         <a href="/users/{{$user->id}}">{{$user->firstname}} {{$user->lastname}}</a> will be carpooling!
     </li>
 @endforeach
-<ul>
+</ul>

@@ -7,13 +7,13 @@
 }
 #body {
     background: #177980;
-    font-family: Ysabeau, Arial;
+    font-family: 'Mukta', sans-serif;
 }
 #body h2,
 h3,
 h4,
 h5 {
-    font-family: Ysabeau, Arial;
+    font-family: 'Mukta', sans-serif;
     color: white;
 }
 body,
@@ -21,14 +21,39 @@ ul {
     list-style: none;
 }
 #layout {
-    margin-top: 85px;
+    margin-top: 120px;
 }
 #layout a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #177980
 }
 a {
     text-decoration: none;
+}
+ul.pagination{
+   display: flex;
+   justify-content: center;
+
+}
+/* === Flash & Error message === */
+#message{
+    background-color: #00ff5e;
+    color: #ffffff;
+    font-weight: bold;
+}
+.alert{
+    color: #FFF!important;
+    text-align: center;
+}
+.py-3 {
+    padding: 10px!important;
+    padding-bottom: 1px!important;
+    text-align: center;
+}
+
+.card-body form p{
+    color: red;
+    font-weight: bolder;
 }
 /* Weather icons*/
 .weather-icon {
@@ -60,37 +85,89 @@ a {
     color: white !important;
 }
 /* ====  Navbar  === */
-.navbar > .container-fluid {
-    background-color: #5ac9a7 !important;
-    justify-content: space-between !important;
-    box-shadow: 0px 10px rgba(0, 0, 0, 0.349);
-    margin-top: 84px;
+
+#navbar{
     position: fixed;
-    height: 100px;
-    z-index: 1;
+    width:100%;
+    top: 0;
+    z-index: 99;
+    height: 110px;
+    padding-top: 0;
 }
-.navbar-expand-lg .navbar-collapse {
-    display: flex !important;
-    flex-basis: auto;
-    justify-content: space-between;
-}
-.navbar-expand-lg .navbar-nav .nav-link {
-    color: white;
-    /*font-size: 20px;*/
-    font-family: Ysabeau, Arial;
-}
+
 .navbar-expand-lg .navbar-nav .nav-link:hover {
     text-decoration: underline;
 }
+
 .navbar > .container-fluid {
+    display: flex;
     background-color: #5ac9a7 !important;
-    justify-content: space-between !important;
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
-    margin-top: 84px;
-    position: fixed;
-    height: 100px;
-    z-index: 99;
+    height: 120px;
+    border-bottom: solid 9px #17797F;
+    border-top: solid 0px #5ac9a7;
 }
+
+.navbar-brand img {
+    width: 120px;
+    position: relative;
+    top:20px;
+    right:-20px;
+}
+
+.navbar .nav-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width:60%;
+    height:60px
+}
+
+.nav-right .nav-item{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+    height:60px;
+}
+
+.nav-right .nav-item div{
+    padding-right: 10px;
+}
+
+.nav-item, .nav-item>p{
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+.wrap{
+    white-space: normal;
+}
+
+
+.navbar-collapse {
+    position: fixed;
+    top:120px;
+    right:0px;
+    display: flex;
+    flex-basis: auto;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: #17797F;
+    border-top: solid 4px #5ac9a7;
+    border-bottom: solid 4px #5ac9a7;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.349);
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 16px;
+    font-family: 'Mukta', sans-serif;
+}
+
 
 li.nav-item {
     padding: 0 30px;
@@ -112,17 +189,38 @@ div.nav-item a, div.nav-item span {
     color: #FFF;
     text-decoration: none;
     vertical-align: middle;
-    display: inline-block;
     margin: 3px 3px;
+}
+
+div.nav-item p {
+    display: flex;
+    vertical-align: middle;
 }
 
 div.nav-item a {
     background-color: #177980;
-    padding: 3px 25px;
+    padding: 3px 12px 3px 25px;
     border-radius: 3px;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+    font-size: 14px;
 }
+
+i.fa-solid.fa-user.fa-xl {
+    position: absolute;
+    left: 6px;
+    bottom: 13px;
+    font-size: 12px;
+}
+
+i.fa-solid.fa-right-from-bracket {
+    position: absolute;
+    left: 6px;
+    bottom: 8px;
+    font-size: 12px;
+} 
+
 /* ====  Footer === */
 footer {
     position: absolute;
@@ -157,13 +255,28 @@ footer ul {
     display: flex;
     justify-content: space-between;
 }
+/* === Cards === */
 .card-header {
     background-color: #5ac9a7 !important;
     padding: 10px !important;
     color: white !important;
 }
-.card-body {
+
+div.card-body{
     background-color: #ffffff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    text-align: center;
+}
+.card-title{
+    color: #17797F !important;
+    text-align: center;
+}
+.card-box{
+    max-width: 600px;
+    margin-bottom: 10px;
+}
+span.page-link {
+    border-color: #0ebc89;
 }
 /*========================================================*/
 
@@ -179,30 +292,108 @@ footer ul {
     text-align: center;
     display: grid;
     align-content: center;
+    overflow: hidden;
 }
 .heading h1 {
     /*font-size: 75px;*/
-    font-family: Dancing Script, cursive;
 }
+
+.heading h1 span {
+    font-family: 'Kaushan Script', cursive;
+    padding-right: 5px;
+}
+
 #title {
-    background-color: #1779808a;
-    border-radius: 30px 30px 30px 30px;
-    width: 550px;
-    padding: 10px;
+    background-color: rgba(0,0,0,.4);
+    width: 100%;
+    padding: 8% 0px;
     margin: auto;
 }
+
+
 
 /** 
 /Index Page Cards
 **/
 
-#index-card-container .card {
+.card-list .card {
     flex: 1;
     /* You might want to add some padding or margin for visual spacing between cards */
-    margin: 10px;
+    /*margin: auto;*/
+    min-width: 80%;
     /* If you want the content to take full height, this can be used */
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    }
+
+/**************************** Responsive Break point (mobile)***************************************/
+
+
+
+/**************************** Responsive Break point (Tablet) ***************************************/
+@media screen and (min-width: 992px){
+
+    .navbar-collapse {
+        position: static;
+        display: flex;
+        flex-basis: auto;
+        justify-content: space-between;
+        padding: 0px;
+        padding-top: 0px;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar-brand img {
+        width: 100px;
+        position: static;
+        padding-top: 10px;
+    }
+
+    li.nav-item {
+        padding: 0 20px;
+    }
+
 }
 
-/**************************** Responsive Break point ***************************************/
+/**************************** Responsive Break point (Desk) ***************************************/
+@media screen and (min-width: 1200px){
+    
+    li.nav-item {
+        padding: 0 30px;
+    }
+
+    div.card-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        min-width: 80%;
+    }
+
+    .card-list .card-body, .card-list .card{
+        min-width: 30%;
+        max-width: 40%;
+        
+    }
+
+    .card-list .card-body{
+        flex:1;
+        flex-basis: 33%;
+        
+    }
+
+    .card-list .card{
+        align-items: center;
+        
+    }
+    .card-list .card .card-body{
+        min-width: 90%;
+        max-width: 90%;
+        
+    }
+
+}
+

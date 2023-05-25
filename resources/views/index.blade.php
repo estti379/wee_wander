@@ -5,7 +5,7 @@
     <!--========================== Heading ==============================-->
     <div class="heading">
         <div id="title">
-            <h1><strong> Welcome to WeeWANDER</strong></h1>
+            <h1><strong> Welcome to <span>Wee</span>WANDER</strong></h1>
             <p>Website for hiking /trekking enthusiast who wants do discover luxemburgish beautifully nature.</p>  
         </div> 
     </div>
@@ -19,9 +19,9 @@
             Laudantium veniam ex doloremque debitis mollitia quam harum minus eius, quidem ipsam.</p>
     </div>
     <hr>
-    <div class="card" id="index-card-container">
+    <div class="card card-list">
         <div class="card">
-    <p> Last created Carpool:</p>
+        Last created Carpool:
         <br>
         <x-carpool.shareroad_card :element="$latestCarpool" />
         </div>

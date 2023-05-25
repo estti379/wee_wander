@@ -20,30 +20,26 @@
   {{-- Google Font Title--}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Kaushan+Script&family=Lato:wght@300&family=Mukta:wght@300&display=swap" rel="stylesheet">  
  {{-- Google Font Content--}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ysabeau&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Mukta:wght@300&display=swap" rel="stylesheet">
     {{-- Leaflet.js LIVRARY TO MAP --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 
 <body id="body">
-  <x-flash-message/>
+  
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"
-                    width="100px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="/"><img src="{{ URL::asset('images\pictures\weewander-1.png') }}"></a>
+            
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-            <a class="nav-link"  href="/">Home</a>
+                        <a class="nav-link"  href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/events"> Events list</a>
@@ -57,18 +53,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/carpool/create">Carpool Create</a>
                     </li>
-                </ul>
-                <div class="nav-item">
+                </ul>    
+            </div>
+            
+            <div class="nav-right">
+                <div class="nav-item ">
                     <x-nav-login />
                 </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </div>
   </nav>
   {{------------------------------------------------------------------------------------------------------------------}}
   {{-- This is a alpha version. Just the skeleton --}}
-  <main id="layout">
-    {{ $slot }}
   
+  <main id="layout">
+    <x-flash-message/>
+    {{ $slot }}
   </main>
   
   <footer>

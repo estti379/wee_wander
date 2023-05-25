@@ -12,7 +12,10 @@
 @endpush
 
 <x-layout :pageTitle=$pageTitle>
-    <div class="shareroad_card">
+    <div class="card">
+    </div class="card-box">
+        <h5 class="card-header"> Carpool Edit</h5>
+        <div class="card-body">
         <h2>Edit the carpool that drives to {{ $element->start_adventure->trail->name }} <br> on
             {{ $element->start_adventure->start_date }}</h2>
         <span><i class="fa-solid fa-location-dot fa-beat" style="color: #0ebc89;"></i> Choose Route</span><br>
@@ -86,13 +89,16 @@
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
-            <button type="submit">update</button>
+            <button type="submit" class="btn btn-primary">update</button>
         </form>
         {{-- Needed to create another form for the delete button because of the request --}}
         <form action="/carpool/{{ $element->id }}" method="POST">
             @csrf
             @method('delete')
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-primary">Delete</button>
         </form>
     </div>
+    </div>
+</div>
+</div>
 </x-layout>

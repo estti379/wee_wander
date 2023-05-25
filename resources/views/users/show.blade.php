@@ -40,13 +40,13 @@
     @endif
     <hr>
 <div>
-    <a href=""><h5>Created event</h5></a>
+    <a href="/events?organizer={{ $userDetails->id }}&old=true&empty=true"><h5>Created event</h5></a>
     
-    <a href=""><h5>Participed events</h5></a>
+    <a href="/events?participant={{ $userDetails->id }}&old=true&empty=true"><h5>Participating in events</h5></a>
     
-    <a href=""><h5>Created carpool</h5></a>
+    <a href="/carpool?carowner={{ $userDetails->id }}&old=true"><h5>Created carpool</h5></a>
     
-    <a href=""><h5>Participed carpools</h5></a>
+    <a href="/carpool?rider={{ $userDetails->id }}&old=true"><h5>Riding in carpools</h5></a>
 </div>
 </div>
 </x-layout>
