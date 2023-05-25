@@ -41,6 +41,10 @@ ul.pagination{
     color: #ffffff;
     font-weight: bold;
 }
+.alert{
+    color: #FFF!important;
+    text-align: center;
+}
 .py-3 {
     padding: 10px!important;
     padding-bottom: 1px!important;
@@ -83,7 +87,7 @@ ul.pagination{
 /* ====  Navbar  === */
 
 .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
+    display: flex;
     flex-basis: auto;
     justify-content: space-between;
 }

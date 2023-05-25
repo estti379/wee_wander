@@ -30,7 +30,7 @@
 </head>
 
 <body id="body">
-  <x-flash-message/>
+  
   {{---------------------------------------------------- NAVBAR --------------------------------------------------------------}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container-fluid">
@@ -66,9 +66,10 @@
   </nav>
   {{------------------------------------------------------------------------------------------------------------------}}
   {{-- This is a alpha version. Just the skeleton --}}
+  
   <main id="layout">
     {{ $slot }}
-  
+    <x-flash-message/>
   </main>
   
   <footer>
