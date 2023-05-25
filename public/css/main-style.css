@@ -277,6 +277,7 @@ footer ul {
 div.card-body {
     background-color: #ffffff !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    margin: 15px;
 }
 .card-title {
     color: #17797f !important;
@@ -306,9 +307,6 @@ span.page-link {
     display: grid;
     align-content: center;
     overflow: hidden;
-}
-.heading h1 {
-    /*font-size: 75px;*/
 }
 
 .heading h1 span {

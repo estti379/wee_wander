@@ -52,6 +52,9 @@
                 <div class="input-create">
                     <label for="max_seats">Seats available:</label>
                     <input type="number" class="form-control" name="max_seats"><br>
+
+                    <label for="price">Asked price <i class="fa-solid fa-hand-holding-dollar" style="color: #0ebc89;"></i></label>
+                    <input type="text" class="form-control" name="price" placeholder="0€" value="{{ old('price') }}"><br>
         
                     <label><i class="fa-solid fa-paw" style="color: #0ebc89;"></i> Pets allowed</label>
                     <input class="form-check-input" type="checkbox" name="pets_allowed"><br>
@@ -66,8 +69,7 @@
                     <label><i class="fa-solid fa-bicycle" style="color:  #0ebc89;"></i>Bike Rack available</label>
                     <input class="form-check-input" type="checkbox" name="bike_capacity" value="yes"><br>
 
-                    <label for="price"><i class="fa-solid fa-hand-holding-dollar" style="color: #0ebc89;"></i>Asked price</label>
-                    <input type="text" class="form-control" name="price" placeholder="0€" value="{{ old('price') }}"><br>
+                    
                 </div>
                 <button type="submit" class="btn btn-primary">Create Carpool</button>
                 <a href="/carpool" class="btn btn-primary">Cancel</a>
