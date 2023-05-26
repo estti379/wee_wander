@@ -12,7 +12,7 @@
         <span for="eventTitle" class="form-label">Title of the event  :</span>
         <input type="text" class="form-control w-50"name="eventTitle"  value="{{old('eventTitle')}}"><br>
         @error('eventTitle')
-            <span>{{$message}}</span>
+            <p class="validation-error">{{$message}}</p>
         @enderror
         @php
             $newTrails = 0;
@@ -36,35 +36,45 @@
                 @endforeach
                 </select>
                 @error('trail__'.$i)
-                    <span>{{$message}}</span>
+                    <p class="validation-error">{{$message}}</p>
                 @enderror
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="starting_date__{{$i}}">Starting date : </label>
                         <input type="date" class="form-control" name="starting_date__{{$i}}"  value="{{old('starting_date__'.$i)}}">
+                        @error('starting_date__'.$i)
+                            <p class="validation-error">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="start_time__{{$i}}">Starting Hour:</label>
                         <input type="time" class="form-control" name="start_time__{{$i}}"  value="{{old('start_time__'.$i)}}">
+                        @error('start_time__'.$i)
+                            <p class="validation-error">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
-                @error('starting_date__'.$i)
-                    <span>{{$message}}</span>
-                @enderror
+               
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="due_date__{{$i}}">Due date : </label>
                         <input type="date" class="form-control" name="due_date__{{$i}}"  value="{{old('due_date__'.$i)}}">
+                        @error('due_date__'.$i)
+                            <p class="validation-error">{{$message}}</p>
+                        @enderror 
                     </div>
+                    
                     <div class="form-group col-md-6">
                         <label for="end_time__{{$i}}">End Hour:</label>
                         <input type="time" class="form-control" name="end_time__{{$i}}"  value="{{old('end_time__'.$i)}}">
+                        @error('end_time__'.$i)
+                            <p class="validation-error">{{$message}}</p>
+                        @enderror 
                     </div>
+
                 </div>
-                @error('due_date__'.$i)
-                    <span>{{$message}}</span>
-                @enderror                
+                               
                 <br>
             </div>
 

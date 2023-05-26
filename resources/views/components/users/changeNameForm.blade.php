@@ -12,17 +12,17 @@
     <form id="changeNameForm" method="POST" action="/users/updateName">
         @csrf
         @method('PUT')
-        <div class="input-group">
+        <div>
         <label for="firstname" >New First Name:</label>
         <input type="text" class="form-control" name="firstname" placeholder="First Name" value={{old('firstname', $userDetails->firstname)}}>
         @error('firstname')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         <label for="lastname" >New Last Name:</label>
         <input type="text" class="form-control" name="lastname" placeholder="Last Name" value={{old('lastname', $userDetails->lastname)}}>
         @error('lastname')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         </div>

@@ -3,14 +3,14 @@
     <label for="userName">UserName</label>
     <input class="form-control" type="text" name="userName" placeholder="username" value="{{old('userName')}}">
     @error('userName')
-        <p>{{$message}}</p>
+        <span class="validation-error">{{$message}}</span>
     @enderror
     <br>
 
     <label for="password">Password</label>
     <input class="form-control" type="password" name="password" placeholder="password">
     @error('password')
-        <p>{{$message}}</p>
+        <span class="validation-error">{{$message}}</span>
     @enderror
     <br>
 

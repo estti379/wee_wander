@@ -15,7 +15,7 @@
             <label for="picture" class="form-label">New image URL:</label>
             <input type="text" class="form-control" name="picture" placeholder="Image URL" value={{old('picture', $userDetails->picture)}}>
             @error('picture')
-                <span>{{$message}}</span>
+                <span class="validation-error">{{$message}}</span>
             @enderror
         </div>
         <input type="submit" value="Save Image" class="btn btn-primary">
