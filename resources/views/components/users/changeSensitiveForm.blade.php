@@ -15,25 +15,25 @@
         <label  for="username">New Username:</label>
         <input type="text" class="form-control" name="username" placeholder="userame" value={{old('username', $userDetails->username)}}>
         @error('username')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         <label  for="email">New E-mail:</label>
         <input type="email" class="form-control" name="email" placeholder="E-mail" value={{old('email', $userDetails->email)}}>
         @error('email')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         <label  for="password">New Password:</label>
         <input type="password" class="form-control" name="password" placeholder="password">
         @error('password')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         <label  for="password_confirmation">Repeat Password:</label>
         <input type="password" class="form-control" name="password_confirmation" placeholder="password">
         @error('password_confirmation')
-            <span>{{$message}}</span>
+            <span class="validation-error">{{$message}}</span>
         @enderror
         <br>
         <input type="submit" class="btn btn-primary" value="Save LogIn information">

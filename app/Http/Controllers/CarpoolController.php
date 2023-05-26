@@ -123,6 +123,9 @@ class CarpoolController extends Controller
             'start_location_latit' => 'required',
             'end_location_long' => 'required',
             'end_location_latit' => 'required',
+            'adventure' => 'required',
+            'start_date' => 'required',
+            'time' => 'required',
             'price' => 'required',
             'max_seats' => 'required'
         ]);
@@ -136,7 +139,7 @@ class CarpoolController extends Controller
         $carpoolForm->end_location_long=request('end_location_long');                   //request('end_location_long');
         $carpoolForm->end_location_latit=request('end_location_latit');  
         $carpoolForm->start_adventure_id=1;  //{{ $adventure->start_date }}                     
-        $carpoolForm->end_adventure_id=1;  //{{ $adventure->end_date }}
+        $carpoolForm->end_adventure_id=request('adventure');;  //{{ $adventure->end_date }}
         $carpoolForm->distance= 1;        // BONUS FEATURE  request('distance'); 
         $carpoolForm->start_date=request('start_date').' '.request('time');
         $carpoolForm->max_seats=request('max_seats');
@@ -158,16 +161,14 @@ class CarpoolController extends Controller
             $request->validate([
                 'start_date' => 'required',
                 'price' => 'required|numeric',
+                'max_seats' => 'required',
             ]);
             $carpoolUpdate = Route::find($id);
             
             $carpoolUpdate->start_location_long=$request->input('start_location_long');          
             $carpoolUpdate->start_location_latit=$request->input('start_location_latit');
             $carpoolUpdate->end_location_long=$request->input('end_location_long');
-            $carpoolUpdate->end_location_latit=$request->input('end_location_latit');
-            $carpoolUpdate->start_adventure_id=1;  //{{ $adventure->start_date }}                     
-            $carpoolUpdate->end_adventure_id=1;  //{{ $adventure->end_date }}
-            $carpoolUpdate->distance=1;   // BONUS FEATURE $request->input('distance');       
+            $carpoolUpdate->end_location_latit=$request->input('end_location_latit');       
             $carpoolUpdate->start_date=$request->input('start_date');//.' '.request('time');
             $carpoolUpdate->max_seats=$request->input('max_seats');
             $carpoolUpdate->bike_capacity=$request->input('bike_capacity')? 1 : 0;

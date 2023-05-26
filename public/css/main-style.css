@@ -39,7 +39,7 @@ a {
     text-decoration: none;
 }
 ul.pagination {
-    display: flex;
+    display: flex; 
     justify-content: center;
 }
 /* === Flash & Error message === */
@@ -58,7 +58,7 @@ ul.pagination {
     text-align: center;
 }
 
-.card-body form p {
+.validation-error{
     color: red;
     font-weight: bolder;
 }
@@ -91,9 +91,18 @@ ul.pagination {
 .card-title > a {
     color: white !important;
 }
+
+.adventure-card{
+    width:95%;
+    margin-top: 1px;
+    border-top: 6px solid #5ac9a7;
+}
 /* === Input === */
 .form-control{
     max-width: 40%;
+}
+#changeDetailsForm .form-select{
+    width:80px;
 }
 
 /* ====  Navbar  === */
@@ -116,7 +125,7 @@ ul.pagination {
     background-color: #5ac9a7 !important;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    box-shadow: 0 px 8px rgba(0, 0, 0, 0.349);
     height: 120px;
     border-bottom: solid 9px #17797f;
     border-top: solid 0px #5ac9a7;
@@ -387,8 +396,8 @@ span.page-link {
         align-items: center;
     }
     .card-list .card .card-body {
-        min-width: 90%;
-        max-width: 90%;
+        width: 90%;
+
     }
 }
 
@@ -407,14 +416,22 @@ span.page-link {
     }
 
     .card-list .card-body,
-    .card-list .card {
-        min-width: 30%;
-        max-width: 40%;
+    .card-list .card{
+        width: 20%;
+        min-width: none;
+        max-width: none;
+    }
+
+    .last .card-body{
+        width: 90%;
+    }
+    .last .card{
+        width: 40%;
     }
 
     .card-list .card-body {
         flex: 1;
-        flex-basis: 33%;
+        flex-basis: 30%;
     }
 
     .card-list .card {

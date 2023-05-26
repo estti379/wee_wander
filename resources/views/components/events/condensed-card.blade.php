@@ -5,14 +5,15 @@
         <p class="card-text">Event organized by : <strong><a href="/users/{{ $event->organizer->id }}">{{ $event->organizer->firstname }}
                 {{ $event->organizer->lastname }}</a></p></strong>
         @foreach ($event->adventures->sortBy('start_date') as $adventure)
-            
-            <p class="card-text">Trail : <a
-                    href="/trail/{{ $adventure->trail->id }}">{{ $adventure->trail->name }}</a></p>
-            <p class="card-text">Starts in : {{ $adventure->start_date }}</p>
-            <p class="card-text">Finish in : {{ $adventure->due_date }}</p>
-            <x-events.join-button :adventure="$adventure" />
-            <x-events.participants-number-link :adventure="$adventure" />
-            <x-events.carpool-solutions :adventure="$adventure" />
+            <div class="adventure-card">
+                <p class="card-text">Trail : <a
+                        href="/trail/{{ $adventure->trail->id }}">{{ $adventure->trail->name }}</a></p>
+                <p class="card-text">Starts in : {{ $adventure->start_date }}</p>
+                <p class="card-text">Finish in : {{ $adventure->due_date }}</p>
+                <x-events.join-button :adventure="$adventure" />
+                <x-events.participants-number-link :adventure="$adventure" />
+                <x-events.carpool-solutions :adventure="$adventure" />
+            </div>
         @endforeach
         <hr>
         <a href="/events/{{ $event->id }}" class="btn btn-primary">Event Details</a>

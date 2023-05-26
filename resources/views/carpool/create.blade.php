@@ -18,9 +18,15 @@
         <h5 class="card-header">Create an Carpool <i class="fa-solid fa-car-side  fa-lg fa-bounce"
                 style="color: #ffffff;"></i></h5>
         <div class="card-body"id="create">
-            <span>Choose a starting <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> and an ending point
-                <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> to your carpool :</span>
+            <p>Choose a starting <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> and an ending point
+                <i class="fa-solid fa-location-dot" style="color: #0ebc89;"></i> to your carpool :</p>
             <div id="map" style="height: 400px; width;"></div>
+            @error('start_location_latit')
+                <p class="validation-error">{{$message}}</p>
+            @enderror
+            @error('end_location_latit')
+                <p class="validation-error">{{$message}}</p>
+            @enderror
             <button class="btn btn-primary" id="define-route">Define route</button>
             <form method="POST" action="/carpool/store" enctype="multipart/form-data">
                 @csrf
@@ -36,25 +42,45 @@
                     value="{{ old('end_location_long') }}">
 
                 <label>Adventure</label>
-                <select class="form-select" aria-label="Default select example" value="adventure">
+                <select class="form-select" aria-label="Default select example" name="adventure">
                     @foreach ($adventures as $adventure)
-                        <option value="{{ $adventure->trail_id }}">
+                        <option value="{{ $adventure->id}}"
+                            @if (  old('adventure') == $adventure->id)
+                                selected
+                            @endif
+                        >
                             Trail: {{ $adventure->trail->name }} | Start Date: {{ $adventure->start_date }}
                         </option>
                     @endforeach
-                </select> <br>
+                </select>
+                @error('adventure')
+                    <p class="validation-error">{{$message}}</p>
+                @enderror
+                <br>
 
                 <label >Date</label>
-                <input class="input-group-text" type="date" name="start_date" placeholder="Date"><br>
+                <input class="input-group-text" type="date" name="start_date" placeholder="Date" value="{{ old('start_date') }}"><br>
+                @error('start_date')
+                    <p class="validation-error">{{$message}}</p>
+                @enderror
                 <label >Time</label>
-                <input class="input-group-text" type="Time" name="time" placeholder="Time"><br>
+                <input class="input-group-text" type="Time" name="time" placeholder="Time" value="{{ old('time') }}"><br>
+                @error('time')
+                    <p class="validation-error">{{$message}}</p>
+                @enderror
 
                 <div class="input-create">
                     <label for="max_seats">Seats available:</label>
-                    <input type="number" class="form-control" name="max_seats"><br>
+                    <input type="number" class="form-control" name="max_seats" value="{{ old('max_seats') }}"><br>
+                    @error('max_seats')
+                        <p class="validation-error">{{$message}}</p>
+                    @enderror
 
                     <label for="price">Asked price <i class="fa-solid fa-hand-holding-dollar" style="color: #0ebc89;"></i></label>
                     <input type="text" class="form-control" name="price" placeholder="0€" value="{{ old('price') }}"><br>
+                    @error('price')
+                        <p class="validation-error">{{$message}}</p>
+                    @enderror
         
                     <label><i class="fa-solid fa-paw" style="color: #0ebc89;"></i> Pets allowed</label>
                     <input class="form-check-input" type="checkbox" name="pets_allowed"><br>
