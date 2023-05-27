@@ -3,14 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Event;
+use App\Models\Route;
+use App\Models\AdventureParticipants;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +21,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'username',
         'password',
+        'email',
+        'firstname',
+        'lastname',
+        'picture',
+        'description',
+        'car_owned',
+        'driver_license',
     ];
 
     /**
@@ -30,7 +39,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -39,6 +47,33 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+
     ];
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class, "organizer_id");
+    }
+
+    public function adventure_participants(): HasMany
+    {
+        return $this->hasMany(AdventureParticipants::class);
+    }
+
+    public function routesOwned(): HasMany
+    {
+        return $this->hasMany(Route::class, "carowner_id");
+    }
+
+    public function participatingInRoutes(): BelongsToMany
+    {
+        return $this->belongsToMany(Route::class, 'route_participants', 'participant_id', 'route_id')->withTimestamps();
+    }
+
+    public function participatingInAdventures(): BelongsToMany
+    {
+        return $this->belongsToMany(Adventure::class, 'adventure_participants', 'participant_id', 'adventure_id')->withTimestamps();
+    }
+    
+    
 }

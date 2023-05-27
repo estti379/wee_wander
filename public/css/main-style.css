@@ -1,0 +1,457 @@
+/*=========================== Main =================================*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#body {
+    background: #177980;
+    font-family: "Mukta", sans-serif;
+}
+#body h2,
+h3,
+h4,
+h5 {
+    font-family: "Mukta", sans-serif;
+    color: white;
+}
+#intro{
+    padding: 50px
+}
+#intro h1 span{
+    color:#17797F;
+    font-family: 'Kaushan Script', cursive;
+
+}
+body,
+ul {
+    list-style: none;
+}
+#layout {
+    margin-top: 120px;
+}
+#layout a {
+    text-decoration: none;
+    color: #177980;
+}
+a {
+    text-decoration: none;
+}
+ul.pagination {
+    display: flex; 
+    justify-content: center;
+}
+/* === Flash & Error message === */
+#message {
+    background-color: #00ff5e;
+    color: #ffffff;
+    font-weight: bold;
+}
+.alert {
+    color: #fff !important;
+    text-align: center;
+}
+.py-3 {
+    padding: 10px !important;
+    padding-bottom: 1px !important;
+    text-align: center;
+}
+
+.validation-error{
+    color: red;
+    font-weight: bolder;
+}
+/* Weather icons*/
+.weather-icon {
+    width: 100%;
+    height: 100%;
+}
+/*=== Button ===*/
+.btn-primary {
+    --bs-btn-bg: #177980 !important;
+    --bs-btn-border-color: #177980 !important;
+    --bs-btn-hover-bg: #0ebc89 !important;
+    --bs-btn-hover-border-color: #0ebc89 !important;
+    color: white !important ;
+    margin: 10px !important;
+}
+.card {
+    margin: 10px auto;
+    max-width: 90%;
+    padding: 20px;
+}
+.card-header {
+    text-align: center;
+}
+.card-header a {
+    color: white !important;
+}
+
+.card-title > a {
+    color: white !important;
+}
+
+.adventure-card{
+    width:95%;
+    margin-top: 1px;
+    border-top: 6px solid #5ac9a7;
+}
+/* === Input === */
+.form-control{
+    max-width: 40%;
+}
+#changeDetailsForm .form-select{
+    width:80px;
+}
+
+/* ====  Navbar  === */
+#navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    height: 110px;
+    padding-top: 0;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    text-decoration: underline;
+}
+
+.navbar > .container-fluid {
+    display: flex;
+    z-index: 99;
+    background-color: #5ac9a7 !important;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 px 8px rgba(0, 0, 0, 0.349);
+    height: 120px;
+    border-bottom: solid 9px #17797f;
+    border-top: solid 0px #5ac9a7;
+}
+
+.navbar-brand img {
+    width: 120px;
+    position: relative;
+    top: 20px;
+    right: -20px;
+}
+
+.navbar .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 60%;
+    height: 60px;
+}
+
+.nav-right .nav-item{
+
+    align-items: center;
+    width: 70%;
+    height: 60px;
+}
+
+.nav-right .nav-item div {
+    padding-right: 10px;
+}
+
+.nav-item,
+.nav-item > p {
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+.wrap {
+    white-space: normal;
+}
+
+.navbar-collapse {
+    position: fixed;
+    top: 120px;
+    right: 0px;
+    display: flex;
+    flex-basis: auto;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: #17797f;
+    border-top: solid 4px #5ac9a7;
+    border-bottom: solid 4px #5ac9a7;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.349);
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 16px;
+    font-family: "Mukta", sans-serif;
+}
+
+li.nav-item {
+    padding: 0 30px;
+}
+
+ul.navbar-nav {
+    margin: auto;
+}
+
+div.nav-item {
+    position: relative;
+    right: 0;
+    height: 40%;
+    width: 20%;
+    display: table;
+}
+
+div.nav-item a,
+div.nav-item span {
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 3px 3px;
+}
+
+div.nav-item p {
+    display: flex;
+    vertical-align: middle;
+}
+
+div.nav-item a {
+    background-color: #177980;
+    padding: 3px 12px 3px 25px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 14px;
+}
+
+i.fa-solid.fa-user.fa-xl {
+    position: absolute;
+    left: 6px;
+    bottom: 13px;
+    font-size: 12px;
+}
+
+i.fa-solid.fa-right-from-bracket {
+    position: absolute;
+    left: 6px;
+    bottom: 8px;
+    font-size: 12px;
+}
+
+/* ====  Footer === */
+footer {
+    position: absolute;
+    bottom: -10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5ac9a7;
+}
+
+footer p {
+    width: 100%;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    padding-bottom: 10px !important;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+footer li {
+    width: 25px;
+    text-align: center;
+}
+
+footer ul {
+    width: 21%;
+    margin: auto;
+    height: 80px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+/* === Cards === */
+.card-header {
+    background-color: #5ac9a7 !important;
+    padding: 10px !important;
+    color: white !important;
+}
+
+div.card-body {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    margin: 15px;
+}
+.card-title {
+    color: #17797f !important;
+    text-align: center;
+}
+.card-box{
+    width: 90%;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+span.page-link {
+    border-color: #0ebc89;
+}
+/*========================================================*/
+
+.heading {
+    width: 100%;
+    height: 300px;
+    background-image: url("../images/pictures/Mullerthal.png");
+    background-size: cover;
+    background-color: #177980;
+    margin: auto;
+    color: white;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    overflow: hidden;
+}
+
+.heading h1 span {
+    font-family: "Kaushan Script", cursive;
+    padding-right: 5px;
+}
+
+#title {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    padding: 8% 0px;
+    margin: auto;
+}
+
+/** 
+/Index Page Cards
+**/
+
+.card-list .card {
+    flex: 1;
+    /* You might want to add some padding or margin for visual spacing between cards */
+    /*margin: auto;*/
+    min-width: 80%;
+    /* If you want the content to take full height, this can be used */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.349);
+    }
+    .card .card-box{
+        justify-content: center;
+    }
+
+/**************************** Responsive Break point (mobile)***************************************/
+
+/**************************** Responsive Break point (Tablet) ***************************************/
+@media screen and (min-width: 992px) {
+    .navbar-collapse {
+        position: static;
+        display: flex;
+        flex-basis: auto;
+        justify-content: space-between;
+        padding: 0px;
+        padding-top: 0px;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar-brand img {
+        width: 100px;
+        position: static;
+        padding-top: 10px;
+    }
+
+    li.nav-item {
+        padding: 0 20px;
+    }
+
+    div.card-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        min-width: 80%;
+    }
+
+    .card-list .card-body,
+    .card-list .card {
+        min-width: 30%;
+        max-width: 40%;
+    }
+
+    .card-list .card-body {
+        flex: 1;
+        flex-basis: 40%;
+    }
+
+    .card-list .card {
+        align-items: center;
+    }
+    .card-list .card .card-body {
+        width: 90%;
+
+    }
+}
+
+/**************************** Responsive Break point (Desk) ***************************************/
+@media screen and (min-width: 1200px) {
+    li.nav-item {
+        padding: 0 30px;
+    }
+
+    div.card-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        min-width: 80%;
+    }
+
+    .card-list .card-body,
+    .card-list .card{
+        width: 20%;
+        min-width: none;
+        max-width: none;
+    }
+
+    .last .card-body{
+        width: 90%;
+    }
+    .last .card{
+        width: 40%;
+    }
+
+    .card-list .card-body {
+        flex: 1;
+        flex-basis: 30%;
+    }
+
+    .card-list .card {
+        align-items: center;
+    }
+    .card-list .card .card-body {
+        min-width: 90%;
+        max-width: 90%;
+    }
+    div.last{flex-direction: row;
+    }
+    #create{
+        columns: 2!important;
+    }
+    .input-create{
+        columns: 2!important;
+    }
+    .lastentry{
+        columns: 2!important;
+    }
+   
+
+}

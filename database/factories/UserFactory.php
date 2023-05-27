@@ -17,22 +17,45 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $car_owned = "";
+        $random = rand(0, 2);
+        if($random == 0){
+            $car_owned = "yes";
+        } else if($random == 1){
+            $car_owned = "no";
+        } else if($random == 2){
+            $car_owned = "hidden";
+        }
+
+        $driver_license = "";
+        $random = rand(0, 2);
+        if($random == 0){
+            $driver_license = "yes";
+        } else if($random == 1){
+            $driver_license = "no";
+        } else if($random == 2){
+            $driver_license = "hidden";
+        }
+
+        $firstname = fake()->firstName();
+        $lastname = fake()->lastName();
+
+        $randomImageUrl = fake()->imageUrl(200, 200, $firstname." ".$lastname);
+        $URLsnippets = explode("+", $randomImageUrl);
+        $randomImageUrl = $URLsnippets[0]."+".$URLsnippets[1];
+
         return [
-            'name' => fake()->name(),
+            'username' => fake()->userName(),
+            'password' => '$10$8S2oU9XGtvKV1y6yQaa2MulsZ3dhQMBn5Y.8HFWJi1f2kUwj6MNNu',// password //password_hash('password',  PASSWORD_DEFAULT),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'picture' => $randomImageUrl,
+            'description' => fake()->text(100),
+            'car_owned' => $car_owned,
+            'driver_license' => $driver_license,
+
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
 }
